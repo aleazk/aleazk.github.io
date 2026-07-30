@@ -1,0 +1,26 @@
+---
+title: "Software"
+description: "Research software associated with current AI work."
+---
+
+The repositories below support current research outputs. This page is selective rather than a mirror of my full GitHub account.
+
+::: {.card-grid}
+::: {.site-card}
+### Chimera Logical Anomaly Detection
+
+A neuro-symbolic anomaly detector that learns to evaluate logical constraints without requiring real rule-violating anomalies during training.
+
+[Repository →](https://github.com/aleazk/chimera-logical-anomaly-detection){.card-link}
+:::
+
+::: {.site-card}
+### Hyperspherical-Compressed VAE
+
+A variational autoencoder that reduces high-dimensional latent sparsity through hyperspherical-coordinate regularisation for anomaly and out-of-distribution detection.
+
+[Repository →](https://github.com/aleazk/cond-ad-hyperspherical-compressed-vae){.card-link}
+:::
+:::
+
+[View all repositories on GitHub →](https://github.com/aleazk?tab=repositories){.card-link}

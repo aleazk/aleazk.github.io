@@ -1,0 +1,21 @@
+---
+title: "About"
+description: "Professional biography."
+---
+
+I am a researcher working across mathematical physics and artificial intelligence. I was born in Argentina and studied physics at **FaMAF–UNC**, the Faculty of Mathematics, Astronomy and Physics of the National University of Córdoba. I am currently based in Brisbane, Australia, where I conduct doctoral research in artificial intelligence.
+
+My principal interests in mathematical physics concern quantum gravity, noncommutative geometry, gravitation, and the emergence of spacetime. A major part of this work is the development of **Toroidal Quantum Gravity (Tor.QG)**, an approach in which quantum spacetime is constructed from interacting noncommutative microscopic geometries. The project combines mathematical foundations with questions concerning black holes, cosmology, quantum geometry, and the relation between microscopic physics and effective classical gravity.
+
+My work in artificial intelligence focuses on anomaly detection, self-supervised learning, probabilistic and logical reasoning, and structured world models. I am particularly interested in systems that move beyond undifferentiated pattern recognition toward explicit representations of objects, relations, rules, and the geometry of learned latent spaces.
+
+Although these research directions use different technical languages, they are motivated by related questions: how should the fundamental degrees of freedom of a complex system be represented; how do global structures and effective laws emerge from local interactions; and how can mathematical models remain conceptually intelligible while also producing concrete calculations, simulations, or empirical tests?
+
+My approach is interdisciplinary, using mathematics, physics, computation, and philosophy as complementary tools when foundational problems do not fit neatly within one established domain. Alongside research, I compose music and produce visual art; selected work and earlier book-length manuscripts are collected in the [More](more/index.qmd) section.
+
+<div class="profile-links">
+<a href="https://github.com/aleazk">GitHub</a>
+<a href="https://arxiv.org/search/?query=Alejandro+Ascarate&searchtype=author">arXiv</a>
+<a href="https://au.linkedin.com/in/alejandro-asc%C3%A1rate-346402225">LinkedIn</a>
+<a href="mailto:a.ascaratecastro@hdr.qut.edu.au">Email</a>
+</div>

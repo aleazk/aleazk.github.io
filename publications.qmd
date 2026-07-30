@@ -1,0 +1,124 @@
+---
+title: "Publications"
+description: "Journal articles, conference papers, accepted workshop papers, and research preprints."
+---
+
+This list contains peer-reviewed publications, accepted work, and research preprints that represent my current professional record. Earlier or superseded material is separated in [Earlier Work](more/archive.qmd).
+
+<div class="publication-controls" role="group" aria-label="Filter publications">
+<button class="filter-button" data-filter="all" aria-pressed="true">All</button>
+<button class="filter-button" data-filter="mp" aria-pressed="false">Mathematical Physics</button>
+<button class="filter-button" data-filter="ai" aria-pressed="false">Artificial Intelligence</button>
+</div>
+
+## Mathematical Physics {#mathematical-physics}
+
+::: {.publication-card data-field="mp"}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge published">Journal Article</span></div>
+
+### Toroidal Quantum Gravity: I. Foundations
+
+<div class="pub-meta">Alejandro Ascárate · <em>Classical and Quantum Gravity</em> 43, 145014 · 2026</div>
+
+<div class="pub-summary">A background-independent quantum-spacetime framework based on noncommutative tori with spectral data, discrete causal structure, local activation dynamics, Markovian branching, and covariant gravitational variables.</div>
+
+<div class="pub-links"><a href="https://doi.org/10.1088/1361-6382/ae85a6">Journal</a></div>
+:::
+
+::: {.publication-card data-field="mp"}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge published">Journal Article</span></div>
+
+### The Spacetime Picture in Quantum Gravity
+
+<div class="pub-meta">Alejandro Ascárate · <em>Classical and Quantum Gravity</em> 38, 165010 · 2021</div>
+
+<div class="pub-summary">A relational and noncommutative-geometric construction of quantum-spacetime elements, including a spectral interpretation of elementary areas and distances.</div>
+
+<div class="pub-links"><a href="https://doi.org/10.1088/1361-6382/abcbde">Journal</a><a href="https://arxiv.org/abs/2012.03994">arXiv</a></div>
+:::
+
+::: {.publication-card data-field="mp"}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge preprint">Preprint</span></div>
+
+### Spacetime Relationalism in GR and QG
+
+<div class="pub-meta">Alejandro Ascárate · arXiv:2109.03297 · 2021</div>
+
+<div class="pub-summary">A formulation of spacetime relationalism grounded in the gravitational field and its phase-space description, intended as conceptual background for the quantum-spacetime programme.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2109.03297">arXiv</a></div>
+:::
+
+::: {.publication-card data-field="mp"}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge preprint">Preprint</span></div>
+
+### The Ontology and Semantics of Quantum Theory for Quantum Gravity
+
+<div class="pub-meta">Alejandro Ascárate · arXiv:2109.10214 · 2021</div>
+
+<div class="pub-summary">An analysis of the factual interpretation of quantum theory and its applicability to quantum gravity, based on a realist ontology and the lattice-probabilistic formalism.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2109.10214">arXiv</a></div>
+:::
+
+## Artificial Intelligence {#artificial-intelligence}
+
+::: {.publication-card data-field="ai"}
+<div class="badge-row"><span class="badge ai">Artificial Intelligence</span><span class="badge published">Conference Paper</span></div>
+
+### Improving the Generation of VAEs with High Dimensional Latent Spaces by the Use of Hyperspherical Coordinates
+
+<div class="pub-meta">Alejandro Ascarate, Léo Lebrat, Rodrigo Santa Cruz, Clinton Fookes, Olivier Salvado · IJCNN · 2025</div>
+
+<div class="pub-summary">A hyperspherical-coordinate parameterisation that compresses latent vectors toward a controlled region of the sphere, reducing sparsity and improving generation in high-dimensional VAEs.</div>
+
+<div class="pub-links"><a href="https://ieeexplore.ieee.org/document/11227651">IEEE</a><a href="https://arxiv.org/abs/2507.15900">arXiv</a></div>
+:::
+
+::: {.publication-card data-field="ai"}
+<div class="badge-row"><span class="badge ai">Artificial Intelligence</span><span class="badge published">Accepted Workshop Paper</span></div>
+
+### Testing the Test: Score-Direction Instability in Class-Split Anomaly Detection
+
+<div class="pub-meta">Alejandro Ascarate, Léo Lebrat, Rodrigo Santa Cruz, Clinton Fookes, Olivier Salvado · ICML Workshop on Hypothesis Testing · 2026</div>
+
+<div class="pub-summary">A diagnosis of class-split anomaly-detection benchmarks in regimes where representation-space overlap produces AUROC collapse, inversion, and class-dependent score direction.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2606.02601">arXiv</a><a href="https://openreview.net/group?id=ICML.cc%2F2026%2FWorkshop%2FHypothesis_Testing">Workshop</a></div>
+:::
+
+::: {.publication-card data-field="ai"}
+<div class="badge-row"><span class="badge ai">Artificial Intelligence</span><span class="badge preprint">Preprint</span></div>
+
+### VAE with Hyperspherical Coordinates: Improving Anomaly Detection from Hypervolume-Compressed Latent Space
+
+<div class="pub-meta">Alejandro Ascarate, Léo Lebrat, Rodrigo Santa Cruz, Clinton Fookes, Olivier Salvado · arXiv:2601.18823 · 2026</div>
+
+<div class="pub-summary">A high-dimensional VAE formulation that controls angular concentration on the hypersphere and improves fully unconditional-OOD and conditional-OOD anomaly detection.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2601.18823">arXiv</a><a href="https://github.com/aleazk/cond-ad-hyperspherical-compressed-vae">Code</a></div>
+:::
+
+::: {.publication-card data-field="ai"}
+<div class="badge-row"><span class="badge ai">Artificial Intelligence</span><span class="badge preprint">Preprint</span></div>
+
+### High-Dimensional Latents Should Be Diagnosed Through Phase Structure
+
+<div class="pub-meta">Alejandro Ascarate, Léo Lebrat, Rodrigo Santa Cruz, Clinton Fookes, Olivier Salvado · arXiv:2606.02600 · 2026</div>
+
+<div class="pub-summary">A spin-glass interpretation of AE/VAE latent spaces using overlap distributions, susceptibility, and coarse-graining diagnostics, with downstream studies in generation and anomaly detection.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2606.02600">arXiv</a></div>
+:::
+
+::: {.publication-card data-field="ai"}
+<div class="badge-row"><span class="badge ai">Artificial Intelligence</span><span class="badge preprint">Preprint</span></div>
+
+### When Rule Violations Are Rare: Chimera Training for Logical Anomaly Detection
+
+<div class="pub-meta">Alejandro Ascarate, Léo Lebrat, Rodrigo Santa Cruz, Clinton Fookes, Olivier Salvado · arXiv:2605.26171 · 2026</div>
+
+<div class="pub-summary">A neural evaluator for logical constraints over visual concepts, trained with operand-level counterfactual feature combinations when genuine rule-violating anomalies are unavailable.</div>
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2605.26171">arXiv</a><a href="https://github.com/aleazk/chimera-logical-anomaly-detection">Code</a></div>
+:::

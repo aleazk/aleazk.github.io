@@ -1,0 +1,79 @@
+---
+title: "Alejandro Ascárate"
+title-block-style: none
+page-layout: full
+---
+
+::: {.hero}
+<div class="hero-kicker">Mathematical Physics · Artificial Intelligence</div>
+
+# Alejandro Ascárate
+
+<div class="hero-subtitle">I work on quantum spacetime and gravitational dynamics, and on machine-learning systems for anomaly detection, structured reasoning, and high-dimensional representation geometry.</div>
+
+<div class="hero-actions">
+<a class="btn-site primary" href="research/">Research</a>
+<a class="btn-site" href="publications.html">Publications</a>
+<a class="btn-site" href="about.html">About</a>
+</div>
+:::
+
+<div class="section-label">Research</div>
+
+::: {.research-grid}
+::: {.research-panel}
+## Mathematical Physics
+
+My principal project is **Toroidal Quantum Gravity (Tor.QG)**, a background-independent framework in which quantum spacetime is assembled from interacting noncommutative microscopic geometries. The programme studies the relation between microscopic quantum structure, causal dynamics, and effective gravitation.
+
+<div class="topic-line">Quantum gravity · Noncommutative geometry · Black holes · Cosmology · Foundations</div>
+
+[Explore mathematical physics →](research/mathematical-physics.qmd){.card-link}
+:::
+
+::: {.research-panel .ai}
+## Artificial Intelligence
+
+My AI research examines anomaly detection and generative modelling through the structure of learned representations. I am especially interested in explicit rule evaluation, semantic anomalies, latent-space geometry, and models that combine neural learning with compositional reasoning.
+
+<div class="topic-line">Anomaly detection · Self-supervised learning · Neuro-symbolic methods · Generative models</div>
+
+[Explore artificial intelligence →](research/artificial-intelligence.qmd){.card-link}
+:::
+:::
+
+<div class="section-label">Selected Work</div>
+
+::: {.card-grid}
+::: {.site-card}
+### Toroidal Quantum Gravity: I. Foundations
+
+*Classical and Quantum Gravity* **43**, 145014 (2026). A background-independent quantum-spacetime construction based on noncommutative tori, spectral geometry, discrete causal structure, and covariant gravitational dynamics.
+
+[Journal article →](https://doi.org/10.1088/1361-6382/ae85a6){.card-link}
+:::
+
+::: {.site-card}
+### Logical Anomaly Detection
+
+A neural evaluator for compositional visual rules, trained with feature-level counterfactual “chimeras” when real rule-violating anomalies are absent.
+
+[Preprint →](https://arxiv.org/abs/2605.26171){.card-link}
+:::
+
+::: {.site-card}
+### Phase Structure of High-Dimensional Latents
+
+A statistical-mechanical account of AE/VAE latent spaces using spin-glass observables, with applications to generation and anomaly detection.
+
+[Preprint →](https://arxiv.org/abs/2606.02600){.card-link}
+:::
+
+::: {.site-card}
+### Hyperspherical Coordinates for VAEs
+
+A latent-space parameterisation that compresses high-dimensional representations on a hypersphere, improving generative modelling and anomaly detection.
+
+[Publications →](publications.qmd){.card-link}
+:::
+:::
