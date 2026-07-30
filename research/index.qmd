@@ -1,0 +1,24 @@
+---
+title: "Research"
+description: "Research programmes in mathematical physics and artificial intelligence."
+---
+
+My work is divided between two technically distinct but methodologically related programmes. Both concern the construction of representations that make the structure and dynamics of complex systems explicit.
+
+::: {.research-grid}
+::: {.research-panel}
+## Mathematical Physics
+
+Quantum spacetime, noncommutative geometry, causal structure, gravitational dynamics, black-hole thermodynamics, and cosmology.
+
+[View programme →](mathematical-physics.qmd){.card-link}
+:::
+
+::: {.research-panel .ai}
+## Artificial Intelligence
+
+Anomaly detection, high-dimensional latent geometry, generative modelling, explicit rule evaluation, and structured world models.
+
+[View programme →](artificial-intelligence.qmd){.card-link}
+:::
+:::

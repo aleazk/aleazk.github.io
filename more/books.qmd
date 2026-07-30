@@ -1,0 +1,36 @@
+---
+title: "Books & Extended Writing"
+description: "Earlier book-length manuscripts and expository writing."
+---
+
+These texts are retained as extended writing rather than listed as formal academic publications. Their dates and relation to later work are stated explicitly.
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge">Book-length manuscript</span><span class="badge">2019</span></div>
+
+### Introduction to Canonical Quantum Gravity
+
+An advanced introduction to canonical quantum gravity, including an early version of ideas later substantially reformulated in the Tor.QG programme. It should be read as a historical precursor rather than as the current formulation of the theory.
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/1YF24_mkM4CZLciCvtQ_Mz3ohX-56iUdE/view?usp=sharing">PDF</a></div>
+:::
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge">Expository manuscript</span><span class="badge">2016</span></div>
+
+### Basic Principles of Quantum Theory
+
+A mathematically and philosophically oriented exposition of quantum theory, including lattice-theoretic probability, the spectral formalism, and questions of ontology and interpretation.
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/1df4OQuDnTrDc-8usJasgSRjsKWS52mRB/view">PDF</a></div>
+:::
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge">Popular science / philosophy</span><span class="badge">2018</span></div>
+
+### What’s Reality Made Of?
+
+An accessible book-length discussion of scientific ontology, the historical development of the natural sciences, and what contemporary physics suggests about the constitution of reality.
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/1lNfDZ-ow2wJmY6sxoytz8eKP2-UV4c6B/view">PDF</a></div>
+:::

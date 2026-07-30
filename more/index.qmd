@@ -1,0 +1,32 @@
+---
+title: "More"
+description: "Music, visual art, extended writing, and earlier work."
+---
+
+This section collects work outside the formal publication record. It is deliberately separated from the professional research pages while remaining part of the same website.
+
+::: {.more-grid}
+::: {.site-card}
+### Music & Visual Art
+
+Musical compositions and selected visual work.
+
+[Open section →](music-art.qmd){.card-link}
+:::
+
+::: {.site-card}
+### Books & Extended Writing
+
+Book-length manuscripts and expository writing, with their dates and present status stated explicitly.
+
+[Open section →](books.qmd){.card-link}
+:::
+
+::: {.site-card}
+### Earlier Work
+
+Superseded formulations and experimental projects retained as a record of intellectual development.
+
+[Open archive →](archive.qmd){.card-link}
+:::
+:::

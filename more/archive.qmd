@@ -1,0 +1,36 @@
+---
+title: "Earlier Work"
+description: "Superseded formulations and experimental projects."
+---
+
+This page records earlier work that is useful for understanding the development of later ideas but does not necessarily represent my present formulations or research priorities.
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge">Superseded preprint</span></div>
+
+### The Spacetime Picture in Quantum Gravity II
+
+An early noncommutative-torus formulation of quantum duration and causal processes. Its construction has been superseded by the present Tor.QG foundations and applications programme.
+
+<div class="pub-links"><a href="https://arxiv.org/abs/2107.06693">arXiv</a></div>
+:::
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge">Early mathematical physics</span><span class="badge">2017</span></div>
+
+### Canonical Quantization as Physical Localization on the Noncommutative Quantum Phase Space
+
+An early investigation of canonical quantization through localization on homogeneous configuration spaces and the reconstruction of a noncommutative quantum phase space.
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/1gDrtX0zYYsE-Up3h7o8D8AGugE1idwr7/view?usp=sharing">PDF</a></div>
+:::
+
+::: {.publication-card}
+<div class="badge-row"><span class="badge">Experimental AI / philosophy</span><span class="badge">2022</span></div>
+
+### Consciousness as the Key to Neuro-Symbolic Integration
+
+A speculative early proposal connecting relational reasoning, homotopy-theoretic structures, and programmable neuro-symbolic systems. It is retained as historical work rather than part of the current professional AI record.
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/19U57idp-EDicriRwNYxTkvadPtSkjr2F/view?usp=sharing">PDF</a><a href="https://github.com/aleazk/pienex">Pienex code</a></div>
+:::

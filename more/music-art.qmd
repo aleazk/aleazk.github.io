@@ -1,0 +1,10 @@
+---
+title: "Music & Visual Art"
+description: "Musical compositions and visual work."
+---
+
+Music and visual art have been longstanding parts of my work outside research. This section is reserved for a curated migration of the compositions and artworks from the previous website.
+
+<div class="project-note">The professional site can be published immediately without this archive. The original media will be migrated here as individual files become available at adequate quality; until then, the previous website remains the source archive.</div>
+
+[Open the previous website →](https://alejandroascarate.wordpress.com/){.card-link}

@@ -1,0 +1,20 @@
+---
+title: "Mathematical Physics"
+description: "Quantum gravity, noncommutative geometry, gravitation, and foundations."
+---
+
+My research in mathematical physics concerns the microscopic structure of spacetime and the emergence of gravitational dynamics. The central project is **Toroidal Quantum Gravity (Tor.QG)**, developed using ideas from noncommutative geometry, canonical and covariant approaches to gravity, discrete causal structures, and quantum geometry.
+
+## Toroidal Quantum Gravity
+
+Tor.QG models elementary quantum-spacetime processes by noncommutative tori equipped with spectral data. Metric information is encoded without presupposing a classical manifold, while oriented couplings and discrete holonomies organize the microscopic geometries into causal structures. The framework is designed to keep the microphysics explicit while allowing controlled contact with effective, approximately classical gravitational equations.
+
+The foundations paper develops the kinematics, causal activation law, Markovian dynamics, action principles, and a four-dimensional formulation coupled to electromagnetic radiation. Current work studies physical applications, including black-hole thermodynamics, horizon state counting, cosmological evolution, and multiscale relations between microscopic and effective geometry.
+
+<div class="project-note">Tor.QG is a research programme in development. The published foundations article states the present formal framework; application-level results are being prepared separately.</div>
+
+## Earlier foundations
+
+The 2021 *Spacetime Picture in Quantum Gravity* introduced several of the geometric and relational ideas that were later substantially reconstructed within Tor.QG. Additional work concerns spacetime relationalism and the ontology and semantics of quantum theory in the quantum-gravity setting.
+
+[See mathematical-physics publications →](../publications.qmd#mathematical-physics){.card-link}

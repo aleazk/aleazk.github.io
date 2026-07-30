@@ -1,0 +1,24 @@
+---
+title: "Artificial Intelligence"
+description: "Anomaly detection, representation geometry, and structured reasoning."
+---
+
+My AI research focuses on anomaly detection and generative modelling, especially where standard statistical scores obscure the geometry or semantic structure of the problem. I study both the internal organization of high-dimensional latent spaces and methods that represent explicit relations and rules over visual data.
+
+## High-dimensional latent geometry
+
+A central line of work studies why high-dimensional VAE latent spaces become sparse and difficult to sample or score reliably. Hyperspherical-coordinate parameterisations provide direct control over angular concentration and latent hypervolume. This has led to methods for improving generation and anomaly detection, and to a broader phase-based interpretation of latent representations using ideas from spin-glass theory.
+
+## Logical and semantic anomalies
+
+Many anomalies are violations of constraints rather than isolated statistical outliers. I develop neural evaluators that compile logical expressions into structured computation graphs and learn to assess rule satisfaction from visual representations. Counterfactual feature constructions provide informative violations even when real anomalous examples are unavailable during training.
+
+## Evaluation methodology
+
+I also study failure modes in anomaly-detection benchmarks. In particular, class-split protocols can exhibit score-direction instability when the designated anomaly class overlaps the normal mixture in representation space. The aim is to distinguish genuine detector behaviour from artefacts of benchmark geometry.
+
+## Structured world models
+
+Ongoing work connects learned visual concepts, compositional rule graphs, generative latent models, and predictive models of rule satisfaction. The longer-term objective is a world model in which structured hypotheses can be generated, evaluated, and used for planning.
+
+[See AI publications →](../publications.qmd#artificial-intelligence){.card-link}
