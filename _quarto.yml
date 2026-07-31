@@ -27,7 +27,7 @@ website:
         menu:
           - text: Music & Visual Art
             href: more/music-art.qmd
-          - text: Books & Extended Writing
+          - text: Book-drafts & Extended Writing
             href: more/books.qmd
           - text: Earlier Work
             href: more/archive.qmd
