@@ -3,7 +3,7 @@ title: "About"
 description: "Professional biography."
 ---
 
-I am a researcher working across mathematical physics and artificial intelligence. I was born in Argentina and studied physics at **FaMAF–UNC**, the Faculty of Mathematics, Astronomy and Physics of the National University of Córdoba. I am currently based in Brisbane, Australia, where I conduct doctoral research in artificial intelligence.
+I am a researcher working across mathematical physics and artificial intelligence. I was born in Argentina and studied physics at **FaMAF–UNC**, the Faculty of Mathematics, Astronomy and Physics of the National University of Córdoba, and previously at **FaCEyT**, the Faculty of Exact Sciences and Technology of the National University of Tucumán. I am currently based at **QUT**, the Queensland University of Technology, in Brisbane, Australia, where I conduct doctoral research in artificial intelligence.
 
 My principal interests in mathematical physics concern quantum gravity, noncommutative geometry, gravitation, and the emergence of spacetime. A major part of this work is the development of **Toroidal Quantum Gravity (Tor.QG)**, an approach in which quantum spacetime is constructed from interacting noncommutative microscopic geometries. The project combines mathematical foundations with questions concerning black holes, cosmology, quantum geometry, and the relation between microscopic physics and effective classical gravity.
 
