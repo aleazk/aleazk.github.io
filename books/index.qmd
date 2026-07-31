@@ -1,0 +1,15 @@
+---
+title: "Books — moved"
+search: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex">
+        <meta http-equiv="refresh" content="0; url=/more/books.html">
+        <link rel="canonical" href="https://aleazk.github.io/more/books.html">
+---
+
+This page has moved to [/more/books.html](https://aleazk.github.io/more/books.html).
+
+<script>window.location.replace("/more/books.html");</script>

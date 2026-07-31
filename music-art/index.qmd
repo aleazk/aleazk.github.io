@@ -1,0 +1,15 @@
+---
+title: "Music & Visual Art — moved"
+search: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex">
+        <meta http-equiv="refresh" content="0; url=/more/music-art.html">
+        <link rel="canonical" href="https://aleazk.github.io/more/music-art.html">
+---
+
+This page has moved to [/more/music-art.html](https://aleazk.github.io/more/music-art.html).
+
+<script>window.location.replace("/more/music-art.html");</script>

@@ -1,0 +1,15 @@
+---
+title: "About — moved"
+search: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex">
+        <meta http-equiv="refresh" content="0; url=/about.html">
+        <link rel="canonical" href="https://aleazk.github.io/about.html">
+---
+
+This page has moved to [/about.html](https://aleazk.github.io/about.html).
+
+<script>window.location.replace("/about.html");</script>
