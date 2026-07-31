@@ -1,5 +1,5 @@
 ---
-title:
+title: field
 title-block-style: none
 page-layout: full
 ---
