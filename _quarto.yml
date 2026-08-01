@@ -29,10 +29,10 @@ website:
             href: more/music-art.qmd
           - text: Book-drafts & Extended Writing
             href: more/books.qmd
-          - text: Earlier Work
-            href: more/archive.qmd
           - text: Mathematical Physics Notes
-            href: more/notes.qmd            
+            href: more/notes.qmd              
+          - text: Earlier Work
+            href: more/archive.qmd          
     right:
       - icon: github
         href: https://github.com/aleazk
