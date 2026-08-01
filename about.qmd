@@ -11,7 +11,7 @@ My work in artificial intelligence focuses on anomaly detection, self-supervised
 
 Although these research directions use different technical languages, they are motivated by related questions: how should the fundamental degrees of freedom of a complex system be represented; how do global structures and effective laws emerge from local interactions; and how can mathematical models remain conceptually intelligible while also producing concrete calculations, simulations, or empirical tests?
 
-My approach is interdisciplinary, using mathematics, physics, computation, and philosophy as complementary tools when foundational problems do not fit neatly within one established domain. Alongside research, I compose music and produce visual art; selected work and earlier book-length manuscripts are collected in the [More](more/index.qmd) section.
+My approach is interdisciplinary, using mathematics, physics, computation, and philosophy as complementary tools when foundational problems do not fit neatly within one established domain. My main inspiration regarding this aspect has always been John von Neumann, my interests follow almost all of the trails of his work (quantum logic and the mathematics of quantum foundations, logic and intelligence in artificial systems, early noncommutative geometry and operator algebras, etc.). Alongside research, I compose music and produce visual art; selected work and earlier book-length manuscripts are collected in the [More](more/index.qmd) section.
 
 <div class="profile-links">
 <a href="https://github.com/aleazk">GitHub</a>
