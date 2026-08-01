@@ -31,6 +31,8 @@ website:
             href: more/books.qmd
           - text: Earlier Work
             href: more/archive.qmd
+          - text: Mathematical Physics Notes
+            href: more/notes.qmd            
     right:
       - icon: github
         href: https://github.com/aleazk
