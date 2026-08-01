@@ -23,6 +23,14 @@ Book-length manuscripts and expository writing, with their dates and present sta
 :::
 
 ::: {.site-card}
+### Mathematical Physics Notes
+
+Standalone expository notes on geometry, gravitation, group theory, spinors, classical mechanics, and harmonic analysis.
+
+[Open notes →](notes.qmd){.card-link}
+:::
+
+::: {.site-card}
 ### Earlier Work
 
 Superseded formulations and experimental projects retained as a record of intellectual development.
