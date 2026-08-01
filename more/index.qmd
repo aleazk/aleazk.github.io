@@ -1,6 +1,6 @@
 ---
 title: "More"
-description: "Music, visual art, extended writing, and earlier work."
+description: "Music, visual art, extended writing, mathematical-physics notes, and earlier work."
 ---
 
 This section collects work outside the formal publication record. It is deliberately separated from the professional research pages while remaining part of the same website.
