@@ -1,0 +1,75 @@
+---
+title: "Mathematical Physics Notes"
+description: "Standalone notes on selected topics in mathematical physics."
+---
+
+These texts collect expository and technical material developed over several
+years as part of longer studies, research notebooks, and unfinished projects.
+They are presented here as standalone notes rather than as formal publications.
+Their scope and level of completion vary, but each document is intended to be
+read independently. WARNING: raw material.
+
+::: {.more-grid}
+
+::: {.site-card}
+### Topological and Causal Methods in General Relativity
+
+Notes on the differential-topological and causal structures used in global
+general relativity.
+
+[Open PDF →](https://drive.google.com/file/d/1YsnjKvumX3ZSZnuzv5-GPwUCJGIZn71b/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Lorentz and Poincaré Groups
+
+Notes on Lorentz transformations, the Poincaré group, their covering groups,
+and their representations.
+
+[Open PDF →](https://drive.google.com/file/d/1lxqPW5zGvAx6AkKppdeJNNLGbnBnurUb/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Spinors
+
+An introduction to spinorial structures and their relation to Lorentz-group
+representations and tensorial objects.
+
+[Open PDF →](https://drive.google.com/file/d/1KAvaNNV1o2pwpJc1mHdqXRJwHmvgPQyZ/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Symplectic Hamiltonian Mechanics
+
+Notes on symplectic geometry and Hamiltonian mechanics.
+
+[Open PDF →](https://drive.google.com/file/d/1WtcHQTx2Nr0M64D5-J-X-lPHpMLIrbV2/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Abstract Harmonic Analysis
+
+Notes on locally compact groups, Haar measure, group representations, and some
+basic structures of abstract harmonic analysis.
+
+[Open PDF →](https://drive.google.com/file/d/14RAB9dW1mBTLK0gxlYZzBbKGECmoKcGk/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Conformal Infinity and Black Holes
+
+Notes on conformal compactification, asymptotic symmetries, horizons, trapped
+surfaces, Kerr geometry, energy extraction, and black-hole mechanics.
+
+[Open PDF →](https://drive.google.com/file/d/1Z4OBJkKRt3zNr_rLsPtUKsk5beA0k2AK/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+::: {.site-card}
+### Conformal Infinity and Black Holes (original handwritten in spanish)
+
+The previous entry is an LLM transcription of this, originally handwritten in spanish.
+
+[Open PDF →](https://drive.google.com/file/d/1_KcbWQPYlqrrtXdzRcpnBCsCsgdPWAlO/view?usp=drive_link){.card-link target="_blank"}
+:::
+
+:::
