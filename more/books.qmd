@@ -10,7 +10,7 @@ These texts are retained as extended writing rather than listed as formal academ
 
 ### Introduction to Canonical Quantum Gravity
 
-An advanced introduction to canonical quantum gravity, including an early version of ideas later substantially reformulated in the Tor.QG programme. It should be read as a historical precursor rather than as the current formulation of the theory.
+An advanced introduction to canonical quantum gravity, including an early version of ideas later substantially reformulated in the Tor.QG programme. The second part (about quantization of time) of the third chapter, in particular, should be read as a historical precursor rather than as the current formulation of the theory; the rest of book is okay.
 
 <div class="pub-links"><a href="https://drive.google.com/file/d/1YF24_mkM4CZLciCvtQ_Mz3ohX-56iUdE/view?usp=sharing">PDF</a></div>
 :::
