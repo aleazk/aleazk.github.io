@@ -61,15 +61,7 @@ basic structures of abstract harmonic analysis.
 Notes on conformal compactification, asymptotic symmetries, horizons, trapped
 surfaces, Kerr geometry, energy extraction, and black-hole mechanics.
 
-[Open PDF →](https://drive.google.com/file/d/1uOf8hH2Gdlqf8kOjVA4sxP-4kMCA_j6y/view?usp=drive_link){.card-link target="_blank"}
-:::
-
-::: {.site-card}
-### General Theory of Black Holes (original handwritten in spanish)
-
-The previous entry is an LLM transcription of this, originally handwritten in spanish.
-
-[Open PDF →](https://drive.google.com/file/d/1_KcbWQPYlqrrtXdzRcpnBCsCsgdPWAlO/view?usp=drive_link){.card-link target="_blank"}
+[Open PDF →](https://drive.google.com/file/d/1Rod38WRHkSgJUT--XaYIR-mILi7R4g14/view?usp=sharing){.card-link target="_blank"}
 :::
 
 :::
