@@ -25,14 +25,14 @@ website:
         href: about.qmd
       - text: More
         menu:
-          - text: Music & Visual Art
-            href: more/music-art.qmd
-          - text: Book-drafts & Extended Writing
-            href: more/books.qmd
           - text: Mathematical Physics Notes
-            href: more/notes.qmd              
+            href: more/notes.qmd         
+          - text: Book-drafts & Extended Writing
+            href: more/books.qmd             
           - text: Earlier Work
-            href: more/archive.qmd          
+            href: more/archive.qmd  
+          - text: Music & Visual Art
+            href: more/music-art.qmd            
     right:
       - icon: github
         href: https://github.com/aleazk
