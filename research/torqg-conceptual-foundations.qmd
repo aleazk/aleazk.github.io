@@ -298,7 +298,6 @@ This is a deliberate attempt to preserve, after quantization, information that i
 $$
 \text{phase space containing all possible geometries}
 $$
-
 and
 
 $$
@@ -597,7 +596,6 @@ $$
 $$
 
 This is an important idea in algebraic approaches to background independence.
-
 But it is not what Tor.QG is trying to reproduce.
 
 Tor.QG begins from the observation that the gravitational field affects the classical Poisson structure itself. Its quantum analogue therefore permits the geometric configuration to enter the deformation structure of the algebra.
@@ -897,8 +895,7 @@ $$
 \longrightarrow
 \text{Weyl quantization}
 \longrightarrow
-A_\theta .
-}
+A_\theta .}
 $$
 
 The NC torus is therefore not chosen because one first postulates that microscopic spacetime has toroidal topology. It is the algebra that emerges from the particular variables and Weyl relations produced by the Tor.QG quantization scheme.
@@ -998,3 +995,48 @@ $$
 \qquad
 \tau_{\rm dyn}\simeq0.300.
 $$
+
+Using their mean microscopic scale in the accelerated-time relation produces
+
+$$
+\gamma_{\rm eff}
+=
+\ln(1+\bar\tau_{\min})
+\simeq0.274,
+$$
+
+numerically close to the value of the Immirzi parameter that appears in the standard loop-quantum-gravity black-hole entropy calculation.
+
+Tor.QG therefore suggests a different interpretation of that number: rather than being merely an otherwise free quantization normalization fixed by black-hole entropy, it may encode the accelerated image of a fundamental quantum time gap.
+
+The subsequent black-hole entropy calculation uses the familiar horizon-state counting machinery and recovers the standard leading relation
+
+$$
+S_{\rm BH}=\frac{A_H}{4}+\cdots .
+$$
+
+The claim is therefore not that Tor.QG invents a new entropy-counting argument. The new element lies earlier in the chain: the microscopic theory supplies an independent geometric origin for the horizon energy and for the normalization entering the counting.
+
+This is one example of the general strategy of the programme:
+
+$$
+\boxed{
+\text{microscopic quantum spacetime structure}
+\longrightarrow
+\text{intrinsic time and energy}
+\longrightarrow
+\text{statistical mechanics}
+\longrightarrow
+\text{macroscopic gravitational physics}.
+}
+$$
+
+The companion applications work explores the same route much further, including radiation-dominated cosmology, a near-critical geometric mechanism for inflation, and the interior of evaporating black holes.
+
+## Further reading
+
+- [Tor.QG I — Foundations](https://doi.org/10.1088/1361-6382/ae85a6)
+- [Expanded Foundations version](https://drive.google.com/file/d/1-1EKsX6AGEPTgjHvUbKXGnUF7QUXDqMe/view?usp=sharing)
+- [Mathematical-physics publications](../publications.qmd#mathematical-physics)
+
+[← Back to Mathematical Physics](mathematical-physics.qmd)
