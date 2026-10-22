@@ -7,6 +7,8 @@ My research in mathematical physics concerns the microscopic structure of spacet
 
 ## Toroidal Quantum Gravity
 
+[Conceptual introduction →](torqg-conceptual-foundations.qmd){.card-link}
+
 Tor.QG models elementary quantum-spacetime processes by noncommutative tori equipped with spectral data. Metric information is encoded without presupposing a classical manifold, while oriented couplings and discrete holonomies organize the microscopic geometries into causal structures. The framework is designed to keep the microphysics explicit while allowing controlled contact with effective, approximately classical gravitational equations.
 
 The foundations paper develops the kinematics, causal activation law, Markovian dynamics, action principles, and a four-dimensional formulation coupled to electromagnetic radiation. Current work studies physical applications, including black-hole thermodynamics, horizon state counting, cosmological evolution, and multiscale relations between microscopic and effective geometry.
