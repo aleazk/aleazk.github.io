@@ -50,6 +50,8 @@ My AI research examines anomaly detection and generative modelling through the s
 *Classical and Quantum Gravity* **43**, 145014 (2026). A background-independent quantum-spacetime construction based on noncommutative tori, spectral geometry, discrete causal structure, and covariant gravitational dynamics.
 
 [Journal article →](https://doi.org/10.1088/1361-6382/ae85a6){.card-link}
+
+[Conceptual overview →](research/torqg-conceptual-foundations.qmd){.card-link}
 :::
 
 ::: {.site-card}
