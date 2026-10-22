@@ -20,8 +20,13 @@ Tor.QG proposes a specific answer. Its central idea is not merely that spacetime
 
 $$
 \boxed{
-\text{quantum geometry itself participates in determining
-the noncommutation relations of quantum gravitational phase space.}
+\begin{gathered}
+\text{quantum geometry itself participates in determining}
+\\
+\text{the noncommutation relations}
+\\
+\text{of quantum gravitational phase space.}
+\end{gathered}
 }
 $$
 
@@ -104,8 +109,13 @@ The crucial question is then unavoidable:
 
 $$
 \boxed{
-\text{If geometry determines the classical Poisson structure,
-what determines the quantum commutator when geometry itself is quantum?}
+\begin{gathered}
+\text{If geometry determines the classical Poisson structure,}
+\\
+\text{what determines the quantum commutator}
+\\
+\text{when geometry itself is quantum?}
+\end{gathered}
 }
 $$
 
@@ -318,9 +328,12 @@ Thus causal adjacency is encoded algebraically:
 
 $$
 \boxed{
+\begin{gathered}
 x\text{ causally adjacent to }y
 \quad\Longleftrightarrow\quad
+\\
 \text{appropriate cross-noncommutation is nonzero}.
+\end{gathered}
 }
 $$
 
@@ -426,13 +439,17 @@ Tor.QG's argument is stronger because several independent pieces are intended to
 
 $$
 \boxed{
+\begin{gathered}
 \text{causal relation}
 +
 \text{geometry-dependent cross noncommutation}
+\\
 +
 \text{spectral transition distance}
+\\
 +
 \text{classical GR Poisson-bracket motivation}.
+\end{gathered}
 }
 $$
 
@@ -450,23 +467,17 @@ The construction therefore closes as
 
 $$
 \boxed{
-\begin{array}{ccc}
+\begin{gathered}
 \text{GR causal/metric duration}
-&
 \longrightarrow
-&
 \text{classical Poisson noncommutation}
 \\[2mm]
-\downarrow\text{ quantization}
-&&
-\downarrow\text{ quantization}
+\downarrow\ \text{quantization}
 \\[2mm]
 \text{NC spectral duration}
-&
 \longleftrightarrow
-&
 \text{quantum cross-noncommutation}.
-\end{array}
+\end{gathered}
 }
 $$
 
@@ -504,7 +515,11 @@ The distinction that matters is between
 
 $$
 \boxed{
-\text{dependence on an externally prescribed background}
+\begin{gathered}
+\text{dependence on an externally prescribed}
+\\
+\text{background}
+\end{gathered}
 }
 $$
 
@@ -512,7 +527,11 @@ and
 
 $$
 \boxed{
-\text{internal dependence on the dynamical gravitational configuration}.
+\begin{gathered}
+\text{internal dependence on the dynamical}
+\\
+\text{gravitational configuration}.
+\end{gathered}
 }
 $$
 
@@ -546,8 +565,13 @@ It means
 
 $$
 \boxed{
-\text{different gravitational configurations carry the algebraic structures
-appropriate to their own quantum geometry}.
+\begin{gathered}
+\text{different gravitational configurations carry}
+\\
+\text{the algebraic structures appropriate}
+\\
+\text{to their own quantum geometry}.
+\end{gathered}
 }
 $$
 
@@ -680,25 +704,31 @@ The unusual conjunction is this:
 
 $$
 \boxed{
-\begin{aligned}
-&\text{the metric structure of each microscopic quantum spacetime}
+\begin{gathered}
+\text{the metric structure of each microscopic}
 \\
-&\qquad\text{is encoded spectrally;}
+\text{quantum spacetime is encoded spectrally;}
 \\[1mm]
-&\text{that geometric information controls deformation parameters}
+\text{that geometric information controls}
 \\
-&\qquad\text{inside the quantum gravitational phase-space algebra;}
-\\[1mm]
-&\text{cross-noncommutation between microscopic geometries}
+\text{deformation parameters inside the quantum}
 \\
-&\qquad\text{encodes their possible causal transition;}
+\text{gravitational phase-space algebra;}
 \\[1mm]
-&\text{the transition itself is then equipped with spectral geometry;}
-\\[1mm]
-&\text{and the corresponding NC metric recovers an intrinsic duration}
+\text{cross-noncommutation between microscopic}
 \\
-&\qquad\text{associated with that same cross structure.}
-\end{aligned}
+\text{geometries encodes their possible causal transition;}
+\\[1mm]
+\text{the transition itself is then equipped}
+\\
+\text{with spectral geometry;}
+\\[1mm]
+\text{and the corresponding NC metric recovers}
+\\
+\text{an intrinsic duration associated}
+\\
+\text{with that same cross structure.}
+\end{gathered}
 }
 $$
 
@@ -712,8 +742,13 @@ It is closer to
 
 $$
 \boxed{
-\text{quantize the relation between gravitational geometry
-and the algebraic structure used to describe gravitational observables.}
+\begin{gathered}
+\text{quantize the relation between gravitational geometry}
+\\
+\text{and the algebraic structure used}
+\\
+\text{to describe gravitational observables.}
+\end{gathered}
 }
 $$
 
@@ -775,35 +810,47 @@ The foundational logic of Tor.QG can be compressed into the following chain:
 
 $$
 \boxed{
-\begin{aligned}
+\begin{gathered}
 \text{dynamical metric in GR}
-&\longrightarrow
+\\
+\downarrow
+\\
 \text{geometry-dependent causal propagator}
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{geometry-dependent Poisson structure}
 \\
-&\longrightarrow
-\text{requirement of geometry-dependent quantum noncommutation}
+\downarrow
 \\
-&\longrightarrow
+\text{requirement of geometry-dependent}
+\\
+\text{quantum noncommutation}
+\\
+\downarrow
+\\
 \text{NC gravitational phase-space algebra }A_\Theta
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{embedded spectral micro-spacetimes}
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{cross-noncommuting causal transitions}
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{spectral geometry of the glued transition}
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{intrinsic NC transition distance}
 \\
-&\longrightarrow
+\downarrow
+\\
 \text{quantum duration}.
-\end{aligned}
+\end{gathered}
 }
 $$
 
@@ -821,8 +868,13 @@ Thus, in Tor.QG,
 
 $$
 \boxed{
-\text{quantum geometry does not merely inhabit the quantum theory;
-it participates in determining the algebraic relations of the theory itself.}
+\begin{gathered}
+\text{quantum geometry does not merely inhabit}
+\\
+\text{the quantum theory; it participates in determining}
+\\
+\text{the algebraic relations of the theory itself.}
+\end{gathered}
 }
 $$
 
@@ -885,17 +937,22 @@ Thus the logical order is
 
 $$
 \boxed{
+\begin{gathered}
 \text{classical spacetime-supported variables}
 \longrightarrow
 \text{phase-space functionals}
+\\
 \longrightarrow
 \text{discretized labels}
 \longrightarrow
 \text{Poisson bracket}
+\\
 \longrightarrow
 \text{Weyl quantization}
 \longrightarrow
-A_\theta .}
+A_\theta .
+\end{gathered}
+}
 $$
 
 The NC torus is therefore not chosen because one first postulates that microscopic spacetime has toroidal topology. It is the algebra that emerges from the particular variables and Weyl relations produced by the Tor.QG quantization scheme.
@@ -924,9 +981,15 @@ Accordingly,
 
 $$
 \boxed{
-A_\theta\ \text{is the mathematical spectral model used for a quantum
-micro-spacetime, not a claim that the micro-spacetime is literally a
-classical torus with noncommuting coordinates.}
+\begin{gathered}
+A_\theta\ \text{is the mathematical spectral model}
+\\
+\text{used for a quantum micro-spacetime,}
+\\
+\text{not a claim that the micro-spacetime is literally}
+\\
+\text{a classical torus with noncommuting coordinates.}
+\end{gathered}
 }
 $$
 
@@ -952,15 +1015,15 @@ Thus two limits must not be confused:
 
 $$
 \boxed{
-\begin{array}{ll}
-\theta\to0
-&
-\text{commutative limit of the abstract torus algebra},
+\begin{gathered}
+\theta\to0:
+\quad
+\text{commutative limit of the abstract torus algebra}
 \\[2mm]
-\text{Tor.QG coarse graining}
-&
+\text{Tor.QG coarse graining:}
+\\
 \text{emergence of classical spacetime from many micro-processes}.
-\end{array}
+\end{gathered}
 }
 $$
 
@@ -1021,13 +1084,16 @@ This is one example of the general strategy of the programme:
 
 $$
 \boxed{
+\begin{gathered}
 \text{microscopic quantum spacetime structure}
 \longrightarrow
 \text{intrinsic time and energy}
+\\
 \longrightarrow
 \text{statistical mechanics}
 \longrightarrow
 \text{macroscopic gravitational physics}.
+\end{gathered}
 }
 $$
 
