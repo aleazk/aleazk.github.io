@@ -401,7 +401,7 @@ $$
 \boxed{
 \tau_\Theta
 =
-d_{\widetilde D_\Theta}(\varphi,\psi).
+d_{\widetilde D_\Theta}(\varphi,\psi):=\sup\{\,|\varphi(a)-\psi(a)|:\ a=a^*,\ \|[\widetilde D_\Theta,a]\|\le 1\,\}.
 }
 $$
 
