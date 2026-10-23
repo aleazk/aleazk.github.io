@@ -97,7 +97,7 @@ $$
 
 The gravitational field participates in determining the Poisson structure itself.
 
-This dependence also appears in the canonical formulation of GR, where the constraint algebra contains metric-dependent structure functions. Tor.QG uses the covariant formulation because the causal and temporal content of this dependence is considerably more transparent there.
+This dependence also appears in the canonical formulation of GR, where the constraint algebra contains metric-dependent structure functions. Tor.QG uses the covariant formulation because the causal and temporal content of this dependence is considerably more transparent there (in this formulation, the Poisson bracket is often called the Peierls bracket and is common in modern treatments of QFT in curved spacetimes).
 
 For observables associated with sufficiently small causally related spacetime processes, the construction developed in the Foundations paper isolates a dependence of their Poisson noncommutation on the causal geometry and, in particular, on the metric duration associated with the processes.
 
