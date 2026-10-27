@@ -22,7 +22,7 @@ This list contains peer-reviewed publications, accepted work, and research prepr
 
 <div class="pub-summary">A background-independent quantum-spacetime framework based on noncommutative tori with spectral data, discrete causal structure, local activation dynamics, Markovian branching, and covariant gravitational variables. -. Note: the expanded version is work in progress, it also contains a *corrigendum* of the published version (the right-covariant gauge argument in section 3.2.3 has a flaw and has been replaced by a different and simpler one in the expanded version; this *corrigendum* will be submitted to the journal in the future). 30-Sep-26 .-</div>
 
-<div class="pub-links"><a href="https://doi.org/10.1088/1361-6382/ae85a6">Journal</a><a href="https://drive.google.com/file/d/1-1EKsX6AGEPTgjHvUbKXGnUF7QUXDqMe/view?usp=sharing">Expanded version</a></div>
+<div class="pub-links"><a href="https://doi.org/10.1088/1361-6382/ae85a6">Journal</a><a href="https://drive.google.com/file/d/1esRG9MHAkNn53YTZ54-fLg9MIm9XmMbE/view?usp=sharing">Revised and Expanded version</a></div>
 :::
 
 ::: {.publication-card data-field="mp"}
