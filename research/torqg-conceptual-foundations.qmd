@@ -1102,7 +1102,7 @@ The companion applications work explores the same route much further, including 
 ## Further reading
 
 - [Tor.QG I — Foundations](https://doi.org/10.1088/1361-6382/ae85a6)
-- [Expanded Foundations version](https://drive.google.com/file/d/1-1EKsX6AGEPTgjHvUbKXGnUF7QUXDqMe/view?usp=sharing)
+- [Revised and Expanded Foundations version](https://drive.google.com/file/d/1esRG9MHAkNn53YTZ54-fLg9MIm9XmMbE/view?usp=sharing)
 - [Mathematical-physics publications](../publications.qmd#mathematical-physics)
 
 [← Back to Mathematical Physics](mathematical-physics.qmd)
