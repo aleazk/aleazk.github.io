@@ -5,6 +5,8 @@ description: "Anomaly detection, representation geometry, and structured reasoni
 
 My AI research focuses on anomaly detection and generative modelling, especially where standard statistical scores obscure the geometry or semantic structure of the problem. I study both the internal organization of high-dimensional latent spaces and methods that represent explicit relations and rules over visual data.
 
+[Conceptual introduction →](ai-conceptual-foundations.qmd){.card-link}
+
 ## High-dimensional latent geometry
 
 A central line of work studies why high-dimensional VAE latent spaces become sparse and difficult to sample or score reliably. Hyperspherical-coordinate parameterisations provide direct control over angular concentration and latent hypervolume. This has led to methods for improving generation and anomaly detection, and to a broader phase-based interpretation of latent representations using ideas from spin-glass theory.
