@@ -1,7 +1,15 @@
 ---
 title: "Book-drafts & Extended Writing"
-description: "Earlier book-length manuscripts and expository writing."
+description: "Book-length manuscripts, informal essays, and extended explanations."
 ---
+
+## Informal writings
+
+Essays and extended explanations on physics, mathematics, and foundational questions, including answers originally written for online discussions.
+
+[Browse writings →](../writings/index.qmd){.card-link}
+
+## Book drafts
 
 These texts are retained as extended writing rather than listed as formal academic publications. Their dates and relation to later work are stated explicitly.
 
