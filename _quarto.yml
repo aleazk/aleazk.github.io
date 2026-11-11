@@ -21,6 +21,8 @@ website:
         href: publications.qmd
       - text: Software
         href: software.qmd
+      - text: Writings
+        href: writings/index.qmd
       - text: About
         href: about.qmd
       - text: More

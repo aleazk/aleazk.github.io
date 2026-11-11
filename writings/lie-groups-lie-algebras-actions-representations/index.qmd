@@ -1,0 +1,515 @@
+---
+title: "Lie Groups, Lie Algebras, Actions, and Representations"
+description: "Lie groups and their algebras, local homomorphisms, actions on manifolds, and unitary representations."
+subtitle: "Symmetry and quantum systems \u00b7 Mathematical exposition"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+A **Lie group** is a group $G$, in the algebraic sense, which is also a differentiable manifold. Here we will only consider the finite-dimensional case; the dimension $m$ of the manifold is also called the dimension of the group. The group operations, namely multiplication
+
+$$
+\mathcal{P}:G\times G\rightarrow G,
+\qquad
+(g_{1},g_{2})\mapsto
+\mathcal{P}(g_{1},g_{2})\doteq g_{1}g_{2},
+$$
+
+and inversion
+
+$$
+\mathcal{I}:G\rightarrow G,
+\qquad
+g\mapsto
+\mathcal{I}(g)\doteq g^{-1},
+$$
+
+are required to be differentiable.
+
+One of the most important results in the theory of Lie groups is that every Lie group has naturally associated with it a unique finite-dimensional Lie algebra.
+
+This can be seen as follows. Given any $h\in G$, define the map
+
+$$
+\psi_{h}:G\rightarrow G,
+\qquad
+g\mapsto
+\psi_{h}(g)\doteq hg.
+$$
+
+This map is called a **left translation**. Since the group operations are differentiable, $\psi_h$ is a diffeomorphism.
+
+A vector field $v$ is said to be **left-invariant** if
+
+$$
+\psi_{h}^{*}(v)=v,
+\qquad
+\forall h\in G.
+$$
+
+Since $\psi_h^{*}$ is linear with respect to addition and scalar multiplication in the space of vector fields, these operations are closed on the set $L[G]$ of all left-invariant vector fields. Therefore, $L[G]$ is a vector subspace of the space of all vector fields on $G$.
+
+The Lie bracket of vector fields turns the space of all vector fields on $G$ into a Lie algebra, although an infinite-dimensional one.
+
+For any diffeomorphism $\varphi:G\rightarrow G$,
+
+$$
+\varphi^{*}\left([v_{1},v_{2}]\right)
+=
+[\varphi^{*}(v_{1}),\varphi^{*}(v_{2})].
+$$
+
+Therefore, if $v_{1},v_{2}\in L[G]$, then
+
+$$
+\psi_{h}^{*}\left([v_{1},v_{2}]\right)
+=
+[v_{1},v_{2}].
+$$
+
+Hence,
+
+$$
+[v_{1},v_{2}]\in L[G].
+$$
+
+Thus, $L[G]$ forms a Lie subalgebra of the Lie algebra of all vector fields on $G$.
+
+**Theorem.** $L[G]$ and $T_{e}$, where $e$ is the identity element of the group, are isomorphic. $\square$
+
+It follows that
+
+$$
+\dim L[G]
+=
+\dim T_{e}
+=
+\dim G
+=
+m.
+$$
+
+Let $A\in T_{e}$. We denote by $L^{A}$ the left-invariant vector field associated with $A$ through the isomorphism established by the previous theorem. This field satisfies
+
+$$
+L^{A}\big|_{e}=A.
+$$
+
+A Lie algebra structure can then be induced on $T_{e}$ by defining
+
+$$
+[A,B]
+\doteq
+[L^{A},L^{B}]\big|_{e},
+\qquad
+\forall A,B\in T_{e}.
+$$
+
+This structure is isomorphic to the Lie algebra of left-invariant vector fields.
+
+Thus, given an $m$-dimensional Lie group, one obtains an $m$-dimensional Lie algebra on the tangent space at the identity, $T_{e}$.
+
+At this point a natural question arises: given a Lie algebra, does there exist a Lie group whose associated Lie algebra coincides with the given one?
+
+The answer is provided by the following result, the **third Lie theorem**.
+
+**Theorem.** Let $\mathfrak{g}$ be a Lie algebra. Then:
+
+1. There exists a unique connected and simply connected Lie group $G_{\mathfrak{g}}$ whose associated Lie algebra coincides with the given algebra $\mathfrak{g}$.
+
+2. Given any other connected Lie group $G$ whose associated Lie algebra also coincides with $\mathfrak{g}$, there exists a surjective homomorphism
+
+$$
+\varphi:G_{\mathfrak{g}}\rightarrow G.
+$$
+
+In fact, $G_{\mathfrak{g}}$ is the universal covering group of $G$. $\square$
+
+In summary, given a Lie algebra, there can be many different Lie groups having that algebra as their associated Lie algebra. There is, however, a unique “largest” one, in the sense that it is simply connected and “covers” all the other connected groups with the same Lie algebra.
+
+Let $\sigma^{A}(t)$ be the unique integral curve of $L^{A}$ satisfying
+
+$$
+\sigma^{A}(0)=e.
+$$
+
+The **exponential map** is defined by
+
+$$
+\exp:T_{e}\rightarrow G,
+\qquad
+A\mapsto
+\exp(A)\doteq\sigma^{A}(1).
+$$
+
+This map has the following properties:
+
+- For any $t$,
+
+$$
+\exp(tA)=\sigma^{A}(t).
+$$
+
+- It is always a local diffeomorphism between an open neighborhood $U$ of $0\in T_{e}$ and
+
+$$
+\exp[U]\subset G.
+$$
+
+- If the Lie algebra $\mathfrak{g}$ is nilpotent, then the exponential map is a global bijection between $G_{\mathfrak{g}}$ and
+
+$$
+T_{e}\equiv\mathfrak{g}.
+$$
+
+- In general, the product of two exponentials is governed locally by the Baker--Campbell--Hausdorff expansion,
+
+$$
+\exp(X)\exp(Y)
+=
+\exp\left(
+X+Y
++\frac{1}{2}[X,Y]
++\frac{1}{12}[X,[X,Y]]
++\cdots
+\right).
+$$
+
+## Lie algebra homomorphisms and local Lie group homomorphisms
+
+There is a close correspondence not only between Lie groups and their Lie algebras, but also between homomorphisms of Lie groups and homomorphisms of their associated Lie algebras.
+
+Let $G$ and $H$ be Lie groups, with associated Lie algebras $\mathfrak{g}$ and $\mathfrak{h}$, respectively. If
+
+$$
+\Phi:G\rightarrow H
+$$
+
+is a Lie group homomorphism, then its differential at the identity,
+
+$$
+\mathrm{d}\Phi_{e}:
+T_{e}G\rightarrow T_{e}H,
+$$
+
+or equivalently
+
+$$
+\mathrm{d}\Phi_{e}:
+\mathfrak{g}\rightarrow\mathfrak{h},
+$$
+
+is a Lie algebra homomorphism:
+
+$$
+\mathrm{d}\Phi_{e}([X,Y])
+=
+[\mathrm{d}\Phi_{e}(X),\mathrm{d}\Phi_{e}(Y)].
+$$
+
+The converse also holds locally.
+
+**Theorem (Lie's second theorem).** Let $G$ and $H$ be Lie groups with Lie algebras $\mathfrak{g}$ and $\mathfrak{h}$, and let
+
+$$
+f:\mathfrak{g}\rightarrow\mathfrak{h}
+$$
+
+be a Lie algebra homomorphism. Then there exists a local Lie group homomorphism, defined in a sufficiently small neighborhood $U$ of the identity of $G$,
+
+$$
+F:U\subset G\rightarrow H,
+$$
+
+such that
+
+$$
+\mathrm{d}F_{e}=f.
+$$
+
+If $G$ is connected and simply connected, this local homomorphism extends uniquely to a global Lie group homomorphism
+
+$$
+F:G\rightarrow H.
+$$
+
+In particular, if
+
+$$
+f:\mathfrak{g}\rightarrow\mathfrak{h}
+$$
+
+is an isomorphism of Lie algebras, then $G$ and $H$ are locally isomorphic as Lie groups: there exist neighborhoods of their respective identities that are isomorphic as local Lie groups. $\square$
+
+Equivalently, if a Lie group homomorphism
+
+$$
+\Phi:G\rightarrow H
+$$
+
+is already given and
+
+$$
+\mathrm{d}\Phi_{e}:
+\mathfrak{g}\rightarrow\mathfrak{h}
+$$
+
+is an isomorphism, then $\Phi$ is a local diffeomorphism and therefore a local Lie group isomorphism around the identity.
+
+Thus, at least locally, the Lie algebra contains all the infinitesimal information about the Lie group. What it does not contain is the global topological information distinguishing different Lie groups with the same Lie algebra. This is precisely why several globally distinct groups may correspond to the same algebra, while the simply connected group $G_{\mathfrak g}$ plays the distinguished role described above.
+
+## Lie group actions and vector fields
+
+There is another natural way in which the Lie algebra of a Lie group appears. Suppose that a Lie group $G$ acts smoothly on a differentiable manifold $M$. Thus, there is a smooth map
+
+$$
+\Phi:G\times M\rightarrow M,
+\qquad
+(g,p)\mapsto\Phi(g,p)\doteq g\cdot p,
+$$
+
+such that
+
+$$
+e\cdot p=p
+$$
+
+and
+
+$$
+g_{1}\cdot(g_{2}\cdot p)
+=
+(g_{1}g_{2})\cdot p.
+$$
+
+Every element $X\in\mathfrak{g}$ then generates a one-parameter subgroup
+
+$$
+t\mapsto\exp(tX)
+$$
+
+of $G$, and therefore a one-parameter family of transformations of $M$.
+
+One can associate with $X$ a vector field on $M$. With the convention
+
+$$
+X_{M}(p)
+\doteq
+\left.
+\frac{\mathrm{d}}{\mathrm{d}t}
+\left(
+\exp(-tX)\cdot p
+\right)
+\right|_{t=0},
+$$
+
+the following result holds.
+
+**Theorem.** Let $G$ act smoothly on a differentiable manifold $M$. Then the map
+
+$$
+\mathfrak{g}\rightarrow\mathfrak{X}(M),
+\qquad
+X\mapsto X_{M},
+$$
+
+where $\mathfrak{X}(M)$ denotes the Lie algebra of smooth vector fields on $M$, is a Lie algebra homomorphism:
+
+$$
+[X_{M},Y_{M}]
+=
+[X,Y]_{M}.
+$$
+
+Hence, the vector fields generated by the action form a Lie subalgebra of
+
+$$
+\mathfrak{X}(M),
+$$
+
+with the ordinary vector-field commutator as Lie bracket. $\square$
+
+If the action is infinitesimally effective, meaning that
+
+$$
+X_{M}=0
+\quad\Longrightarrow\quad
+X=0,
+$$
+
+then this homomorphism is injective. In that case, $\mathfrak{g}$ itself can be identified with a Lie subalgebra of the Lie algebra of vector fields on $M$.
+
+If instead one defines the fundamental vector field without the minus sign,
+
+$$
+\widetilde X_{M}(p)
+\doteq
+\left.
+\frac{\mathrm{d}}{\mathrm{d}t}
+\left(
+\exp(tX)\cdot p
+\right)
+\right|_{t=0},
+$$
+
+then, for a left action, the corresponding map is an antihomomorphism:
+
+$$
+[\widetilde X_{M},\widetilde Y_{M}]
+=
+-\widetilde{[X,Y]}_{M}.
+$$
+
+The two conventions therefore contain the same information; the minus sign in the first definition is simply convenient if one wants the action of the Lie algebra on vector fields to preserve the Lie bracket directly.
+
+## Representations and a quantum-mechanical complement
+
+A **representation** of a group $G$ on a vector space $V$ is a homomorphism
+
+$$
+\pi:G\rightarrow GL(V),
+$$
+
+where $GL(V)$ is the group of linear automorphisms of $V$. The vector space $V$ is called the **representation space**.
+
+Now let $\mathfrak{g}$ be a Lie algebra, and let $G$ be a connected Lie group whose associated Lie algebra is $\mathfrak{g}$. As discussed above, there exists a unique connected and simply connected Lie group $G_{\mathfrak{g}}$ with Lie algebra $\mathfrak{g}$, together with a covering homomorphism
+
+$$
+p:G_{\mathfrak{g}}\rightarrow G.
+$$
+
+Any representation
+
+$$
+\pi:G\rightarrow GL(V)
+$$
+
+therefore gives rise immediately to a representation of $G_{\mathfrak{g}}$,
+
+$$
+\widetilde{\pi}
+\doteq
+\pi\circ p.
+$$
+
+Thus, every representation of $G$ can be regarded as a representation of its simply connected covering group.
+
+The converse is not true in general. A representation
+
+$$
+\widetilde{\pi}:G_{\mathfrak{g}}\rightarrow GL(V)
+$$
+
+descends to a representation of $G$ only if the elements of the kernel of the covering map act trivially:
+
+$$
+\ker p
+\subset
+\ker\widetilde{\pi}.
+$$
+
+Consequently, $G_{\mathfrak{g}}$ may possess additional representations that do not arise from representations of $G$. These are representations that distinguish elements of $G_{\mathfrak g}$ which become identified when passing to the quotient group $G$.
+
+The following standard result relates unitary representations of a Lie group to representations of its associated Lie algebra. More precisely, it combines Stone's theorem for strongly continuous one-parameter unitary groups with Gårding's theorem concerning smooth vectors.
+
+**Theorem (Stone--Gårding).** Let
+
+$$
+\pi:G\rightarrow U(\mathcal{H})
+$$
+
+be a strongly continuous unitary representation of a Lie group $G$ on a Hilbert space $\mathcal{H}$. Define the space of smooth vectors by
+
+$$
+\mathcal{D}_{\mathfrak{g}}
+\equiv
+\mathcal{H}^{\infty}
+=
+\left\{
+\psi\in\mathcal{H}
+\;\middle|\;
+g\mapsto\pi(g)\psi
+\text{ is }C^{\infty}
+\right\}.
+$$
+
+Then $\mathcal{D}_{\mathfrak{g}}$ is a dense subspace of $\mathcal{H}$, and it is invariant under the action of the infinitesimal generators associated with the representation.
+
+For every $X\in\mathfrak{g}$, define
+
+$$
+\mathrm{d}\pi(X)(\varphi)
+\doteq
+i
+\left.
+\frac{\mathrm{d}}{\mathrm{d}t}
+\left[
+\pi\left(\exp(tX)\right)(\varphi)
+\right]
+\right|_{t=0},
+\qquad
+\forall\varphi\in\mathcal{D}_{\mathfrak{g}}.
+$$
+
+The operator $\mathrm{d}\pi(X)$ is essentially self-adjoint on this common dense invariant domain, and its closure is the self-adjoint generator of the one-parameter unitary group
+
+$$
+t\mapsto\pi(\exp(tX)).
+$$
+
+The map
+
+$$
+X\mapsto\mathrm{d}\pi(X)
+$$
+
+is usually called the “infinitesimal version” of the group representation $\pi$.
+
+On the common invariant domain $\mathcal{D}_{\mathfrak{g}}$, the Lie brackets are represented by operator commutators according to
+
+$$
+[\mathrm{d}\pi(X),\mathrm{d}\pi(Y)]
+=
+i\,\mathrm{d}\pi([X,Y]).
+$$
+
+Thus, the Lie algebra associated with the symmetry group is represented infinitesimally by the self-adjoint generators of the corresponding one-parameter unitary transformations. $\square$
+
+The factor of $i$ in these expressions comes from the convention of representing the Lie algebra by self-adjoint operators, as is customary in quantum mechanics. If instead one defines
+
+$$
+D\pi(X)(\varphi)
+\doteq
+\left.
+\frac{\mathrm{d}}{\mathrm{d}t}
+\left[
+\pi\left(\exp(tX)\right)(\varphi)
+\right]
+\right|_{t=0},
+$$
+
+then the operators $D\pi(X)$ are skew-adjoint rather than self-adjoint, and the Lie algebra relation takes the more direct form
+
+$$
+D\pi([X,Y])
+=
+[D\pi(X),D\pi(Y)].
+$$
+
+The two conventions are equivalent, with
+
+$$
+\mathrm{d}\pi(X)=iD\pi(X).
+$$
+
+---
+
+
+
+[← All writings](../index.qmd){.writing-back}
+

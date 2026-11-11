@@ -1,0 +1,99 @@
+---
+title: "Localization in Space and Spacetime-Covariant Quantum Systems"
+description: "Position observables, systems of imprimitivity, and the relation between localization and spacetime covariance."
+subtitle: "Symmetry and quantum systems \u00b7 Expository essay"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+Suppose there is some configuration manifold $M$ (i.e., “space”) and consider the localization properties of a quantum system on this space. This means that the system admits a notion of position in this space, i.e., there is a quantum observable for the position of the system. If such an observable exists, say that the quantum system is localizable. In more precise terms, in the Hilbert space of the system there exists a PVM $P$ (projector-valued measure) over $M$ such that $P(E)$ represents the proposition “the position of the system lies in the Borel set $E\subseteq M$”.
+
+Now suppose there is some Lie group $G$ acting on this configuration space. In classical phase space (the cotangent bundle of $M$), this action $\alpha$ gives observables called momentum observables associated to the action (for the translations, one obtains linear momentum; for the rotations, $SO(3)$, one obtains angular momentum). Also in this classical phase space, this action induces an action on the classical propositions in an obvious way.
+
+The aim is to implement the analogous structure in the quantum case. Without entering into the additional technical details (like the definition of quantum symmetries, etc.), the result is that the action in the space of quantum propositions is implemented by taking a projective unitary representation $U$ of the group $G$ in the Hilbert space that satisfies the Imprimitivity condition (for simplicity, assume here that it is a true representation; the distinction is mathematically important, but it will not be pursued in detail):
+
+$$
+U_{g}P(E)U_{g}^{-1}=P(\alpha E)
+$$
+
+The infinitesimal generators of the representation are self-adjoint operators, i.e., quantum observables and they are given the same physical interpretation as their classical counterparts. Notice that, as in the classical case, this induces the group's Lie algebra in the space of observables.
+
+Thus, the definition of quantum localization in a manifold $M$ led us to consider a mathematical object called System of Imprimitivity (the name given to this entire structure). The structure being sought is quite specific: a Hilbert space, a representation of the group, and a PVM such that the Imprimitivity condition holds. This condition restricts the concrete Hilbert spaces and group representations that can be used to build a concrete system of imprimitivity, i.e., a concrete Hilbert space equipped with a concrete representation of the group may or may not admit a PVM so that the imprimitivity condition holds.
+
+Consider a simple example: $M$ is the real line, $G$ the group of translations and $\alpha$ the usual action of this group in the real line. The infinitesimal generator of the representation will be the quantum linear momentum. Thus:
+
+$$
+\hat{\mathrm{U}}_{x}\hat{\mathrm{P}}(E)\hat{\mathrm{U}}_{x}^{-1}=\hat{\mathrm{P}}(E-x)
+$$
+
+$$
+\hat{\mathrm{U}}_{x}=e^{2\pi ix\hat{p}}
+$$
+
+$$
+\hat{\mathrm{V}}_{y}=e^{2\pi iy\hat{q}}\doteq\intop_{\mathbb{R}}e^{2\pi iyz}d\hat{\mathrm{P}}(z)
+$$
+
+$$
+\hat{\mathrm{U}}_{x}\hat{\mathrm{V}}_{y}\hat{\mathrm{U}}_{x}^{-1}=\intop_{\mathbb{R}}e^{2\pi iyz}d\left(\hat{\mathrm{U}}_{x}\hat{\mathrm{P}}(z)\hat{\mathrm{U}}_{x}^{-1}\right)=\intop_{\mathbb{R}}e^{2\pi iyz}d\hat{\mathrm{P}}(z-x)
+$$
+
+$$
+\hat{\mathrm{U}}_{x}\hat{\mathrm{V}}_{y}\hat{\mathrm{U}}_{x}^{-1}=\intop_{\mathbb{R}}e^{2\pi iy(z'+x)}d\hat{\mathrm{P}}(z')=e^{2\pi iyx}\intop_{\mathbb{R}}e^{2\pi iyz'}d\hat{\mathrm{P}}(z')=e^{2\pi iyx}\hat{\mathrm{V}}_{y}
+$$
+
+$$
+\hat{\mathrm{U}}_{x}\hat{\mathrm{V}}_{y}=e^{2\pi iyx}\hat{\mathrm{V}}_{y}\hat{\mathrm{U}}_{x}
+$$
+
+These are the Weyl relations. Thus, with this definition of quantum localization, we recover the usual definitions and the CCR (the Heisenberg algebra) arising as the generators of the Weyl relations.
+
+The next question is how many concrete systems satisfy the Weyl relations. The answer is given by the Imprimitivity Theorem. This theorem allows one to determine and classify all possible systems of imprimitivity. In this way it solves the problem of quantum localization: the notion of quantum localization has been defined, and one can classify all of the possible concrete systems that satisfy this definition.
+
+In the example above, one recovers the usual Stone-von Neumann theorem about the uniqueness of the CCR as stated in terms of the Weyl relations. If $G$ is now taken equal to the rotations plus translations, the projective nature of the representation leads one to pass to the appropriate covering group. The Imprimitivity Theorem then says that the family of non-equivalent systems is parametrized by the spin of the system and one obtains the usual results of non-relativistic QM (i.e., the CCR plus orbital angular momentum plus spin).
+
+This completes the basic localization problem.
+
+So far only space and its symmetries have been considered. The next question is what changes when one considers spacetime. Set localization aside for the moment and adopt the following point of view: fix a spacetime and take its special relativity group (for Galilean spacetime, it is the Galilei group; for Minkowski spacetime, it is the Poincaré group). Call a quantum system specially covariant if the special relativity group can be implemented as quantum symmetries in the Hilbert space (here the groups are taken as fundamental, representations of the algebra only arise through the generators of the group representations). Usually, one obtains a projective unitary representation of the group. For the case of the Poincaré group, one passes to the universal covering because true representations of this group characterize what we need (the relevant theorems justify this step, but the details will not be needed here). For the Galilei group one also passes to a central extension, with mass appearing as the corresponding charge.
+
+The infinitesimal generators are again interpreted as momenta, but there is now an additional generator: energy, associated with time translations. In this setting it is the Hamiltonian of the free particle.
+
+The problem is then to classify all of the possible concrete covariant systems. The relativity groups are usually semidirect products of an abelian normal subgroup (the spacetime translations) and a closed subgroup (e.g., the proper Lorentz group for the case of the Poincaré group). One can obtain from the Imprimitivity Theorem a corollary called the Mackey Machine. The Mackey Machine deals precisely with the representation theory of this type of semidirect product group. Thus, the same mathematical machinery addresses two initially distinct problems: quantum localization in space and the classification of spacetime-covariant systems.
+
+The Mackey Machine can be used to determine and classify all of the representations of both the Galilei group and the Poincaré group.
+
+At this point there are two lists: 1) the list of all of the possible concrete localizable quantum systems (as per our definition of localization via systems of imprimitivity); 2) the list of all of the possible concrete specially, or spacetime-, covariant quantum systems (as per our definition via representations of the special relativity group as quantum symmetries).
+
+The two lists can now be compared.
+
+Take the relativity group. It contains, as a subgroup, the group of symmetries of configuration space (understood as a hypersurface at constant time in spacetime). One can take this configuration space with its group of symmetries and perform the systems of imprimitivity construction, classification of allowed systems and final list. The list consists of concrete triples of the form: Hilbert space; representation of the group; PVM such that the imprimitivity condition holds. These systems define quantum localization on this particular configuration space.
+
+Now take some concrete spacetime covariant system from the other list. It's a concrete Hilbert space equipped with a concrete representation of the relativity group. The key step is to restrict the representation of the relativity group to the subgroup of the configuration space. Suppose that we get in this way a representation of this subgroup. This gives a pair: Hilbert space; representation of the subgroup. The list in the previous paragraph also contains objects of this form. If one finds a pair in this list that is unitarily equivalent to the pair just constructed from the spacetime covariant system, one could take the corresponding PVM (which integrated gives us the position operator), define it in the spacetime covariant system and get a system of imprimitivity, i.e., the spacetime-covariant system would then be localizable. If no such pair can be found in the list, then this particular spacetime covariant system is not localizable (since the list exhausts the possible localizable systems).
+
+For the case of the Galilei group, one finds that all of the spacetime covariant systems are localizable.
+
+For the Poincaré group, in general only the massive systems are localizable. Thus, spacetime covariance and localization are not always compatible. This distinction has physical content: those systems are spacetime covariant but not localizable. Such systems occur physically; photons provide the standard example. The advantage of this framework (due to George Mackey and based on earlier work by von Neumann, Wigner, and others) is that it allows us to study localization, spacetime covariance, and when covariant systems are localizable and when they are not.
+
+As a mathematical aside, the Weyl relations are equivalent to a representation of the Heisenberg group (the unique connected, simply connected Lie group with the Heisenberg algebra as Lie algebra). The Heisenberg group is a semidirect product of an abelian normal subgroup and a closed subgroup, so one can use the Mackey Machine to prove the Stone-von Neumann theorem too.
+
+Some references:
+
+- *Geometry of Quantum Theory*, by V. S. Varadarajan (it develops both the mathematical theory and its physical applications; it is demanding, but the accessible sections provide a particularly illuminating account of the structure of quantum mechanics)
+
+- *A Course in Abstract Harmonic Analysis*, by G. B. Folland (it is a mathematics text; it develops the mathematical theory of systems of imprimitivity and the Mackey Machine; also covers usual topics like the Peter-Weyl theorem for compact groups, etc., particularly useful for representation theory and related topics)
+
+- *Foundations of Quantum Mechanics*, by J. Jauch (a relatively gentle introduction to the advanced mathematical formulation of QM; the quantum lattice of propositions; a pedagogical introduction to the formulation of localization via systems of imprimitivity)
+
+- *Quantum Field Theory: A Tourist Guide for Mathematicians*, by G. B. Folland (it contains a concise introduction to the use of the Mackey Machine in the problem about obtaining the possible representations of the Poincaré group)
+
+---
+
+Related: [Irreducible Spacetime-Covariant Quantum Systems and Their Interpretation as Particles](../irreducible-spacetime-covariant-quantum-systems/index.qmd).
+
+[← All writings](../index.qmd){.writing-back}
+

@@ -1,0 +1,45 @@
+---
+title: "A Rigorous Equivalence Between the Heisenberg and Schr\u00f6dinger Pictures"
+description: "The equivalence of the two pictures through spectral measures, including the subtleties of unbounded observables."
+subtitle: "Quantum dynamics \u00b7 Technical explanation"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+The Heisenberg picture is usually defined by $A_{H}(\tau)=U_{\tau}^{-1}AU_{\tau}$ and its equivalence with the Schrödinger picture is usually shown by noting that $\langle\psi_{0}\mid A_{H}(\tau)\mid\psi_{0}\rangle=\langle\psi_{t}\mid A\mid\psi_{t}\rangle$ by associativity for every $\psi_{0}\in\mathcal{H}$ such that $U_{\tau}\psi_{0}\subset D(A)$. However, this argument does not establish the equivalence of the two pictures in the most general sense in which it can, and sometimes must, be formulated. The reason is that the definition of expectation values as $\langle A\rangle_{\psi}=(\psi\mid A\psi)$, with $\psi\in D(A)$, is correct but not the most general one.
+
+Given an observable $A$ characterized by the PVM $P^{(A)}$ and a state $\rho$ (a positive trace-class operator of trace 1), one can define the following probability measure associated to the pair (observable, state): $\mu_{\rho}^{(A)}(E)=\operatorname{tr}(\rho P^{(A)}(E))$, for every Borel set $E$ of the real line. By definition, the measure $\mu_{\rho}^{(A)}$ represents the probability that a measurement of $A$ in state $\rho$ takes a value in $E$. This allows us to define the expectation value of the observable $A$ in state $\rho$ by: $\langle A\rangle_{\rho}=\int_{\mathbb{R}}\lambda\,\mathrm{d}\mu_{\rho}^{(A)}(\lambda)$.
+
+The expectation value will exist when $\mathbb{R}\ni\lambda\longmapsto\lambda$ is in $L^{1}(\mathbb{R},\mu_{\rho}^{(A)})$. This will depend on the state $\rho$. Now restrict attention to pure states; $\rho_{\psi}$ will denote the pure state determined by the normalized vector $\psi\in\mathcal{H}$. One can then show that: (i) $\langle A\rangle_{\rho_{\psi}}$ exists iff $\psi\in D(\mid A\mid^{\frac{1}{2}})$; (ii) if $\psi\in D(A)$ then the expectation value clearly exists since $D(A)\subset D(\mid A\mid^{\frac{1}{2}})$, in this case we also get $\langle A\rangle_{\rho_{\psi}}=(\psi\mid A\psi)$.
+
+Thus, the problem with the usual argument is that it establishes the equivalence of the two pictures only on a proper subset of the pure states for which the expectation value is actually defined. By itself, the argument leaves open what happens for the remaining pure states. As an illustration of the domain subtleties involved, there are examples in which two unbounded operators commute in a common domain in which both are essentially self-adjoint but, nevertheless, the associated (to the self-adjoint extensions) PVMs do not commute.
+
+The clean way to avoid this problem is to formulate everything directly in terms of the PVMs. After doing this, the equivalence can be rigorously proved for all states in which the expectation value exists. The Heisenberg and Schrödinger pictures are then rigorously equivalent once both are formulated at this level.
+
+First define time evolution as a projective representation $\mathbb{R}\ni\tau\longmapsto\gamma_{\tau}$, where the maps $\rho\longmapsto\gamma_{\tau}(\rho)$ are Kadison symmetries (Kadison symmetries preserve the convexity of the space of states; when restricted to pure states, this is simply a Wigner symmetry). By Kadison's theorem and using the fact that the group here is $\mathbb{R}$, one obtains a unitary one-parameter group $\mathbb{R}\ni\tau\longmapsto U_{\tau}$ such that $\rho_{\tau}=\gamma_{\tau}(\rho)=U_{\tau}\rho U_{\tau}^{-1}$. This gives the Schrödinger evolution for states, not only for pure states.
+
+Now take the symmetries $\gamma_{\tau}$, characterized by the unitary one-parameter group $U_{\tau}$. One can define the dual action, $\gamma_{\tau}^{*}$, of the symmetry, which acts on the lattice of orthogonal projectors and preserves its structure: $\gamma_{\tau}^{*}(P)\doteq U_{\tau}^{-1}PU_{\tau}$ (all operators here are bounded, so there are no domain issues). We define the dual action on observables by: $P^{(A_{H}(\tau))}(E)\doteq\gamma_{\tau}^{*}(P^{(A)}(E))$, for any $E$ in the Borel algebra of the real line. We call $A_{H}(\tau)$ the observable $A$ in the Heisenberg picture, characterized by the PVM $P^{(A_{H}(\tau))}$.
+
+One directly obtains $\operatorname{tr}(\rho\gamma^{*}(P))=\operatorname{tr}(\gamma(\rho)P)$. But, since $\operatorname{tr}(\rho P^{(A)}(E))$ represents the probability that a measurement of $A$ in state $\rho$ takes a value in $E$, this identity gives the equivalence of the two pictures directly at the level of probabilities. Consequently, $\langle A\rangle_{\rho_{t}}=\langle A_{H}(t)\rangle_{\rho}$ in the general case.
+
+By the spectral theorem, the dual action extends to self-adjoint operators and gives $A_{H}(\tau)=\gamma_{\tau}^{*}(A)=U_{\tau}^{-1}AU_{\tau}$ and also $\sigma(A_{H}(\tau))=\sigma(A)$.
+
+One could instead introduce these (most likely, unbounded) self-adjoint operators associated with the PVM $P^{(A)}$ and write the time evolution in infinitesimal or differential form, but doing so introduces additional technical problems related to the domain of the operators involved.
+
+The above definitions and results also hold when there is an explicit time dependence. In that case, the definition is: $P^{(A_{Ht}(\tau))}(E)\doteq\gamma_{\tau}^{*}(P^{(A_{t})}(E))$.
+
+The previous argument only requires the time evolution to be given by a bounded operator (in this way, the different actions can be defined on the whole Hilbert space and, since $\rho$ is of trace class, the cyclic property of the trace holds and is used to prove the trace identity, which is the relevant result).
+
+In the case of non-homogeneous time evolution, the time evolution is no longer characterized by a one-parameter unitary group, but by a family of unitary operators that depend on the initial time, $\left\{ U(t_{1},t_{2})\right\} _{t_{1},t_{2}\in\mathbb{R}}$ (if the time-dependent Hamiltonian is bounded, these operators can be rigorously calculated via the Dyson series). They are still unitary and therefore bounded, so the same proof applies if one defines $\rho_{t}=V_{t}\rho V_{t}^{\dagger}$ and $P^{(A_{H}(t))}=V_{t}^{\dagger}P^{(A)}V_{t}$, where $V_{t}=U(t,0)$ (which are unitary for each $t$ and therefore bounded; the operators $V_{t}$ for different values of $t$ do not form a unitary one-parameter group, though).
+
+---
+
+
+
+[← All writings](../index.qmd){.writing-back}
+

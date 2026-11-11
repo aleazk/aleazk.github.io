@@ -1,0 +1,77 @@
+---
+title: "Irreducible Spacetime-Covariant Quantum Systems and Their Interpretation as Particles"
+description: "Why irreducible spacetime-covariant quantum systems are interpreted as elementary free particles."
+subtitle: "Symmetry and quantum systems \u00b7 Expository essay"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+The relevant interpretation is that the irreducible representations of the symmetry group have certain physical properties that justify calling them “particles”.
+
+Call a “quantum system” a physical system which is described by the standard formalism of quantum mechanics (QM). A priori, the full set of possible concrete quantum systems and their particular physical properties are not known.
+
+Consider a classical spacetime background $M$ (actually, we will consider only two examples: the Galilean spacetime and Minkowski spacetime). The aim is to consider quantum systems that “live” on this spacetime, classify them, and study their particular properties. The first question is how to formulate the statement that a particular quantum system lives on a particular spacetime. In the examples of the Galilean spacetime and Minkowski spacetime, there is a family of preferred coordinate systems called “inertial systems”, together with transformations connecting them. These transformations form a group which we call the “special relativity group” (in the Galilean spacetime, it is the Galilei group of Galilean transformations; in the Minkowski spacetime, it is the Poincaré group).
+
+Take a generic quantum system on such a spacetime. In a particular inertial system $O$, the system is described by a Hilbert space $H$; in another inertial system $O'$, by a Hilbert space $H'$. According to $O$, the quantum state of the system is the pure state $S$ and according to $O'$ it is $S'$. The first requirement we make is that $H$ should be isomorphic to $H'$. Thus, the system can be described by a single Hilbert space $H$ (but, still, different observers use different pure states to characterize the system). If the two inertial systems are related by a transformation $t$, then one wants a map $T$, associated to $t$, from the space of states to itself such that
+
+$$
+S'=T(S).
+$$
+
+The physical predictions must be independent of which inertial observer performs the measurements. The second requirement is that $T$ must be bijective and must preserve transition amplitudes, i.e., if $S$ is the positive trace-class operator associated to the ray, in the Hilbert space, that describes the pure state, we must have
+
+$$
+\operatorname{tr}(S_1S_2)=\operatorname{tr}\!\bigl(T(S_1)T(S_2)\bigr).
+$$
+
+Such a map $T$ is a Wigner symmetry (all of this can be reformulated in terms of general states and transformations that preserve the convexity of the space of states, these are called Kadison symmetries). The third requirement is that the mapping
+
+$$
+t\longmapsto T_t
+$$
+
+has to be a group homomorphism, i.e., a representation of the special relativity group in terms of (Wigner) symmetries of the quantum system. A system satisfying these requirements will be called a “quantum covariant system”.
+
+For the case of the Poincaré group, one can apply a series of theorems (Wigner's and Bargmann's) to obtain the following result: there is a bijective correspondence between the representations
+
+$$
+t\longmapsto T_t
+$$
+
+of the (connected part of the identity of the) Poincaré group as symmetries and unitary representations
+
+$$
+t'\longmapsto U_{t'}
+$$
+
+of the universal covering of the same group.
+
+Therefore, to classify all of the possible quantum Poincaré covariant systems, we need to classify all of the possible unitary (and strongly continuous) representations of the universal covering of the same group. The problem has now become a mathematical classification problem. First, we restrict ourselves to irreducible representations and call the corresponding systems “irreducible quantum Poincaré covariant systems”.
+
+The group in consideration is a semidirect product of the spacetime translations (simply, the abelian $\mathbb{R}^4$) with the universal covering of the proper Lorentz group, $SL(2,\mathbb{C})$. Note that the semidirect product group in consideration is non-compact. There is a general mathematical theory for dealing with the irreducible unitary representation theory of this type of group (developed by G. Mackey based on works by Stone, von Neumann and Wigner); it's called the “Mackey Machine”, itself a corollary of Mackey's Imprimitivity Theorem. The theory gives an algorithmic recipe to build a particular type of irreducible unitary representations of the group, called “induced representations”. The content of the Mackey Machine theorem is that every other irreducible unitary representation of the group is equivalent to one of these induced representations. It is therefore enough to construct the family of the different possible induced representations in order to solve our classification problem. Since, as mentioned, the theory gives a method for doing this, the classification becomes relatively direct. Notice that the irreducible representations obtained are over infinite dimensional spaces, this is possible since the group is non-compact (so, the Peter-Weyl theorem doesn't apply).
+
+At this stage, the possible irreducible quantum Poincaré-covariant systems have been classified, and their Hilbert spaces and representations are available in explicit mathematical form. The next step is to identify their physical properties. Take one of these unitary representations. Stone's theorem gives an essentially self-adjoint representation of the group's Lie algebra (in general, by unbounded operators; a common invariant domain exists, though). This gives the infinitesimal generators of the spacetime translations and spatial rotations, in particular. The physical interpretation of the time translation operator is as the Hamiltonian $E$ of the system, the spatial translations as the linear momentum, $P$, and the spatial rotations as the (total) angular momenta. Since the group of spacetime translations is abelian, we get that energy commutes with linear momenta, i.e., linear momentum is conserved and therefore the systems are free. There is also a family of representations that satisfy
+
+$$
+E^2-P^2=m^2 I,
+$$
+
+where $I$ is the identity operator and $m$ is a parameter that classifies the different orbits of the action of the Lorentz group in momentum-space representation of spacetime. Since $E$ is energy and $P$ is linear momentum, the parameter $m$ is naturally identified with mass, because the relation is the standard relativistic energy-momentum relation. Thus, some of these systems are massive. The angular momentum decomposes into two parts, identified with the usual spin and orbital angular momenta. Thus, spin arises naturally in the formalism and it is also one of the parameters classifying the different possible systems (the other is mass). Finally, if we evolve states according to our Hamiltonian, using the energy relation above, one obtains, for spin $=1/2$, the usual Dirac equation as the wave equation (so the spinor structure also arises naturally). For spin $=0$, one gets the Klein-Gordon equation and so on. There are more representations, in particular, massless representations. Thus, our formalism naturally incorporates massless particles (for helicity $=1$, the wave equation becomes the free Maxwell equations; for helicity $=2$, it becomes the linearized vacuum Einstein equations of general relativity). Also, via the theory of Systems of Imprimitivity, one can study the problem of the existence of position operators for these systems (the so-called localization problem). The result is that position operators exist for the massive representations, but not for the massless ones.
+
+These physical properties explain why the “irreducible quantum Poincaré covariant systems” are interpreted as elementary relativistic free quantum particles of mass $m$ and spin $s$. In fact, we use these covariant systems to model particles that occur physically, like electrons (non-zero $m$, $s=1/2$), photons ($m=0$, $s=1$), etc.
+
+The assumption of irreducibility is essential in order to get the above physical interpretation “as particles” for these covariant quantum systems. If we drop this assumption, we get other systems which are also covariant quantum systems according to the definition above but are not elementary particles; for example, they can be relativistic quantum fields.
+
+A similar argument can be run to classify all the “irreducible quantum Galilei covariant systems”. The mathematical details are somewhat more involved since one has to work with projective unitary representations rather than with true unitary representations; so, one has to take central extensions, etc. The result is that these systems are all massive, localizable (the usual canonical commutation relations are obtained as theorems), with spin $s$ and their Hamiltonian turns out to be the usual Hamiltonian for the non-relativistic free quantum particle, i.e., we recover all of the results of standard non-relativistic QM (including spin; in particular, spin is not intrinsically a relativistic effect) by studying and classifying the irreducible quantum Galilei-covariant systems.
+
+---
+
+Related: [Localization in Space and Spacetime-Covariant Quantum Systems](../localization-space-spacetime-covariant-quantum-systems/index.qmd).
+
+[← All writings](../index.qmd){.writing-back}
+

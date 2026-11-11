@@ -1,0 +1,53 @@
+---
+title: "Quantum Logic and Quantum Measure Theory"
+description: "A mathematical companion: from classical probability and Boolean propositions to quantum lattices and measures."
+subtitle: "Foundations \u00b7 Mathematical exposition"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+A particularly direct physical use of measure theory appears in the so-called “quantum logic” approach to the formalization of quantum mechanics.
+
+A classical probability theory can be formulated as a probability measure $v$ in some measure space, with the elements of the sigma-algebra representing the events $E$. The probability of an event $E$ is the value assigned to it by the measure: “probability of $E$” $=v(E)$. In classical physics, probabilistic statements are understood against such a classical probability space. In particular, for a classical system with a Hamiltonian description, the measure space is just phase space, the events are the possible yes-no propositions about the system, e.g., “the momentum of the system is $p=4$” (taking the subset of phase-space points at which such a proposition is true gives an identification between propositions and subsets of phase space which belong to its Borel sigma-algebra). A probabilistic state $S$ is then a probability measure on this space. Its physical interpretation is that it gives the probability that, in that state, proposition $P$ is true. The probability is calculated as $S(P)$ (for example, take $S$ to be a Dirac measure associated to a point of phase space). Note that phase space indeed admits Dirac measures as probabilistic states. For these Dirac measure states, all propositions have a binary probability of either $1$ or $0$ and the state is identified with the point of phase space.
+
+One can then form the physical propositions “$P$ AND $Q$” and “$P$ OR $Q$”. These logical connectives correspond to the set theoretical operations intersection and union, respectively, in our identification of propositions as subsets. This construction has a useful mathematical structure. If set inclusion is used as the partial order, then the sigma algebra becomes a lattice, where the lattice operations “and” and “or” correspond to the set operations just mentioned and also to the physical logical connectives. Although they are identified here, it is useful to distinguish the physical AND from the lattice operation; the reason for this will become clear below. Moreover, it is a very special type of lattice: a Boolean algebra, i.e., the following distributive property holds:
+
+$$
+P\vee(Q\wedge R)=(P\vee Q)\wedge(P\vee R).
+$$
+
+It can be shown that every abstract Boolean algebra (i.e., the abstract distributive lattice; strictly speaking, further properties are required in the definition of a Boolean algebra, but they are not relevant here) can be realized as a concrete algebra of sets.
+
+The concept of probability measure can now be generalized: a classical probability measure can be regarded as a measure in some abstract Boolean algebra.
+
+The picture changes when quantum systems are considered. Quantum systems admit incompatible propositions, i.e., propositions for which it makes no sense to ask for their truth value simultaneously. For example, the following proposition is not physically meaningful for a quantum particle: $P=$ (“the position of the particle is $x=5$” AND “its momentum is $p=3$”). The problem with the previous construction is that it only admits compatible propositions, for which the physical AND is always well defined.
+
+How, then, should a quantum system be described mathematically? Von Neumann's proposal was the following. Consider a complex Hilbert space. It can be proved that the set of orthogonal projectors in this Hilbert space forms a lattice under a certain order relation (this lattice is not distributive). Furthermore, if one restricts the lattice operations to some maximally commutative set of projectors, one obtains a Boolean algebra. The resulting proposal is that every physical system has an associated lattice of yes-no propositions; in classical physics, this lattice is a Boolean algebra; in quantum mechanics, it's the non-distributive lattice of orthogonal projectors on some complex Hilbert space, i.e., there is a one-to-one correspondence between propositions and projectors; compatible propositions correspond to commuting projectors, incompatible propositions correspond to non-commuting projectors; for compatible propositions, the physical AND and OR are well defined and correspond to the lattice “and” and “or” (no physical interpretation is assigned to the lattice operations when the propositions are incompatible, since the physical connectives are not even well defined). Thus, the classical lattice is distributive whereas the quantum lattice is non-distributive; this is the essential structural difference. Building on results by Piron, Soler's theorem shows that if quantum systems are modeled via some abstract non-distributive lattice that satisfies reasonable physical conditions, then it has to be isomorphic to the lattice of orthogonal projectors in a Hilbert space which may be real, complex, or quaternionic. In this sense, von Neumann's Hilbert-space structure is recovered from the lattice assumptions rather than simply postulated.
+
+This gives the quantum lattice. The next step is to define probabilistic states. The natural definition is a probability measure on the non-distributive quantum lattice. This gives a generalization of measure theory and probability theory, usually called “quantum measure theory” or “quantum probability theory”. The physical interpretation is the same: $S(P)$ (where $P$ is now a projector) represents the probability that proposition $P$ is true in state $S$.
+
+The key result completing this construction is Gleason's theorem. This theorem states that these quantum probability measures must be of the form
+
+$$
+S(P)=\operatorname{tr}(TP),
+$$
+
+for all $P$, where $T$ is a positive trace-class operator of trace $1$, i.e., $T$ is what physicists call a “density matrix” and the probability $S(P)$ is calculated via the Born rule (if one restricts to pure states, i.e., the extreme elements of the convex space of states $T$, then the above formula with the trace reduces to the familiar Born rule from elementary quantum-mechanics texts). Within this framework, these statements are obtained as theorems rather than postulated.
+
+A corollary of Gleason's theorem is the Kochen-Specker theorem, which states that, unlike classical probability, the quantum system does not admit quantum probability measures whose only possible values are either $1$ or $0$ (like the Dirac measures). In this sense, only genuinely probabilistic states remain, and the theory yields probabilities (non-zero but strictly less than $1$ for at least one proposition).
+
+Historically, this approach started with von Neumann in the 1930s (particularly, the recognition of the quantum lattice and the role of projectors); then it was continued by George Mackey, who developed the point of view of the quantum measures as states in the 1940s; finally, Gleason proved his important theorem in the 1950s; the final step was Piron's work of the 1960s that culminated in Soler's theorem from the 1990s.
+
+Taken together, this provides a particularly deep mathematical formulation of quantum mechanics (at least for basic systems, for quantum field theory one needs the algebraic approach in order to deal with non-equivalent representations of the quantum field's $C^*$-algebra; although a GNS construction recovers the lattice approach).
+
+---
+
+For the conceptual and interpretive discussion, see [Classical vs Quantum Logic](../classical-vs-quantum-logic/index.qmd).
+
+[← All writings](../index.qmd){.writing-back}
+

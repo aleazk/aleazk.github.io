@@ -1,0 +1,61 @@
+---
+title: Writings
+description: Informal essays, extended answers, and explanations on physics, mathematics, AI, and foundational questions.
+toc: false
+---
+
+Many of these pieces originated in online discussions and have been lightly edited for clarity and self-containment. They are collected here by subject.
+
+## Foundations
+
+::: {.writing-entry}
+### [Classical vs Quantum Logic](classical-vs-quantum-logic/index.qmd)
+
+States, propositions, and the conceptual differences between classical and quantum logic.
+
+[Conceptual essay]{.writing-kind}
+:::
+
+::: {.writing-entry}
+### [Quantum Logic and Quantum Measure Theory](quantum-logic-quantum-measure-theory/index.qmd)
+
+A mathematical companion: from classical probability and Boolean propositions to quantum lattices and measures.
+
+[Mathematical exposition]{.writing-kind}
+:::
+
+## Symmetry and quantum systems
+
+::: {.writing-entry}
+### [Lie Groups, Lie Algebras, Actions, and Representations](lie-groups-lie-algebras-actions-representations/index.qmd)
+
+Lie groups and their algebras, local homomorphisms, actions on manifolds, and unitary representations.
+
+[Mathematical exposition]{.writing-kind}
+:::
+
+::: {.writing-entry}
+### [Irreducible Spacetime-Covariant Quantum Systems and Their Interpretation as Particles](irreducible-spacetime-covariant-quantum-systems/index.qmd)
+
+Why irreducible spacetime-covariant quantum systems are interpreted as elementary free particles.
+
+[Expository essay]{.writing-kind}
+:::
+
+::: {.writing-entry}
+### [Localization in Space and Spacetime-Covariant Quantum Systems](localization-space-spacetime-covariant-quantum-systems/index.qmd)
+
+Position observables, systems of imprimitivity, and the relation between localization and spacetime covariance.
+
+[Expository essay]{.writing-kind}
+:::
+
+## Quantum dynamics
+
+::: {.writing-entry}
+### [A Rigorous Equivalence Between the Heisenberg and Schrödinger Pictures](rigorous-equivalence-heisenberg-schrodinger/index.qmd)
+
+The equivalence of the two pictures through spectral measures, including the subtleties of unbounded observables.
+
+[Technical explanation]{.writing-kind}
+:::
