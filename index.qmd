@@ -78,9 +78,3 @@ A latent-space parameterisation that compresses high-dimensional representations
 [Publications →](publications.qmd){.card-link}
 :::
 :::
-
-## Writings
-
-Informal essays and extended explanations on physics, mathematics, and foundational questions, including pieces on quantum logic, symmetry, localization, and quantum dynamics.
-
-[Browse writings →](writings/index.qmd){.card-link}
