@@ -58,6 +58,14 @@ How the same covariance principle accounts for spin in both Poincaré and Galile
 [Expository essay]{.writing-kind}
 :::
 
+::: {.writing-entry}
+### [Are Non-Relativistic and Relativistic Spinors Mathematically Identical?](nonrelativistic-and-relativistic-spinors/index.qmd)
+
+Two-component spinor spaces, rotation and Lorentz actions, and how four-component Dirac spinors arise.
+
+[Expository essay]{.writing-kind}
+:::
+
 ## Quantum dynamics
 
 ::: {.writing-entry}

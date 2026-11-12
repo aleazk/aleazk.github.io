@@ -1,0 +1,137 @@
+---
+title: "Are Non-Relativistic and Relativistic Spinors Mathematically Identical?"
+description: "Two-component spinor spaces, their rotation and Lorentz actions, and the passage to four-component Dirac spinors."
+subtitle: "Symmetry and quantum systems · Expository essay"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+As mathematical entities, they have essentially the same starting point, although the additional structure and transformation groups differ. Start with a two-dimensional complex vector space $S$, equipped with a non-degenerate antisymmetric bilinear form $\epsilon_{AB}$. This is the “spinor space”, and its elements are “spinors”. Using it, together with suitable additional structure, one can construct a real vector space as a subspace of tensors built from the spinor space and its complex conjugate. The antisymmetric form then enters the construction of a metric on this real space.
+
+The key point is that the relevant metric-preserving transformations of the real vector space can be obtained from transformations of the original spinor space. In the cases considered here, an appropriate subgroup of $GL(2,\mathbb C)$ is the universal covering group of the relevant connected special orthogonal group, and the induced map is the covering map. Its action on $S$ is the “spinor action” of the “spin group”.
+
+Thus, on one side we have a spinor space, a spin group, and its action. On the other, we have a real vector space, a metric, and an orthogonal group. Between them is a map from the spin group to the orthogonal group, together with a way of constructing real vectors from spinorial tensors. In this sense, the real vector space, its metric, and its transformation group can be regarded as structures derived from the spinor description. If an orthogonal transformation has a physical interpretation, such as a rotation, we can extend that interpretation to spinors through the covering map. One must keep in mind that this map is not injective: a given rotation corresponds to two elements of the spin group.
+
+Now equip $S$ with a compatible positive-definite Hermitian inner product. The transformations preserving it and $\epsilon_{AB}$ form $SU(2)$, which we take as the spin group in this example. The associated real vector space can be represented by the traceless Hermitian endomorphisms of $S$. In a spin-frame, these have the form
+
+$$
+X=x^i\sigma_i,
+\qquad x^i\in\mathbb R,
+$$
+
+where $\sigma_i$ are the Pauli matrices. This is a three-dimensional real space, with
+
+$$
+\det X=-\bigl((x^1)^2+(x^2)^2+(x^3)^2\bigr).
+$$
+
+The negative sign is conventional; reversing it gives the ordinary Euclidean metric. In abstract spinor notation, the same construction can be expressed through symmetric two-index spinors satisfying the reality condition supplied by the Hermitian inner product, with the metric obtained from contractions of $\epsilon_{AB}$. The action
+
+$$
+X\longmapsto BXB^\dagger,
+\qquad B\in SU(2),
+$$
+
+induces the usual rotations, giving the covering map $SU(2)\to SO(3)$. The spinors in this example are called “$SU(2)$ spinors” and are the two-component spinors used for spin $1/2$ in non-relativistic quantum mechanics.
+
+If instead we take the spin group to be $SL(2,\mathbb C)$, the associated real vector space is the full four-dimensional space of Hermitian matrices,
+
+$$
+X=x^0 I+x^i\sigma_i,
+$$
+
+with Lorentzian quadratic form
+
+$$
+\det X=(x^0)^2-(x^1)^2-(x^2)^2-(x^3)^2.
+$$
+
+The transformations $X\mapsto AXA^\dagger$, with $A\in SL(2,\mathbb C)$, preserve this determinant and induce the proper orthochronous Lorentz group $SO^+(1,3)$. The physical notion extended to the spinor space is now a Lorentz transformation. These are the “$SL(2,\mathbb C)$ spinors” used in relativistic quantum mechanics.
+
+A four-component Dirac spinor is built from two such two-component objects of opposite chirality: one belongs to $S$, and the other to the conjugate dual spinor space. It is not a single two-component spinor, nor must its second half be the numerical complex conjugate of its first half. In a basis, the pair has four complex components.
+
+The future-directed unit timelike four-velocity of an inertial observer can be used to select a positive-definite Hermitian inner product on the spinor space. Its stabilizer is an $SU(2)$ subgroup of $SL(2,\mathbb C)$. In this way, an observer supplies the extra structure relating the spacetime spinor construction to its spatial counterpart.
+
+One way of looking at spinors is that they extend the kinds of fields one can consider on space or spacetime. In pre-relativistic physics, one starts with a real three-dimensional vector space and its Euclidean metric. The corresponding special orthogonal group is $SO(3)$, the usual rotation group. Vectors and their tensor products transform under rotations in the familiar way. Spinors allow additional transformation laws, while the usual vector and tensor constructions can be recovered from suitable spinorial tensors.
+
+In relativity, the real vector space is four-dimensional and its metric has Lorentzian signature. The relevant group, for now without space or time inversions, is $SO^+(1,3)$, the identity component of the Lorentz group. One can ask whether a similar spinor construction exists for this space. The answer is yes: one uses $SL(2,\mathbb C)$ instead of $SU(2)$, a larger subgroup of $GL(2,\mathbb C)$. The underlying space on which these matrices act is still two-dimensional over $\mathbb C$. These elementary spinors therefore still have two components. This approach is developed, for example, in Chapter 13 of Wald's *General Relativity*. The two constructions are closely analogous, but their transformation groups and associated real geometries differ.
+
+Now consider relativistic quantum mechanics. For an elementary free system, one seeks a state space carrying an irreducible unitary representation of the universal cover of the proper orthochronous Poincaré group. These representations can be constructed using the “Mackey machine”. In the usual massive positive-energy sector, the inequivalent classes are labelled by mass and spin. For the familiar massless finite-helicity representations, helicity replaces spin as the relevant label; more general massless representations also exist.
+
+For $m>0$, spin $1/2$, and positive energy, a realization of the representation space is a Hilbert space of suitable two-component spinor-valued solutions of
+
+$$
+(\square+m^2)\varphi^A=0,
+$$
+
+with Fourier support on the positive-energy mass shell. Here $\varphi^A$ is an $SL(2,\mathbb C)$ spinor field on Minkowski spacetime. We use units $c=\hbar=1$ and signature $(+,-,-,-)$, so $\square=\partial_t^2-\nabla^2$. The action is the natural Poincaré action on these fields, with the appropriate invariant positive-definite inner product on the solution space. The finite-dimensional spinor matrices themselves are not unitary under boosts with respect to a fixed positive-definite inner product on $\mathbb C^2$; unitarity here refers to the full representation on the Hilbert space of solutions.
+
+The wave equation reflects the usual relativistic relation
+
+$$
+E^2-\vec p^{\,2}=m^2.
+$$
+
+In momentum space, the fields are supported on the mass shell, which is how this relation enters the construction. Negative-frequency solutions enter the antiparticle sector when the field is quantized; physical antiparticles are not negative-energy particles.
+
+The equation above is second order. Introduce the auxiliary spinor
+
+$$
+\sigma_{A'}=\frac{\sqrt{2}}{m}\partial_{A'A}\varphi^A.
+$$
+
+The derivative is the ordinary spacetime derivative written in spinor notation. Choose its normalization so that
+
+$$
+\partial^{A'A}\partial_{A'B}
+=\frac12\delta^A{}_B\square.
+$$
+
+The second-order equation then implies
+
+$$
+\partial^{A'A}\sigma_{A'}
+=\frac{\sqrt{2}}{m}\partial^{A'A}\partial_{A'B}\varphi^B
+=\frac{1}{\sqrt{2}m}\square\varphi^A
+=-\frac{m}{\sqrt{2}}\varphi^A.
+$$
+
+Together with the definition of $\sigma_{A'}$, this gives a coupled system of two first-order equations:
+
+$$
+\begin{aligned}
+\partial_{A'A}\varphi^A&=\frac{m}{\sqrt{2}}\sigma_{A'},\\
+\partial^{A'A}\sigma_{A'}&=-\frac{m}{\sqrt{2}}\varphi^A.
+\end{aligned}
+$$
+
+The implication works in the other direction as well: the coupled system implies the original second-order equation. Combining the two spinors into
+
+$$
+\psi=
+\begin{pmatrix}
+\varphi^A\\
+\sigma_{A'}
+\end{pmatrix},
+$$
+
+one obtains the Dirac equation in two-spinor form. A fixed phase redefinition of one of the two components puts it into the usual Weyl-matrix convention with explicit factors of $i$. The transformation laws of the two spinors give the corresponding transformation law for the Dirac spinor.
+
+In this sense, two-component $SL(2,\mathbb C)$ spinors are building blocks from which larger spinorial objects can be constructed. Here the four-component description appears when the second-order wave equation is rewritten as a first-order system. The Clifford algebra enters when that system is expressed using matrices, as in Dirac's construction. For the standard unconstrained complex Dirac system in four spacetime dimensions, the minimal Clifford representation has four complex components. This does not exclude two-component massless Weyl equations or formulations with additional reality conditions.
+
+The two-component description also makes the connection with the spin-$1/2$ representation of $SU(2)$ particularly transparent. Similarly, the real spacetime vectors obtained as bilinears of Dirac wavefunctions, including the conserved current, can be understood through the spinor-to-vector construction that motivated the introduction of spinors in the first place.
+
+Thus, for this massive free system and the connected relativity group, one can use a second-order two-component description or an equivalent first-order four-component description. Parity interchanges the two chiral transformation laws. If it is to act through a local, complex-linear matrix transformation on the field components, both chiralities must be present, as in the Dirac formalism. This is the precise sense in which adding parity favours the four-component description; it does not mean that every formulation admitting parity must display four independent complex components.
+
+---
+
+*Originally written as an answer on Physics Forums; lightly edited for this site, with notation restored.*
+
+Related: [Spin Is Not a Relativistic Effect](../spin-is-not-a-relativistic-effect/index.qmd) and [Lie Groups, Lie Algebras, Actions, and Representations](../lie-groups-lie-algebras-actions-representations/index.qmd).
+
+[← All writings](../index.qmd){.writing-back}
