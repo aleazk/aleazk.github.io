@@ -50,6 +50,14 @@ Position observables, systems of imprimitivity, and the relation between localiz
 [Expository essay]{.writing-kind}
 :::
 
+::: {.writing-entry}
+### [Spin Is Not a Relativistic Effect](spin-is-not-a-relativistic-effect/index.qmd)
+
+How the same covariance principle accounts for spin in both Poincaré and Galilean quantum mechanics.
+
+[Expository essay]{.writing-kind}
+:::
+
 ## Quantum dynamics
 
 ::: {.writing-entry}
@@ -58,4 +66,14 @@ Position observables, systems of imprimitivity, and the relation between localiz
 The equivalence of the two pictures through spectral measures, including the subtleties of unbounded observables.
 
 [Technical explanation]{.writing-kind}
+:::
+
+## Spacetime and gravitation
+
+::: {.writing-entry}
+### [Does General Relativity Imply That Space Is Non-Euclidean?](does-general-relativity-imply-curved-space/index.qmd)
+
+Spatial slices, spacetime curvature, and what the Gauss equation says about their relationship.
+
+[Expository essay]{.writing-kind}
 :::

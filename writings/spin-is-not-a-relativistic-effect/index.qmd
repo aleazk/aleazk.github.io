@@ -1,0 +1,92 @@
+---
+title: "Spin Is Not a Relativistic Effect"
+description: "How the same covariance principle accounts for spin in both Poincaré and Galilean quantum mechanics."
+subtitle: "Symmetry and quantum systems · Expository essay"
+format:
+  html:
+    html-math-method: mathjax
+    toc: false
+    body-classes: writing-page
+---
+
+[← All writings](../index.qmd){.writing-back}
+
+Spin is not a specifically relativistic, or Poincaré, effect. The claim that it is still appears in elementary introductions to relativistic quantum mechanics.
+
+First, let us define more precisely the loose notion that “spin is a relativistic effect”. It would amount to something like this: “Only relativistic (Poincaré) quantum mechanics provides a framework in which spin can be predicted from first principles, in particular from Poincaré covariance.” At least this is one version of the claim, and it can be shown to be false.
+
+In standard elementary treatments of non-relativistic quantum mechanics, orbital angular momentum is introduced first by “quantizing” the classical definition
+
+$$
+\vec L=\vec r\times\vec p.
+$$
+
+That is, we take the Hilbert space $L^2(\mathbb R^3)$ and replace the classical position and momentum in that expression by the quantum operators. In units where $\hbar=1$, these are
+
+$$
+(\hat r_i f)(\vec x)=x_i f(\vec x),
+\qquad
+(\hat p_j f)(\vec x)=-i\frac{\partial f}{\partial x_j}(\vec x).
+$$
+
+We obtain the standard orbital angular momentum operators, which satisfy the familiar commutation relations. These are precisely the relations defining a representation of the Lie algebra of the rotation group $SO(3)$.
+
+Alternatively, we can introduce the following reducible unitary representation of $SO(3)$ on $L^2(\mathbb R^3)$:
+
+$$
+[\hat U_R f](\vec x)=f(R^{-1}\vec x),
+$$
+
+where $R$ is a rotation matrix. The infinitesimal generators of this representation, obtained through Stone's theorem, are precisely the standard orbital angular momentum operators introduced above. This explains why we obtain the Lie algebra representation, or commutation relations, and also gives a general definition of angular momentum: given a unitary representation of the rotation group, or its covering group, angular momentum is defined by its infinitesimal generators.
+
+But there is more. The Stern–Gerlach experiment provides evidence for intrinsic angular momentum, called spin; for spin $1/2$, it is represented by the operators $\hat S_i=\sigma_i/2$, where $\sigma_i$ are the Pauli matrices. Total angular momentum is the sum of orbital and intrinsic angular momentum. The operators $\sigma_i/2$ are the generators of the defining, or fundamental, irreducible unitary representation of $SU(2)$ on $\mathbb C^2$. Here $SU(2)$ is the universal covering group of the rotation group. We can therefore obtain total angular momentum as the generators of the following representation of $SU(2)$ on $L^2(\mathbb R^3,\mathbb C^2)$:
+
+$$
+[\hat U_B f](\vec x)=Bf(R_B^{-1}\vec x),
+$$
+
+where $B\in SU(2)$ and $R_B$ is the rotation matrix associated with it by the covering map.
+
+So far, however, this construction has been introduced “by hand”. It has not explained why angular momentum should be defined through this particular representation of $SU(2)$, which separates into two different types of angular momentum.
+
+Now consider Poincaré quantum mechanics. The usual construction of a first-order relativistic wave equation leads to the Dirac equation. In a chiral basis, this equation is covariant under the following action of $SL(2,\mathbb C)$, the universal cover of the proper orthochronous Lorentz group:
+
+$$
+[\hat U_A\psi](x)=\varphi(A)\psi(L_A^{-1}x),
+$$
+
+where $A\in SL(2,\mathbb C)$, $L_A$ is the Lorentz transformation associated with it by the covering map, and
+
+$$
+\varphi(A)=
+\begin{pmatrix}
+(A^\dagger)^{-1} & 0\\
+0 & A
+\end{pmatrix}.
+$$
+
+Since $SU(2)$ is a subgroup of $SL(2,\mathbb C)$, and for this subgroup $(A^\dagger)^{-1}=A$, restricting the spinor representation to rotations gives two copies of the fundamental irreducible representation of $SU(2)$. The doubling comes from using four-component Dirac spinors. Thus, spin $1/2$ appears naturally in the construction.
+
+What happened here is the following. We introduced a new notion: that of a covariant quantum system. Given the relativity group of a spacetime, a covariant quantum system is a quantum system on whose state space this group acts as symmetries. A more precise definition is given in [Irreducible Spacetime-Covariant Quantum Systems and Their Interpretation as Particles](../irreducible-spacetime-covariant-quantum-systems/index.qmd). We are then led to classify the possible, inequivalent ways in which the group can act as symmetries of a quantum system. In this sense, we classify the possible covariant systems for that group. There are powerful mathematical theorems that allow us to do this.
+
+For the Poincaré group, these classification theorems describe the irreducible unitary representations relevant to elementary free particles. The massive spin-$1/2$ representations associated with the Dirac equation are among them, but there are also spin-zero representations describing scalar particles. Even the scalar wave equation can be written in a first-order form by enlarging the field variables, so first-order form alone does not single out spin $1/2$. In the usual massive-particle representations, the rotation generators separate into intrinsic and orbital angular momentum. Thus, if our “first principle” is Poincaré covariance, the classification gives a theoretical explanation of spin as part of the structure implied by this principle.
+
+At this point, it may seem that spin is indeed a relativistic effect.
+
+But the comparison has been unfair to the non-relativistic regime: clear symmetry principles were applied to the Poincaré case, while only heuristic arguments were used in the non-relativistic case.
+
+What happens if the same principle is applied to non-relativistic quantum mechanics? That is, what happens if we consider quantum systems covariant under the Galilei group?
+
+The corresponding classification uses projective unitary representations, or ordinary unitary representations of an appropriate central extension of the covering group. For the usual massive irreducible systems, the angular momentum generators again separate into intrinsic and orbital parts. The same principles and arguments that account for spin in the Poincaré case therefore also account for it in the Galilean case.
+
+Consequently, it is false that only relativistic quantum mechanics provides a framework in which spin can be obtained from a covariance principle.
+
+Instead, spin is a feature of the representation-theoretic description of quantum covariant systems in both regimes. This does not mean that covariance forces every system to have non-zero spin, or determines the spin of a particular species: spin zero is among the allowed possibilities, and the representation must still be selected to describe the physical system.
+
+---
+
+*Originally written as an answer on Quora; lightly edited for this site, with notation restored.*
+
+For a direct treatment of the non-relativistic case, see J.-M. Lévy-Leblond, [“Nonrelativistic Particles and Wave Equations”](https://doi.org/10.1007/BF01646020), *Communications in Mathematical Physics* **6**, 286–311 (1967).
+
+[← All writings](../index.qmd){.writing-back}
