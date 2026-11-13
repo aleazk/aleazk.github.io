@@ -26,6 +26,20 @@ This list contains peer-reviewed publications, accepted work, and research prepr
 :::
 
 ::: {.publication-card data-field="mp"}
+<div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge preprint">Under Review — Revisions</span></div>
+
+### Toroidal Quantum Gravity II. Applications
+
+<div class="pub-meta">Alejandro Ascárate · Under review at <em>Classical and Quantum Gravity</em> (revision round) · 2026</div>
+
+<div class="pub-summary">A statistical mechanics of quantum causal geometry, with applications to black-hole entropy, radiation-dominated cosmology, near-critical inflation, and the interior of evaporating black holes.</div>
+
+<div class="pub-links"><a href="https://drive.google.com/file/d/1Q0bFm4rnP-s8szUEeWznGKtFtXbXgTyX/view?usp=sharing">Preprint (Google Drive)</a></div>
+
+Tor.QG I and II are planned for simultaneous release on arXiv after the applications paper is accepted. Until then, the preprint versions remain available on Google Drive.
+:::
+
+::: {.publication-card data-field="mp"}
 <div class="badge-row"><span class="badge mp">Mathematical Physics</span><span class="badge published">Journal Article</span></div>
 
 ### The Spacetime Picture in Quantum Gravity
