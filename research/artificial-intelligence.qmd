@@ -33,7 +33,7 @@ My AI research connects **the geometry of generative models** with **anomaly det
 
 A VAE can reconstruct observations well while producing poor samples or unhelpful anomaly scores. My work investigates how the sparsity and angular organization of high-dimensional latent spaces contribute to this tension. Hyperspherical-coordinate regularization provides direct control over occupied hypervolume without reducing the latent dimension. The resulting representations are studied through generation, interpolation, and nearest-neighbour anomaly detection.
 
-The statistical-physics strand introduces overlap distributions, angular observables, and coarse-graining as diagnostics of latent organization. The central question is which partially ordered regimes preserve useful variation while supporting the task. The visual introduction includes galaxy examples, rotating latent plots, digit interpolations, and phase diagnostics from the thesis.
+The statistical-physics strand introduces overlap distributions, angular observables, and coarse-graining as diagnostics of latent organization. The central question is which partially ordered regimes preserve useful variation while supporting the task. The visual introduction includes galaxy examples, latent training animations, digit interpolations, and phase diagnostics from the thesis.
 
 ## Logical and semantic anomalies
 

@@ -90,24 +90,6 @@
     "bytes": 44728
   },
   {
-    "file": "galaxy-normal-strip.webp",
-    "source": "final seminar slide 15, seminar-15-image7.png",
-    "caption": "Galaxy Zoo round/smooth nominal galaxy examples.",
-    "caveat": "Source titles select examples by reconstruction-MSE score. These are not latent-kNN rankings; use as population examples or explicitly retain the reconstruction-score label.",
-    "width": 1900,
-    "height": 225,
-    "bytes": 103676
-  },
-  {
-    "file": "galaxy-merger-strip.webp",
-    "source": "final seminar slide 15, seminar-15-image6.png",
-    "caption": "Galaxy Zoo merging-galaxy anomaly examples.",
-    "caveat": "Source titles select examples by reconstruction-MSE score. These are not latent-kNN rankings; use as population examples or explicitly retain the reconstruction-score label.",
-    "width": 1900,
-    "height": 225,
-    "bytes": 107458
-  },
-  {
     "file": "interpolation-compressed.webp",
     "source": "ai-review/thesis/figures/mnist_interpo_compress.jpg",
     "caption": "MNIST compressed VAE: ten saved interpolation samples for 0→1, 7→2, 3→4.",
@@ -308,8 +290,8 @@
   {
     "file": "latent-compressed-poster.webp",
     "source": "final seminar slide 16 seminar-16-image46.gif",
-    "caption": "First frame of the rotating compressed near-OOD latent visualization.",
-    "caveat": "",
+    "caption": "First frame of the compressed VAE training evolution. Coordinate-averaged Imagenette nominal ID representations only.",
+    "caveat": "Animation spans training, not a camera rotation. Only nominal samples are displayed; use the separate static comparison to inspect anomalies.",
     "width": 805,
     "height": 778,
     "bytes": 104974
@@ -317,17 +299,17 @@
   {
     "file": "latent-compressed.mp4",
     "source": "final seminar slide 16 seminar-16-image46.gif",
-    "caption": "Rotating compressed latent visualization, coordinate-averaged to 3D; Imagenette ID and near-OOD ImageNet.",
+    "caption": "compressed VAE training evolution. Coordinate-averaged Imagenette nominal ID representations only.",
     "frames": 16,
     "duration_seconds": 3.2,
     "bytes": 509385,
-    "caveat": "Slide16 explicitly labels image46 compressed and image47 von Mises–Fisher. Colour semantics follow conditional-geometry.webp."
+    "caveat": "Animation spans training, not a camera rotation. Only nominal samples are displayed; use the separate static comparison to inspect anomalies."
   },
   {
     "file": "latent-vmf-poster.webp",
     "source": "final seminar slide 16 seminar-16-image47.gif",
-    "caption": "First frame of the rotating vmf near-OOD latent visualization.",
-    "caveat": "",
+    "caption": "First frame of the von Mises–Fisher VAE training evolution. Coordinate-averaged Imagenette nominal ID representations only.",
+    "caveat": "Animation spans training, not a camera rotation. Only nominal samples are displayed; use the separate static comparison to inspect anomalies.",
     "width": 791,
     "height": 786,
     "bytes": 112068
@@ -335,47 +317,11 @@
   {
     "file": "latent-vmf.mp4",
     "source": "final seminar slide 16 seminar-16-image47.gif",
-    "caption": "Rotating vmf latent visualization, coordinate-averaged to 3D; Imagenette ID and near-OOD ImageNet.",
+    "caption": "von Mises–Fisher VAE training evolution. Coordinate-averaged Imagenette nominal ID representations only.",
     "frames": 16,
     "duration_seconds": 3.2,
     "bytes": 739177,
-    "caveat": "Slide16 explicitly labels image46 compressed and image47 von Mises–Fisher. Colour semantics follow conditional-geometry.webp."
-  },
-  {
-    "file": "logic-openimages-neural.webp",
-    "source": "ai-review/visuals/logic-55-image115.png",
-    "caption": "Open Images compound rule Land vehicle ⇒ (Bicycle ∧ Car), neural evaluator, images sorted by anomaly score.",
-    "caveat": "Green/red frames indicate satisfaction/violation under the annotations used, not a universal physical constraint.",
-    "width": 1023,
-    "height": 1154,
-    "bytes": 334684
-  },
-  {
-    "file": "logic-openimages-independent.webp",
-    "source": "ai-review/visuals/logic-55-image116.png",
-    "caption": "Open Images compound rule Land vehicle ⇒ (Bicycle ∧ Car), independent evaluator, images sorted by anomaly score.",
-    "caveat": "Green/red frames indicate satisfaction/violation under the annotations used, not a universal physical constraint.",
-    "width": 1023,
-    "height": 1154,
-    "bytes": 333620
-  },
-  {
-    "file": "molecular-examples.webp",
-    "source": "chemvsaeresults(1).pdf pages 15–16, first row of each population gallery",
-    "caption": "Selected molecular structures: random-ZINC nominal examples (green, top) and favourable-docking subset (red, bottom).",
-    "caveat": "Examples extracted from reconstruction-Tanimoto-ranked galleries, each population shown separately. This display identifies populations, not latent-kNN ranking or a random sample.",
-    "width": 1247,
-    "height": 262,
-    "bytes": 39724
-  },
-  {
-    "file": "molecular-latent.webp",
-    "source": "chemvsaeresults(1).pdf page 12, left embedded panel",
-    "caption": "Compressed molecular latent representation: angular-coordinate distributions and a coordinate-averaged 3D view.",
-    "caveat": "Static diagnostic, not a 3D molecular conformation. Preserve its normalization/coordinate labels.",
-    "width": 733,
-    "height": 912,
-    "bytes": 84616
+    "caveat": "Animation spans training, not a camera rotation. Only nominal samples are displayed; use the separate static comparison to inspect anomalies."
   },
   {
     "file": "molecular-roc.webp",
@@ -385,5 +331,203 @@
     "width": 1848,
     "height": 808,
     "bytes": 104624
+  },
+  {
+    "file": "galaxy-zoo-examples.webp",
+    "width": 2200,
+    "height": 826,
+    "bytes": 157022,
+    "source": "https://arxiv.org/html/2601.18823v1#as1_S4.F8",
+    "caption": "Galaxy Zoo examples used in the VAE anomaly-detection study. Left: nominal galaxies (training examples in the first two rows, nominal test examples in the last two). Right: anomalous test galaxies.",
+    "notes": "Confirmed supplementary Figure 8. Anomaly labels follow the odd-vote criterion, not a round-versus-merger classification."
+  },
+  {
+    "file": "imagenette-near-ood-geometry.webp",
+    "width": 2200,
+    "height": 1028,
+    "bytes": 349144,
+    "source": "https://arxiv.org/html/2601.18823v1#S1.F2",
+    "caption": "Imagenette versus close ImageNet classes. Left: von Mises–Fisher approach; right: compression of all hyperspherical angular coordinates. Coloured ID classes are accompanied by grey anomaly points.",
+    "notes": "Main Figure 2 explicitly identifies Imagenette vs close ImageNet and includes anomalies; separate from nominal-only training animations."
+  },
+  {
+    "file": "molecular-nominal-examples.webp",
+    "source": "chemvsaeresults(1).pdf, page 1, first row of nominal grid",
+    "crop_pdf_points": [
+      281,
+      71,
+      562,
+      129
+    ],
+    "caption": "Random ZINC: first five molecules in the nominal grid.",
+    "bytes": 12028,
+    "width": 843,
+    "height": 174
+  },
+  {
+    "file": "molecular-high-docking-examples.webp",
+    "source": "chemvsaeresults(1).pdf, page 1, first row of high-docking grid",
+    "crop_pdf_points": [
+      13,
+      297,
+      310,
+      357
+    ],
+    "caption": "Best-docking subset: first five molecules in the lower-left grid.",
+    "bytes": 23408,
+    "width": 891,
+    "height": 180
+  },
+  {
+    "file": "molecular-low-docking-examples.webp",
+    "source": "chemvsaeresults(1).pdf, page 1, first row of low-docking grid",
+    "crop_pdf_points": [
+      538,
+      300,
+      831,
+      359
+    ],
+    "caption": "Worst-docking subset: first five molecules in the lower-right grid.",
+    "bytes": 13574,
+    "width": 879,
+    "height": 177
+  },
+  {
+    "file": "molecular-view-a-low.webp",
+    "source": "chemvsaeresults(1).pdf, page 13, left panel",
+    "crop_source_pixels": [
+      120,
+      710,
+      705,
+      1200
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View a, low docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 65864,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-a-high.webp",
+    "source": "chemvsaeresults(1).pdf, page 12, left panel",
+    "crop_source_pixels": [
+      120,
+      710,
+      705,
+      1200
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View a, high docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 66078,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-a.mp4",
+    "source": "chemvsaeresults(1).pdf, pages 13 and 12",
+    "caption": "View a: low-docking and high-docking populations alternate every three seconds with identical crop bounds. Red nominal reference and coordinate axes remain in the same positions.",
+    "duration_seconds": 6,
+    "transformation": "Two observed source plots, identical crop for both states, no point displacement or synthetic intermediate populations.",
+    "bytes": 89608
+  },
+  {
+    "file": "molecular-view-b-low.webp",
+    "source": "chemvsaeresults(1).pdf, page 13, centre panel",
+    "crop_source_pixels": [
+      140,
+      710,
+      715,
+      1205
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View b, low docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 52620,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-b-high.webp",
+    "source": "chemvsaeresults(1).pdf, page 12, centre panel",
+    "crop_source_pixels": [
+      140,
+      710,
+      715,
+      1205
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View b, high docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 52152,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-b.mp4",
+    "source": "chemvsaeresults(1).pdf, pages 13 and 12",
+    "caption": "View b: low-docking and high-docking populations alternate every three seconds with identical crop bounds. Red nominal reference and coordinate axes remain in the same positions.",
+    "duration_seconds": 6,
+    "transformation": "Two observed source plots, identical crop for both states, no point displacement or synthetic intermediate populations.",
+    "bytes": 82939
+  },
+  {
+    "file": "molecular-view-c-low.webp",
+    "source": "chemvsaeresults(1).pdf, page 13, right panel",
+    "crop_source_pixels": [
+      120,
+      855,
+      705,
+      1115
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View c, low docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 40494,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-c-high.webp",
+    "source": "chemvsaeresults(1).pdf, page 12, right panel",
+    "crop_source_pixels": [
+      120,
+      855,
+      705,
+      1115
+    ],
+    "registration_pixels": [
+      0,
+      0
+    ],
+    "caption": "View c, high docking; nominal ZINC red, docking-selected subset grey. Histogram panels removed.",
+    "run": "NPVAE DrugBank compress=full zdim=256 beta=1.0 2025y01m31d-10h32m43s (identified by the author)",
+    "bytes": 41682,
+    "width": 720,
+    "height": 680
+  },
+  {
+    "file": "molecular-view-c.mp4",
+    "source": "chemvsaeresults(1).pdf, pages 13 and 12",
+    "caption": "View c: low-docking and high-docking populations alternate every three seconds with identical crop bounds. Red nominal reference and coordinate axes remain in the same positions.",
+    "duration_seconds": 6,
+    "transformation": "Two observed source plots, identical crop for both states, no point displacement or synthetic intermediate populations.",
+    "bytes": 59229
   }
 ]

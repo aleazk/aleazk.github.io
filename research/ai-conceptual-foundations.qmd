@@ -3,7 +3,8 @@ title: "What Makes a Learned Representation Useful?"
 subtitle: "Latent geometry, anomaly detection, and structured reasoning"
 description: "A visual introduction to my research on hyperspherical VAEs, image and molecular anomaly detection, latent phases, neural logical evaluation, and generative reasoning."
 toc: true
-toc-depth: 2
+toc-depth: 3
+toc-expand: true
 page-layout: article
 body-classes: ai-story
 css: ../assets/ai-explorer.css
@@ -26,7 +27,7 @@ A model can reconstruct an image faithfully and still miss what makes it unusual
 </nav>
 ```
 
-![Changing the organization of a latent space. Galaxy Zoo observations are spread across the standard VAE's spherical representation (left); hyperspherical regularization gathers the nominal observations into a compact region (right). Green marks nominal galaxies and red marks anomalies. These are coarse-grained views of high-dimensional representations, the model retains its high latent dimension.](../assets/ai/visuals/galaxy-geometry.webp){fig-alt="Standard and compressed VAE latent representations of Galaxy Zoo, with encoder and decoder diagrams below." loading="eager"}
+![Changing the organization of a latent space. Galaxy Zoo observations are spread across the standard VAE's spherical representation (left); hyperspherical regularization gathers the nominal observations into a compact region (right). Green marks nominal galaxies and red marks anomalies. These are coarse-grained views of high-dimensional representations; the model retains its high latent dimension.](../assets/ai/visuals/galaxy-geometry.webp){fig-alt="Standard and compressed VAE latent representations of Galaxy Zoo, with encoder and decoder diagrams below." loading="eager"}
 
 The main body of my PhD studies high-dimensional VAE representations: how to organize them, how to sample from them, and how to use their distances to detect anomalies. Logical anomaly detection extends that work by making the expectation itself explicit. The Logic VAE brings the two lines together, using a generative latent space for rules and their truth profiles.
 
@@ -84,9 +85,8 @@ The powers of the sines make angular location consequential in high dimension. T
 ```{=html}
 <figure class="ai-gallery">
 <h4>Looking at the galaxies</h4>
-<img src="../assets/ai/visuals/galaxy-normal-strip.webp" alt="A strip of round galaxy examples from the seminar." loading="lazy">
-<img src="../assets/ai/visuals/galaxy-merger-strip.webp" alt="A strip of merging galaxy examples from the seminar." loading="lazy">
-<figcaption>Round and merging galaxies from the seminar's visual examples. The thesis's broader AD benchmark defines anomalies using the Galaxy Zoo volunteer “odd” annotation; these example strips illustrate visible morphology rather than redefine that test.</figcaption>
+<img src="../assets/ai/visuals/galaxy-zoo-examples.webp" alt="Galaxy Zoo examples: nominal training and test galaxies on the left, anomalous test galaxies on the right." loading="lazy">
+<figcaption>Galaxy Zoo images from the VAE anomaly-detection study. Left: nominal galaxies, with training examples in the first two rows and test examples in the last two. Right: anomalous test galaxies, selected using the volunteer “odd” annotation. <a href="https://arxiv.org/html/2601.18823v1#as1_S4.F8">Source: supplementary Figure 8.</a></figcaption>
 </figure>
 ```
 
@@ -104,13 +104,15 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 ```{=html}
 <div class="ai-motion" data-paired-video>
 <div class="ai-pair">
-<figure><h4>Single-direction concentration · vMF</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-vmf-poster.webp" aria-label="Rotating coarse-grained latent representation for the von Mises–Fisher comparison"><source src="../assets/ai/visuals/latent-vmf.mp4" type="video/mp4"></video></figure>
-<figure><h4>Hyperspherical compression</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-compressed-poster.webp" aria-label="Rotating coarse-grained latent representation for the compressed VAE"><source src="../assets/ai/visuals/latent-compressed.mp4" type="video/mp4"></video></figure>
+<figure><h4>Single-direction concentration · vMF</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-vmf-poster.webp" aria-label="Training evolution of nominal Imagenette representations for the von Mises–Fisher comparison"><source src="../assets/ai/visuals/latent-vmf.mp4" type="video/mp4"></video></figure>
+<figure><h4>Hyperspherical compression</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-compressed-poster.webp" aria-label="Training evolution of nominal Imagenette representations for the compressed VAE"><source src="../assets/ai/visuals/latent-compressed.mp4" type="video/mp4"></video></figure>
 </div>
-<div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both rotations</button><button type="button" class="ai-button" data-reset-pair>Reset views</button></div>
-<p class="ai-caption">Actual rotating plots from the final seminar. Both show coordinate-averaged views of high-dimensional Imagenette representations; colours distinguish ID classes and grey marks near-OOD samples. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to compare the views.</p>
+<div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both training animations</button><button type="button" class="ai-button" data-reset-pair>Restart animations</button></div>
+<p class="ai-caption">Animations of the full training process from the final seminar. Both show coordinate-averaged views of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
 </div>
 ```
+
+![A static comparison including the anomalies: nominal Imagenette classes are coloured, while semantically close ImageNet alternatives are grey. Left: von Mises–Fisher VAE; right: hyperspherical compression. This shows where the nearby anomalous classes fall relative to the nominal clusters. The opening Galaxy Zoo figure likewise shows both populations, using green for nominal galaxies and red for anomalies.](../assets/ai/visuals/imagenette-near-ood-geometry.webp){fig-alt="Static Imagenette latent representations including both coloured nominal classes and grey near-OOD anomalies."}
 
 ### What changes for generation? {#generation}
 
@@ -199,15 +201,37 @@ Can the same approach expose structure associated with a much different kind of 
 
 The evaluation uses molecules selected from the favourable and unfavourable extremes of an NSP14 docking-score collection. Each group is compared separately with held-out random ZINC. The question is whether an unsupervised molecular geometry makes membership in those externally selected populations accessible through a simple latent-distance score.
 
-![Molecular examples from the compressed-model experiments: nominal ZINC above and favourable-docking molecules below. These selected structures illustrate the two populations; they are not a latent anomaly-score ranking.](../assets/ai/visuals/molecular-examples.webp){fig-alt="Examples of two-dimensional molecular structures from the molecular VAE experiments."}
+```{=html}
+<figure class="ai-gallery ai-molecule-examples">
+<h4>Nominal · random ZINC</h4>
+<img src="../assets/ai/visuals/molecular-nominal-examples.webp" alt="Five nominal random ZINC molecules: the first row of the reference grid." loading="lazy">
+<h4>Best docking</h4>
+<img src="../assets/ai/visuals/molecular-high-docking-examples.webp" alt="Five molecules from the best-docking subset: the first row of the lower-left source grid." loading="lazy">
+<h4>Worst docking</h4>
+<img src="../assets/ai/visuals/molecular-low-docking-examples.webp" alt="Five molecules from the worst-docking subset: the first row of the lower-right source grid." loading="lazy">
+<figcaption>The first row from each population in the molecular-results collection. These are molecular structures, not a ranking by latent anomaly score.</figcaption>
+</figure>
+```
 
-![Latent organization in the molecular experiment, shown through angular distributions and a coordinate-averaged three-dimensional view. These are visual diagnostics; the anomaly score uses distances in the full latent representation.](../assets/ai/visuals/molecular-latent.webp){fig-alt="Molecular latent coordinate histograms and a three-dimensional view of the corresponding point cloud."}
+The following three views show the **same nominal ZINC island in red**. The grey population changes from the low-docking subset, closer to that island, to the high-docking subset, farther away. In this experiment, the better-docking molecules are more specialized relative to random ZINC, and that distinction is visible in a representation learned without docking supervision. “High docking” here means better docking ability, rather than a numerically higher raw docking score.
+
+```{=html}
+<div class="ai-motion" data-paired-video data-play-label="Play all three comparisons" data-pause-label="Pause all three comparisons">
+<div class="ai-triptych">
+<figure><h4>View a</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-a-low.webp" aria-label="View a: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-a.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-a.mp4">Download view a.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-a-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-a-high.webp">high docking</a>.</figcaption></figure>
+<figure><h4>View b</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-b-low.webp" aria-label="View b: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-b.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-b.mp4">Download view b.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-b-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-b-high.webp">high docking</a>.</figcaption></figure>
+<figure><h4>View c</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-c-low.webp" aria-label="View c: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-c.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-c.mp4">Download view c.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-c-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-c-high.webp">high docking</a>.</figcaption></figure>
+</div>
+<div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play all three comparisons</button><button type="button" class="ai-button" data-reset-pair>Return to low docking</button></div>
+<p class="ai-caption">Three perspectives of the compressed molecular representation. Each alternates the observed low- and high-docking populations every three seconds, keeping its axes, viewpoint, and nominal reference in place. Red: nominal ZINC. Grey: docking-selected molecules. These coarse-grained views illustrate the geometry; anomaly scores use distances in the full 256-dimensional latent space.</p>
+</div>
+```
 
 In a representative matched comparison, compressed latent kNN reaches AUROC **0.892** for the favourable-docking subset and **0.787** for the unfavourable subset, compared with **0.780** and **0.653** for Morgan-fingerprint/Tanimoto kNN. The corresponding uncompressed-VAE scores are **0.722** and **0.635**. These are individual matched results, rather than averages over runs.
 
 ![Docking-selected molecules versus random ZINC. Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN, using the archived scores presented in the molecular draft. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
 
-The result concerns **docking-related population structure accessible without docking supervision**. Docking is a three-dimensional, target-dependent scoring task, yet molecular differences associated with its selected extremes become accessible through a representation trained on molecular structure alone. Compression improves that accessibility beyond the tested fingerprint baseline. Both extremes can be atypical relative to random ZINC, so distance alone does not supply a favourable or unfavourable direction.
+The result concerns **docking-related population structure accessible without docking supervision**. Docking is a three-dimensional, target-dependent scoring task, yet molecular differences associated with its selected extremes become accessible through a representation trained on molecular structure alone. Compression improves that accessibility beyond the tested fingerprint baseline. The low-to-high comparisons above make the observed direction concrete: the better-docking population lies farther from the random-ZINC reference island.
 
 There is a second connection to the image experiments: continued training can improve molecular reconstruction while removing the AD advantage. Preserving information for decoding and arranging it for a useful distance score are related but different objectives. This molecular work is ongoing; its representative results currently concern one docking collection and target.
 
@@ -284,27 +308,27 @@ A small image experiment makes the effect visible. Train a conjunction on the co
 
 ![Real test sevens ordered by the evaluator's conjunction score. The high-scoring end contains sevens whose stroke shapes also resemble ones. From my thesis.](../assets/ai/handwritten-sevens.webp){fig-alt="A row of handwritten sevens ordered from low to high learned evidence for the conjunction of one and seven."}
 
-The role of dependence also shows up in the video experiments. On the tested static CLEVR rules, composing independent probabilities was already near perfect. On the event-rich CLEVRER rules, mean anomaly AUROC rose from 0.750 under independent composition to 0.833 with the learned evaluator. The point of the comparison is that the value of retaining features depends on the relations the task actually contains.
+### Why train an evaluator instead of composing probabilities? {#independent-correlated}
 
-
-### Logical anomalies in ordinary photographs {#photographic-rules}
-
-The same approach can evaluate rules about real images. Here the test rule asks that an image containing a land vehicle also contain both a bicycle and a car:
+If the relevant events are independent, their individual truth probabilities contain everything needed to compose them. For example, writing $p_A=P(A)$ and $p_B=P(B)$ gives
 
 $$
-\mathrm{LandVehicle}\Rightarrow(\mathrm{Bicycle}\wedge\mathrm{Car}).
+P(A\wedge B)=p_Ap_B,\qquad
+P(A\Rightarrow B)=1-p_A(1-p_B).
 $$
 
-This deliberately restrictive constraint is about concept presence in an image, not an object being both types of vehicle. A car-only or bicycle-only image can violate it. The two panels rank the same annotated Open Images test examples using independent probability composition and the learned evaluator. Green borders indicate examples satisfying the rule under the experimental annotations; red indicates violations. Anomaly score increases along the displayed ordering.
+In that regime, a trained gate need not improve on the appropriate algebraic formula. The tested static **CLEVR** rules illustrate this: independent probability composition was already near perfect. Learning a neural evaluator is useful when there is additional joint information to recover, rather than simply to reproduce an available formula.
 
-```{=html}
-<div class="ai-pair">
-<figure><h4>Independent composition</h4><img src="../assets/ai/visuals/logic-openimages-independent.webp" alt="Open Images photographs ranked by independent evaluation of the land-vehicle rule, with satisfying and violating examples interspersed." loading="lazy"></figure>
-<figure><h4>Learned evaluator</h4><img src="../assets/ai/visuals/logic-openimages-neural.webp" alt="The same Open Images photographs ranked by the neural evaluator, with satisfying examples nearer the beginning and violations nearer the end." loading="lazy"></figure>
-</div>
-```
+**CLEVRER** makes the distinction sharper. Events share objects and are linked through time: an entry followed by a collision entails a collision, and related clauses can describe different aspects of the same interaction. In general, the exact probability of an implication is
 
-The comparisons retain examples in which the antecedent is absent. Those satisfy the implication too: the task is to evaluate the whole rule, including its context, rather than only classify images already known to contain a land vehicle.
+$$
+P(A\Rightarrow B)=1-P(A\wedge\neg B)
+                 =1-P(A)+P(A\wedge B).
+$$
+
+The joint term $P(A\wedge B)$ cannot be recovered from the two marginals alone without an assumption about dependence. For example, $p_A=p_B=1/2$ gives an implication probability of $3/4$ under independence, but $1$ if the events always coincide. The individual probabilities are identical; their relationship changes the answer.
+
+This is why the evaluator passes **features as well as truth estimates** up the expression. Those features retain evidence about the shared scene that a single scalar per operand can discard. Local Boolean supervision and chimera training teach each node how to use that evidence, while the meaning of conjunction and implication remains unchanged. In the event-rich CLEVRER experiments, mean anomaly AUROC rose from **0.750** with independent composition to **0.833** with the learned evaluator. The contrast with CLEVR identifies the intended advantage: handling relations for which independent composition leaves out useful information.
 
 ## 3. Generating reasoning structures {#generative-reasoning}
 

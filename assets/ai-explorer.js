@@ -7,10 +7,12 @@
     const controls = group.querySelector('.ai-media-controls');
     const play = group.querySelector('[data-play-pair]');
     const reset = group.querySelector('[data-reset-pair]');
-    if (videos.length !== 2 || !controls || !play || !reset) return;
+    if (videos.length < 2 || !controls || !play || !reset) return;
     controls.hidden = false;
+    const playLabel = group.dataset.playLabel || 'Play both training animations';
+    const pauseLabel = group.dataset.pauseLabel || 'Pause both training animations';
     const update = () => {
-      play.textContent = videos.some((v) => !v.paused) ? 'Pause both rotations' : 'Play both rotations';
+      play.textContent = videos.some((v) => !v.paused) ? pauseLabel : playLabel;
     };
     play.addEventListener('click', async () => {
       if (videos.some((v) => !v.paused)) {

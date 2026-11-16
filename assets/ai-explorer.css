@@ -15,8 +15,10 @@
 .ai-route a { font-size: .86rem; text-decoration: none; font-weight: 650; }
 .ai-route span { color: var(--muted); font-weight: 400; margin-right: .35rem; font-variant-numeric: tabular-nums; }
 .ai-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; margin: 1.5rem 0; align-items: start; }
-.ai-pair figure { margin: 0; min-width: 0; }
-.ai-pair video { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+.ai-pair figure, .ai-triptych figure { margin: 0; min-width: 0; }
+.ai-pair video, .ai-triptych video { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+.ai-triptych { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.5rem 0; align-items: start; }
+.ai-molecule-examples h4:not(:first-child) { margin-top: 1.5rem; }
 .ai-gallery { padding: 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
 .ai-gallery img + img, .ai-gallery .ai-zoom + .ai-zoom { margin-top: 1rem; }
 .ai-gallery .ai-zoom { border: 0; padding: 0; }
@@ -63,7 +65,7 @@
   .ai-strand img { height: 220px; }
   .ai-story h2 { font-size: 1.75rem; }
   .ai-story h3 { font-size: 1.45rem; }
-  .ai-pair { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ai-pair, .ai-triptych { grid-template-columns: 1fr; gap: 1.5rem; }
   .ai-route { flex-direction: column; gap: .65rem; }
   .ai-story .ai-zoom { padding: .25rem; }
   .ai-details, .ai-scrubber { padding: 1rem; }
