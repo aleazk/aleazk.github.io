@@ -9,7 +9,34 @@ page-layout: article
 
 [← Artificial Intelligence](artificial-intelligence.qmd)
 
-Imagine watching a short video of a cyan cube rolling across a table. It hits another object just before the clip ends. Every frame looks ordinary. But suppose the hypothesis we are testing says that if the cyan cube collides, it does so in the first half of the clip. We have just seen a counterexample. A much stranger-looking video in which the cube never collides would satisfy the same implication.
+Watch the two short videos below. In both, a cube collides with a blue object during the first half of the clip. Yet only one satisfies the rule we are testing: **a cube–blue-object collision must be preceded by an entry event, and an entry followed by a collision must lead to a collision in the first half.** In the first video, the colliding objects are already present at the start. In the second, the yellow cube enters the scene and then collides with the blue sphere. The difference lies in the sequence of events, even though both scenes look ordinary.
+
+Let $A$ denote a cube–blue-object collision, $B$ an entry followed by a collision for that pair, and $C$ a collision of that pair in the first half. The rule is
+
+$$
+(A\Rightarrow B)\wedge(B\Rightarrow C).
+$$
+
+Here “cube” and “blue” select the two participants; they do not require the cube itself to be blue. The truth values below follow the annotations used in the experiment.
+
+<div class="clevr-video-pair" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+<figure style="margin: 0;">
+<video controls loop muted playsinline preload="metadata" width="480" height="320" poster="../assets/ai/clevrer/chain-violation.jpg" aria-label="CLEVRER chain-rule violation: a cube and a blue object collide without a preceding entry event" style="display: block; width: 100%; height: auto;">
+<source src="../assets/ai/clevrer/chain-violation.mp4" type="video/mp4">
+<a href="../assets/ai/clevrer/chain-violation.mp4">Download the rule-violation video.</a>
+</video>
+<figcaption><strong>Rule violated.</strong> The blue cube and blue cylinder are present from the start and collide in the first half. The entry-then-collision event is absent, so the first implication fails. Ground truth: A = true, B = false, C = true.</figcaption>
+</figure>
+<figure style="margin: 0;">
+<video controls loop muted playsinline preload="metadata" width="480" height="320" poster="../assets/ai/clevrer/chain-satisfaction.jpg" aria-label="CLEVRER chain-rule satisfaction: a yellow cube enters and collides with a blue sphere in the first half" style="display: block; width: 100%; height: auto;">
+<source src="../assets/ai/clevrer/chain-satisfaction.mp4" type="video/mp4">
+<a href="../assets/ai/clevrer/chain-satisfaction.mp4">Download the rule-satisfaction video.</a>
+</video>
+<figcaption><strong>Rule satisfied.</strong> The yellow cube enters and collides with the blue sphere in the first half. Both implications hold. Ground truth: A = true, B = true, C = true.</figcaption>
+</figure>
+</div>
+
+*CLEVRER examples from my logical anomaly-detection experiments. Press play to watch each clip; playback loops until paused. Each full clip lasts about five seconds.*
 
 **What does a machine need to represent in order to see the difference?** My work on anomaly detection led me to two ways of asking this question. One concerns the geometry of the space in which observations are compared. The other concerns the concepts and relations that let us say *what happened*. Following the second question eventually leads to a third: how could we judge whether the concepts themselves were well chosen?
 
@@ -33,9 +60,23 @@ There is a useful check on the interpretation of these scores. In a class-split 
 
 ## 2. How does a scene give evidence for a rule?
 
-Return to the video. Let $A$ mean “the cyan cube collides” and $B$ mean “the cyan cube collides in the first half.” The rule $A\Rightarrow B$ is false precisely when $A$ is true and $B$ is false. A collision halfway through the second half is an anomaly **relative to that rule**. A reader who disagrees with the expectation can inspect it, replace it, and ask a different question of the same video.
+Return to the two videos. The first implication, $A\Rightarrow B$, is false precisely when the collision occurs but the entry-then-collision event is absent. The second, $B\Rightarrow C$, tests whether an entry-then-collision event is accompanied by a collision in the first half. Their conjunction requires both implications to hold. The first clip is therefore an anomaly **relative to that rule**. A reader who disagrees with the expectation can inspect it, replace it, and ask a different question of the same video.
 
-Even perfect knowledge of the two marginal probabilities would leave something unresolved. The violation probability is $P(A\wedge\neg B)$, which depends on how the events are related. Here an early collision is itself evidence for a collision. Multiplying scalar probabilities under an independence assumption discards that relationship. A learned evaluator can carry perceptual evidence for both operands into the decision.
+A third clip illustrates a different compound rule. For a sphere–cylinder pair, require that a collision implies **both** a collision in the first half **and** an entry followed by a collision:
+
+$$
+A_{\rm sc}\Rightarrow(C_{\rm sc}\wedge B_{\rm sc}).
+$$
+
+<figure style="max-width: 480px; margin: 1.5rem auto;">
+<video controls loop muted playsinline preload="metadata" width="480" height="320" poster="../assets/ai/clevrer/compound-violation.jpg" aria-label="CLEVRER compound-rule violation: a sphere and cylinder collide after the halfway point" style="display: block; width: 100%; height: auto;">
+<source src="../assets/ai/clevrer/compound-violation.mp4" type="video/mp4">
+<a href="../assets/ai/clevrer/compound-violation.mp4">Download the compound-rule video.</a>
+</video>
+<figcaption><strong>Compound rule violated.</strong> The sphere–cylinder collision and the entry-then-collision event are present, but the first-half collision condition is false. One failed conjunct is enough to violate the rule. Ground truth: A<sub>sc</sub> = true, B<sub>sc</sub> = true, C<sub>sc</sub> = false.</figcaption>
+</figure>
+
+Even perfect knowledge of the two marginal probabilities would leave something unresolved. The violation probability is $P(A\wedge\neg B)$, which depends on how the events are related. Here an entry followed by a collision is itself evidence for a collision. Multiplying scalar probabilities under an independence assumption discards that relationship. A learned evaluator can carry perceptual evidence for both operands into the decision.
 
 I specify the expression as a tree, or a graph when subexpressions are shared. A perceptual encoder supplies visual features and the leaf bank estimates the concepts. In the current trainer the same encoder feature vector is available at each leaf. For every internal node, a small network learns its particular subexpression from its children's features and the negations on the incoming edges. It returns a local truth estimate and a new feature vector. The vector travels upward. The estimate lets us inspect the clause in its own right.
 
@@ -45,7 +86,7 @@ During training, annotated concept values determine an exact Boolean target at e
 
 ## 3. How can it learn a violation it has never seen?
 
-Suppose every training clip with a cyan-cube collision has an early one. The implication is always satisfied. A classifier that always answers “true” fits those examples perfectly. Yet the collection may contain plenty of evidence for each side of the missing combination: clips in which a collision occurs, and other clips in which no early collision occurs.
+Suppose every training clip with a cube–blue-object collision also has the corresponding entry-then-collision event. The implication is always satisfied. A classifier that always answers “true” fits those examples perfectly. Yet the collection may contain plenty of evidence for each side of the missing combination: clips in which a collision occurs, and other clips in which the entry-then-collision event is absent.
 
 **Chimera training** uses that distinction. Take the left operand's feature from a clip with $A=1$, and the right operand's feature from another with $B=0$. Keep the truth label that belongs to each operand. The training target for this pair is now exactly $1\Rightarrow 0=0$. The construction also works higher in the graph, where an operand can be the learned feature of an entire clause. It creates a labelled pair of features; it makes no claim that the pair depicts a physically realizable clip. It needs each required operand value to occur somewhere. At test time, both operands come from the same observation again.
 
