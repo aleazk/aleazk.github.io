@@ -7,13 +7,14 @@ toc-depth: 3
 toc-expand: true
 page-layout: article
 body-classes: ai-story
-css: ../assets/ai-explorer.css
+css: ../assets/ai-explorer.css?v=logic-vae-20261116
 html-math-method: mathjax
 resources:
   - ../assets/ai/clevrer/*.jpg
   - ../assets/ai/visuals/**
   - ../assets/ai/logic-vae/**
   - ../assets/ai-explorer.js
+  - ../assets/ai-explorer.css
 ---
 
 [← Artificial Intelligence](artificial-intelligence.qmd)
@@ -559,4 +560,4 @@ A later meta-world-model would learn from completed ontology trials to estimate 
 - [Testing the Test: Score-Direction Instability in Class-Split Anomaly Detection](https://arxiv.org/abs/2606.02601)
 - [When Rule Violations Are Rare: Chimera Training for Logical Anomaly Detection](https://arxiv.org/abs/2605.26171)
 
-<script src="../assets/ai-explorer.js" defer></script>
+<script src="../assets/ai-explorer.js?v=logic-vae-20261116" defer></script>
