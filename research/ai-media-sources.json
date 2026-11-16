@@ -333,24 +333,6 @@
     "bytes": 104624
   },
   {
-    "file": "galaxy-zoo-examples.webp",
-    "width": 2200,
-    "height": 826,
-    "bytes": 157022,
-    "source": "https://arxiv.org/html/2601.18823v1#as1_S4.F8",
-    "caption": "Galaxy Zoo examples used in the VAE anomaly-detection study. Left: nominal galaxies (training examples in the first two rows, nominal test examples in the last two). Right: anomalous test galaxies.",
-    "notes": "Confirmed supplementary Figure 8. Anomaly labels follow the odd-vote criterion, not a round-versus-merger classification."
-  },
-  {
-    "file": "imagenette-near-ood-geometry.webp",
-    "width": 2200,
-    "height": 1028,
-    "bytes": 349144,
-    "source": "https://arxiv.org/html/2601.18823v1#S1.F2",
-    "caption": "Imagenette versus close ImageNet classes. Left: von Mises–Fisher approach; right: compression of all hyperspherical angular coordinates. Coloured ID classes are accompanied by grey anomaly points.",
-    "notes": "Main Figure 2 explicitly identifies Imagenette vs close ImageNet and includes anomalies; separate from nominal-only training animations."
-  },
-  {
     "file": "molecular-nominal-examples.webp",
     "source": "chemvsaeresults(1).pdf, page 1, first row of nominal grid",
     "crop_pdf_points": [
@@ -529,5 +511,35 @@
     "duration_seconds": 6,
     "transformation": "Two observed source plots, identical crop for both states, no point displacement or synthetic intermediate populations.",
     "bytes": 59229
+  },
+  {
+    "file": "galaxy-zoo-seminar-static.webp",
+    "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 15",
+    "crop_slide_points": [
+      24,
+      99,
+      443,
+      502
+    ],
+    "transformation": "Original slide plots, example images, arrows, coloured borders, and kNN inset retained. Presentation headings and footer replaced by HTML headings and captions. No recolouring of data points.",
+    "width": 1676,
+    "height": 1612,
+    "bytes": 286918,
+    "caption": "Galaxy Zoo unconditional AD: standard/compressed coarse-grained plots, nominal green and anomalous red image examples, connecting arrows, and kNN inset."
+  },
+  {
+    "file": "imagenette-seminar-static.webp",
+    "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 15",
+    "crop_slide_points": [
+      460,
+      89,
+      908,
+      513
+    ],
+    "transformation": "Original slide plots, example images, arrows, and coloured borders retained. Presentation headings and footer replaced by HTML headings and captions. No recolouring of data points.",
+    "width": 1792,
+    "height": 1696,
+    "bytes": 375436,
+    "caption": "Imagenette conditional near-OOD: vMF/compressed coarse-grained plots; coloured nominal classes and black anomalies; tench/goldfish and golf-ball/tennis-ball examples with arrows."
   }
 ]
