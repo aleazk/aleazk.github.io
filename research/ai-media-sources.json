@@ -1,0 +1,389 @@
+[
+  {
+    "file": "galaxy-geometry.webp",
+    "source": "ai-review/thesis/figures/figure_summary.jpg",
+    "caption": "Standard and compressed VAE representations for Galaxy Zoo, with encoder/decoder and coordinate-transform diagrams. Green: nominal. Red: anomalous.",
+    "caveat": "The 3D figure is a visualization of the high-dimensional representation, not its actual dimensionality.",
+    "width": 1900,
+    "height": 1275,
+    "bytes": 305226
+  },
+  {
+    "file": "mnist-generation.webp",
+    "source": "thesis figures/mnistdisplaysand3dviz.jpg, panel a",
+    "caption": "Standard (left) and compressed VAE (right). Rows: original, reconstruction, generated sample.",
+    "caveat": "Explain the effective-prior sampling prescription from the thesis; do not imply that both models are sampled from the same unmodified standard Gaussian.",
+    "width": 1900,
+    "height": 342,
+    "bytes": 43166
+  },
+  {
+    "file": "generation-tradeoff.webp",
+    "source": "ai-review/thesis/figures/Figure2new.jpg",
+    "caption": "CIFAR-10 reconstruction MSE versus self-FID over model settings.",
+    "caveat": "Self-FID compares generation with reconstructed test images; it is not ordinary FID against original images.",
+    "width": 1900,
+    "height": 1281,
+    "bytes": 174144
+  },
+  {
+    "file": "phase-angular.webp",
+    "source": "ai-review/thesis/figures/hnested_rep_angle_hists.jpg",
+    "caption": "Coordinate-wise angular histograms: each row is one of 128 latent coordinates, with mean and standard deviation overlays.",
+    "caveat": "The three panels vary the bias direction from equator to (1,...,1) to north pole. They are NOT the under/intermediate/overcompression triptych.",
+    "width": 1256,
+    "height": 644,
+    "bytes": 105186
+  },
+  {
+    "file": "phase-regimes.webp",
+    "source": "ai-review/thesis/figures/ad_edge_stabc.jpg",
+    "caption": "Galaxy Zoo: ROC curves, latent visualizations and kNN-score histograms across three compression regimes.",
+    "caveat": "Left to right: overcompression, intermediate edge-of-stability, undercompression, as identified by companion figure ad_edge_stabb.jpg.",
+    "width": 1900,
+    "height": 1333,
+    "bytes": 271718
+  },
+  {
+    "file": "benchmark-auroc.webp",
+    "source": "ai-review/thesis/figures/auc_by_class.jpg",
+    "caption": "CIFAR-10: AUROC varies with the class selected as anomalous, including reversed rankings below 0.5.",
+    "caveat": "Scores use one fixed anomaly direction rather than per-class reversal.",
+    "width": 1800,
+    "height": 640,
+    "bytes": 78868
+  },
+  {
+    "file": "benchmark-cifar.webp",
+    "source": "ai-review/visuals/seminar-19-image52.jpg",
+    "caption": "Pixel-space t-SNE for CIFAR-10, coloured by class.",
+    "caveat": "A visualization of overlap; it does not itself prove the score-direction argument.",
+    "width": 1144,
+    "height": 1011,
+    "bytes": 196106
+  },
+  {
+    "file": "benchmark-fashion.webp",
+    "source": "ai-review/visuals/seminar-19-image53.jpg",
+    "caption": "Pixel-space t-SNE for FashionMNIST, coloured by class.",
+    "caveat": "",
+    "width": 1144,
+    "height": 1011,
+    "bytes": 142934
+  },
+  {
+    "file": "xray-normal.webp",
+    "source": "thesis figures/chestxrayrec.jpg",
+    "caption": "CheXpert No Finding: five test originals (top) and corresponding reconstructions (bottom).",
+    "caveat": "The full figure reports reconstruction-error AUROC approximately 0.50; these selected crops illustrate reconstruction, not diagnoses.",
+    "width": 848,
+    "height": 350,
+    "bytes": 43042
+  },
+  {
+    "file": "xray-pneumothorax.webp",
+    "source": "thesis figures/chestxrayrec.jpg",
+    "caption": "CheXpert Pneumothorax: five unseen-class test originals (top) and corresponding reconstructions (bottom).",
+    "caveat": "The full figure reports reconstruction-error AUROC approximately 0.50; these selected crops illustrate reconstruction, not diagnoses.",
+    "width": 848,
+    "height": 350,
+    "bytes": 44728
+  },
+  {
+    "file": "galaxy-normal-strip.webp",
+    "source": "final seminar slide 15, seminar-15-image7.png",
+    "caption": "Galaxy Zoo round/smooth nominal galaxy examples.",
+    "caveat": "Source titles select examples by reconstruction-MSE score. These are not latent-kNN rankings; use as population examples or explicitly retain the reconstruction-score label.",
+    "width": 1900,
+    "height": 225,
+    "bytes": 103676
+  },
+  {
+    "file": "galaxy-merger-strip.webp",
+    "source": "final seminar slide 15, seminar-15-image6.png",
+    "caption": "Galaxy Zoo merging-galaxy anomaly examples.",
+    "caveat": "Source titles select examples by reconstruction-MSE score. These are not latent-kNN rankings; use as population examples or explicitly retain the reconstruction-score label.",
+    "width": 1900,
+    "height": 225,
+    "bytes": 107458
+  },
+  {
+    "file": "interpolation-compressed.webp",
+    "source": "ai-review/thesis/figures/mnist_interpo_compress.jpg",
+    "caption": "MNIST compressed VAE: ten saved interpolation samples for 0→1, 7→2, 3→4.",
+    "caveat": "",
+    "width": 1678,
+    "height": 540,
+    "bytes": 39334
+  },
+  {
+    "file": "interpolation-compressed-00.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 1 of 10",
+    "caption": "Compressed VAE interpolation, saved step 1/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 4132
+  },
+  {
+    "file": "interpolation-compressed-01.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 2 of 10",
+    "caption": "Compressed VAE interpolation, saved step 2/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 4084
+  },
+  {
+    "file": "interpolation-compressed-02.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 3 of 10",
+    "caption": "Compressed VAE interpolation, saved step 3/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3934
+  },
+  {
+    "file": "interpolation-compressed-03.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 4 of 10",
+    "caption": "Compressed VAE interpolation, saved step 4/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3786
+  },
+  {
+    "file": "interpolation-compressed-04.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 5 of 10",
+    "caption": "Compressed VAE interpolation, saved step 5/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3610
+  },
+  {
+    "file": "interpolation-compressed-05.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 6 of 10",
+    "caption": "Compressed VAE interpolation, saved step 6/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3244
+  },
+  {
+    "file": "interpolation-compressed-06.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 7 of 10",
+    "caption": "Compressed VAE interpolation, saved step 7/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3000
+  },
+  {
+    "file": "interpolation-compressed-07.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 8 of 10",
+    "caption": "Compressed VAE interpolation, saved step 8/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 2996
+  },
+  {
+    "file": "interpolation-compressed-08.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 9 of 10",
+    "caption": "Compressed VAE interpolation, saved step 9/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3024
+  },
+  {
+    "file": "interpolation-compressed-09.webp",
+    "source": "thesis figures/mnist_interpo_compress.jpg, column 10 of 10",
+    "caption": "Compressed VAE interpolation, saved step 10/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 2978
+  },
+  {
+    "file": "interpolation-standard.webp",
+    "source": "ai-review/thesis/figures/mnist_interpo_zero.jpg",
+    "caption": "MNIST standard VAE: ten saved interpolation samples for 0→1, 7→2, 3→4.",
+    "caveat": "",
+    "width": 1680,
+    "height": 540,
+    "bytes": 40256
+  },
+  {
+    "file": "interpolation-standard-00.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 1 of 10",
+    "caption": "Standard VAE interpolation, saved step 1/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3864
+  },
+  {
+    "file": "interpolation-standard-01.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 2 of 10",
+    "caption": "Standard VAE interpolation, saved step 2/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3760
+  },
+  {
+    "file": "interpolation-standard-02.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 3 of 10",
+    "caption": "Standard VAE interpolation, saved step 3/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3820
+  },
+  {
+    "file": "interpolation-standard-03.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 4 of 10",
+    "caption": "Standard VAE interpolation, saved step 4/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3858
+  },
+  {
+    "file": "interpolation-standard-04.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 5 of 10",
+    "caption": "Standard VAE interpolation, saved step 5/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 4056
+  },
+  {
+    "file": "interpolation-standard-05.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 6 of 10",
+    "caption": "Standard VAE interpolation, saved step 6/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3852
+  },
+  {
+    "file": "interpolation-standard-06.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 7 of 10",
+    "caption": "Standard VAE interpolation, saved step 7/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3086
+  },
+  {
+    "file": "interpolation-standard-07.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 8 of 10",
+    "caption": "Standard VAE interpolation, saved step 8/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3180
+  },
+  {
+    "file": "interpolation-standard-08.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 9 of 10",
+    "caption": "Standard VAE interpolation, saved step 9/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3056
+  },
+  {
+    "file": "interpolation-standard-09.webp",
+    "source": "thesis figures/mnist_interpo_zero.jpg, column 10 of 10",
+    "caption": "Standard VAE interpolation, saved step 10/10. Top-to-bottom: 0→1, 7→2, 3→4.",
+    "caveat": "Extracted discrete frames, not freshly decoded or continuous latent sampling.",
+    "width": 160,
+    "height": 500,
+    "bytes": 3034
+  },
+  {
+    "file": "latent-compressed-poster.webp",
+    "source": "final seminar slide 16 seminar-16-image46.gif",
+    "caption": "First frame of the rotating compressed near-OOD latent visualization.",
+    "caveat": "",
+    "width": 805,
+    "height": 778,
+    "bytes": 104974
+  },
+  {
+    "file": "latent-compressed.mp4",
+    "source": "final seminar slide 16 seminar-16-image46.gif",
+    "caption": "Rotating compressed latent visualization, coordinate-averaged to 3D; Imagenette ID and near-OOD ImageNet.",
+    "frames": 16,
+    "duration_seconds": 3.2,
+    "bytes": 509385,
+    "caveat": "Slide16 explicitly labels image46 compressed and image47 von Mises–Fisher. Colour semantics follow conditional-geometry.webp."
+  },
+  {
+    "file": "latent-vmf-poster.webp",
+    "source": "final seminar slide 16 seminar-16-image47.gif",
+    "caption": "First frame of the rotating vmf near-OOD latent visualization.",
+    "caveat": "",
+    "width": 791,
+    "height": 786,
+    "bytes": 112068
+  },
+  {
+    "file": "latent-vmf.mp4",
+    "source": "final seminar slide 16 seminar-16-image47.gif",
+    "caption": "Rotating vmf latent visualization, coordinate-averaged to 3D; Imagenette ID and near-OOD ImageNet.",
+    "frames": 16,
+    "duration_seconds": 3.2,
+    "bytes": 739177,
+    "caveat": "Slide16 explicitly labels image46 compressed and image47 von Mises–Fisher. Colour semantics follow conditional-geometry.webp."
+  },
+  {
+    "file": "logic-openimages-neural.webp",
+    "source": "ai-review/visuals/logic-55-image115.png",
+    "caption": "Open Images compound rule Land vehicle ⇒ (Bicycle ∧ Car), neural evaluator, images sorted by anomaly score.",
+    "caveat": "Green/red frames indicate satisfaction/violation under the annotations used, not a universal physical constraint.",
+    "width": 1023,
+    "height": 1154,
+    "bytes": 334684
+  },
+  {
+    "file": "logic-openimages-independent.webp",
+    "source": "ai-review/visuals/logic-55-image116.png",
+    "caption": "Open Images compound rule Land vehicle ⇒ (Bicycle ∧ Car), independent evaluator, images sorted by anomaly score.",
+    "caveat": "Green/red frames indicate satisfaction/violation under the annotations used, not a universal physical constraint.",
+    "width": 1023,
+    "height": 1154,
+    "bytes": 333620
+  },
+  {
+    "file": "molecular-examples.webp",
+    "source": "chemvsaeresults(1).pdf pages 15–16, first row of each population gallery",
+    "caption": "Selected molecular structures: random-ZINC nominal examples (green, top) and favourable-docking subset (red, bottom).",
+    "caveat": "Examples extracted from reconstruction-Tanimoto-ranked galleries, each population shown separately. This display identifies populations, not latent-kNN ranking or a random sample.",
+    "width": 1247,
+    "height": 262,
+    "bytes": 39724
+  },
+  {
+    "file": "molecular-latent.webp",
+    "source": "chemvsaeresults(1).pdf page 12, left embedded panel",
+    "caption": "Compressed molecular latent representation: angular-coordinate distributions and a coordinate-averaged 3D view.",
+    "caveat": "Static diagnostic, not a 3D molecular conformation. Preserve its normalization/coordinate labels.",
+    "width": 733,
+    "height": 912,
+    "bytes": 84616
+  },
+  {
+    "file": "molecular-roc.webp",
+    "source": "Molecular_AD_Draft(1).pdf page 4, Figure 1 only",
+    "caption": "Representative matched five-epoch comparison: fingerprint kNN, uncompressed NP-VAE+kNN, compressed NP-VAE+kNN for favourable and unfavourable docking extremes against random ZINC.",
+    "caveat": "Each panel compares 1000 nominal and 1000 docking-selected molecules; representative experiment, not repeated-run aggregate.",
+    "width": 1848,
+    "height": 808,
+    "bytes": 104624
+  }
+]

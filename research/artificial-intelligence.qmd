@@ -1,26 +1,50 @@
 ---
 title: "Artificial Intelligence"
-description: "Anomaly detection, representation geometry, and structured reasoning."
+description: "Latent geometry, generative models, image and molecular anomaly detection, and structured reasoning."
+body-classes: ai-index
+css: ../assets/ai-explorer.css
+resources:
+  - ../assets/ai/clevrer/chain-violation.jpg
+  - ../assets/ai/visuals/galaxy-geometry.webp
 ---
 
-My AI research focuses on anomaly detection and generative modelling, especially where standard statistical scores obscure the geometry or semantic structure of the problem. I study both the internal organization of high-dimensional latent spaces and methods that represent explicit relations and rules over visual data.
+My AI research connects **the geometry of generative models** with **anomaly detection and structured reasoning**. My PhD's central work concerns high-dimensional VAE representations; logical evaluation and the Logic VAE extend that programme toward explicit, generative reasoning.
 
-[Conceptual introduction →](ai-conceptual-foundations.qmd){.card-link}
+[Read the visual conceptual introduction →](ai-conceptual-foundations.qmd){.card-link}
+
+```{=html}
+<div class="ai-strands">
+<a class="ai-strand" href="ai-conceptual-foundations.html#latent-geometry">
+<img src="../assets/ai/visuals/galaxy-geometry.webp" alt="Galaxy Zoo latent spaces before and after hyperspherical compression." width="1900" height="1275">
+<span class="ai-strand-copy"><strong>Geometry &amp; anomalies</strong><small>Hyperspherical VAEs, generation, image and molecular AD, and the phase structure of learned representations.</small><span class="ai-read">Explore the VAE work →</span></span>
+</a>
+<a class="ai-strand" href="ai-conceptual-foundations.html#logical-anomalies">
+<img src="../assets/ai/clevrer/chain-violation.jpg" alt="A CLEVRER scene used to test a rule about collision and entry events." width="480" height="320">
+<span class="ai-strand-copy"><strong>Logical violations</strong><small>Explicit expectations, learned neural evaluators, and chimera training when real rule violations are absent.</small><span class="ai-read">Watch the examples →</span></span>
+</a>
+<a class="ai-strand" href="ai-conceptual-foundations.html#generative-reasoning">
+<img src="../assets/ai/logical-world-model.webp" alt="A logical world model connecting perception, evaluated rules, a generative latent space, and decoded reasoning structures." loading="lazy">
+<span class="ai-strand-copy"><strong>Generative reasoning</strong><small>The Logic VAE, witnessed relations, and a research programme on world models and the search for ontologies.</small><span class="ai-read">Follow the next steps →</span></span>
+</a>
+</div>
+```
 
 ## High-dimensional latent geometry
 
-A central line of work studies why high-dimensional VAE latent spaces become sparse and difficult to sample or score reliably. Hyperspherical-coordinate parameterisations provide direct control over angular concentration and latent hypervolume. This has led to methods for improving generation and anomaly detection, and to a broader phase-based interpretation of latent representations using ideas from spin-glass theory.
+A VAE can reconstruct observations well while producing poor samples or unhelpful anomaly scores. My work investigates how the sparsity and angular organization of high-dimensional latent spaces contribute to this tension. Hyperspherical-coordinate regularization provides direct control over occupied hypervolume without reducing the latent dimension. The resulting representations are studied through generation, interpolation, and nearest-neighbour anomaly detection.
+
+The statistical-physics strand introduces overlap distributions, angular observables, and coarse-graining as diagnostics of latent organization. The central question is which partially ordered regimes preserve useful variation while supporting the task. The visual introduction includes galaxy examples, rotating latent plots, digit interpolations, and phase diagnostics from the thesis.
 
 ## Logical and semantic anomalies
 
-Many anomalies are violations of constraints rather than isolated statistical outliers. I develop neural evaluators that compile logical expressions into structured computation graphs and learn to assess rule satisfaction from visual representations. Counterfactual feature constructions provide informative violations even when real anomalous examples are unavailable during training.
+Many anomalies concern a violated expectation: an event occurred without its expected context, or a relation between concepts failed. I develop neural evaluators that compile logical expressions into computation graphs and assess rule satisfaction from visual features. Chimera training constructs missing combinations of operand features, providing supervision for violations absent from the observed training data.
 
 ## Evaluation methodology
 
-I also study failure modes in anomaly-detection benchmarks. In particular, class-split protocols can exhibit score-direction instability when the designated anomaly class overlaps the normal mixture in representation space. The aim is to distinguish genuine detector behaviour from artefacts of benchmark geometry.
+I also study failure modes in anomaly-detection benchmarks. Class-split protocols can exhibit score-direction instability when the designated anomaly class overlaps the normal mixture in representation space. This work distinguishes detector behaviour from effects of benchmark geometry.
 
 ## Structured world models
 
-Ongoing work connects learned visual concepts, compositional rule graphs, generative latent models, and predictive models of rule satisfaction. The longer-term objective is a world model in which structured hypotheses can be generated, evaluated, and used for planning.
+Ongoing work connects learned visual concepts, compositional rule graphs, and generative latent models with predictions of rule truth profiles. The compression VAE also enters this line of work. Witnessed relations record relationships between reasoning paths; ontology search asks how to choose the vocabulary in which such reasoning becomes possible.
 
 [See AI publications →](../publications.qmd#artificial-intelligence){.card-link}

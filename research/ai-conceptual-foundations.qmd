@@ -1,15 +1,219 @@
 ---
-title: "What Makes a Representation Useful for Reasoning?"
-subtitle: "From anomaly detection to logical world models and the search for ontologies"
-description: "A conceptual introduction to latent geometry, chimera training, the Logic VAE, witnessed implications, and ontology search."
+title: "What Makes a Learned Representation Useful?"
+subtitle: "Latent geometry, anomaly detection, and structured reasoning"
+description: "A visual introduction to my research on hyperspherical VAEs, image and molecular anomaly detection, latent phases, neural logical evaluation, and generative reasoning."
 toc: true
 toc-depth: 2
 page-layout: article
+body-classes: ai-story
+css: ../assets/ai-explorer.css
+html-math-method: mathjax
 resources:
   - ../assets/ai/clevrer/*.jpg
+  - ../assets/ai/visuals/**
+  - ../assets/ai-explorer.js
 ---
 
 [← Artificial Intelligence](artificial-intelligence.qmd)
+
+A model can reconstruct an image faithfully and still miss what makes it unusual. It can arrange observations into a useful geometric space without saying which expectation they violate. And it can evaluate a supplied rule without being able to propose a new one. My research follows these questions from **the geometry of generative models** to **anomaly detection** and **explicit reasoning structures**.
+
+```{=html}
+<nav class="ai-route" aria-label="Explore the research">
+<a href="#latent-geometry"><span>01</span> Geometry &amp; anomalies</a>
+<a href="#logical-anomalies"><span>02</span> Logical violations</a>
+<a href="#generative-reasoning"><span>03</span> Generative reasoning</a>
+</nav>
+```
+
+![Changing the organization of a latent space. Galaxy Zoo observations are spread across the standard VAE's spherical representation (left); hyperspherical regularization gathers the nominal observations into a compact region (right). Green marks nominal galaxies and red marks anomalies. These are coarse-grained views of high-dimensional representations, the model retains its high latent dimension.](../assets/ai/visuals/galaxy-geometry.webp){fig-alt="Standard and compressed VAE latent representations of Galaxy Zoo, with encoder and decoder diagrams below." loading="eager"}
+
+The main body of my PhD studies high-dimensional VAE representations: how to organize them, how to sample from them, and how to use their distances to detect anomalies. Logical anomaly detection extends that work by making the expectation itself explicit. The Logic VAE brings the two lines together, using a generative latent space for rules and their truth profiles.
+
+## 1. Latent geometry, generation, and anomaly detection {#latent-geometry}
+
+```{=html}
+<nav class="ai-topic-links" aria-label="Topics in latent geometry">
+<a href="#reconstruction">Reconstruction</a><a href="#compression">Compression</a><a href="#image-anomalies">Image AD</a><a href="#generation">Generation</a><a href="#latent-phases">Latent phases</a><a href="#benchmark-geometry">Benchmarks</a><a href="#molecular-anomalies">Molecules</a>
+</nav>
+```
+
+
+### When reconstruction misses the anomaly {#reconstruction}
+
+An autoencoder maps an observation to a latent vector and learns to reconstruct it. Train it only on ordinary examples and a tempting prediction follows: an unusual example should be harder to reconstruct. But an encoder and decoder can learn features that also reproduce observations outside the training distribution.
+
+In the CheXpert chest X-ray experiment below, a model trained on images labelled “No Finding” also reconstructs images labelled “Pneumothorax.” Reconstruction error separated the groups about as well as chance. Much of the image can be preserved while the particular distinction we care about remains inaccessible to that score.
+
+```{=html}
+<div class="ai-pair">
+<figure><h4>No Finding</h4><img src="../assets/ai/visuals/xray-normal.webp" alt="Five nominal chest X-rays, each with its reconstruction beneath it." loading="lazy"><figcaption>Originals above; reconstructions below.</figcaption></figure>
+<figure><h4>Pneumothorax</h4><img src="../assets/ai/visuals/xray-pneumothorax.webp" alt="Five chest X-rays labelled pneumothorax, each with its reconstruction beneath it." loading="lazy"><figcaption>The same model also reconstructs the anomalous group.</figcaption></figure>
+</div>
+```
+
+This motivates a second question: **where does an observation lie relative to the training examples in latent space?** A nearest-neighbour detector can ask that question, but its usefulness now depends on the geometry learned by the encoder.
+
+### Changing the geometry without reducing the dimension {#compression}
+
+Our intuition from a two- or three-dimensional Gaussian is misleading in high dimension. Typical samples from $\mathcal N(0,I_n)$ have radii close to $\sqrt n$. There is also an angular effect: relative to any fixed axis, most directions lie near its perpendicular equator. A finite dataset can be sparse on this large shell even though the radii and angles concentrate sharply.
+
+![In high dimension, a narrow belt around any fixed equator contains most of the uniform measure on the sphere. The chosen north-pole direction is arbitrary. Schematic from my thesis.](../assets/ai/equatorial-belt.webp){fig-alt="A sphere with a shaded equatorial belt illustrating concentration of measure." width=80%}
+
+My **hyperspherical-coordinate VAE** makes the radius and angular coordinates explicit. The regularizer controls their batch statistics, allowing the encoder to move nominal observations away from the high-volume equatorial regimes and reduce the region they occupy. This changes the arrangement of the representations while retaining the latent dimension. It also allows control over the angular hierarchy, beyond the single directional concentration of the von Mises–Fisher comparison.
+
+Reconstruction opposes complete collapse: the decoder still needs enough variation to distinguish observations. The useful question is how to make the occupied region compact **while preserving the internal structure needed for a task**.
+
+<details class="ai-details">
+<summary>The geometric idea in coordinates</summary>
+
+For $z\in\mathbb R^n$, write its hyperspherical coordinates as $(r,\varphi_1,\ldots,\varphi_{n-1})$. The Euclidean volume element contains
+
+$$
+\mathrm dV=r^{n-1}\prod_{j=1}^{n-2}(\sin\varphi_j)^{n-j-1}\,\mathrm dr\,\mathrm d\varphi_1\cdots\mathrm d\varphi_{n-1}.
+$$
+
+The powers of the sines make angular location consequential in high dimension. The method regularizes the means and spreads of the angular coordinates, expressed through their cosines, alongside the radial statistics. The reconstruction term balances this drive toward concentration. The [method paper](https://arxiv.org/abs/2507.15900) gives the full training objective.
+
+</details>
+
+### Detecting anomalies in images {#image-anomalies}
+
+**Training on nominal images alone.** Galaxy Zoo and Mars Rover Mastcam provide two applications without normal-subclass labels in representation training. After training, the nominal latent means form a reference set. A test image is scored by its distance to nearby reference examples. Compression changes that reference geometry; the scoring principle remains the same.
+
+```{=html}
+<figure class="ai-gallery">
+<h4>Looking at the galaxies</h4>
+<img src="../assets/ai/visuals/galaxy-normal-strip.webp" alt="A strip of round galaxy examples from the seminar." loading="lazy">
+<img src="../assets/ai/visuals/galaxy-merger-strip.webp" alt="A strip of merging galaxy examples from the seminar." loading="lazy">
+<figcaption>Round and merging galaxies from the seminar's visual examples. The thesis's broader AD benchmark defines anomalies using the Galaxy Zoo volunteer “odd” annotation; these example strips illustrate visible morphology rather than redefine that test.</figcaption>
+</figure>
+```
+
+![Galaxy Zoo anomaly-score distributions with a standard VAE (left) and the compressed VAE (right). The score is based on latent nearest-neighbour distance. The different horizontal scales reflect different learned geometries; separation and ranking, rather than the absolute size of a distance, are what matter.](../assets/ai/galaxy-zoo-scores.webp){fig-alt="Nominal and anomalous Galaxy Zoo score distributions before and after compression."}
+
+| Dataset | Standard VAE + kNN AUROC | Compressed VAE + kNN AUROC |
+|:--|--:|--:|
+| Mars Rover Mastcam | 0.664 | **0.764** |
+| Galaxy Zoo | 0.741 | **0.789** |
+
+These are the thesis's matched VAE comparisons. The improvement in overall ranking does not imply improvement at every operating point: Galaxy Zoo FPR95 changes from 0.77 to 0.80, whereas Mastcam changes from 0.66 to 0.62. The [AD paper](https://arxiv.org/abs/2601.18823) reports the other detectors and metrics.
+
+**When the normal classes are known.** A separate set of experiments uses ID class labels to organize different class clusters. Here the difficult cases are nearby alternatives: tench versus goldfish, or an English versus a Welsh springer spaniel. The experiments include CIFAR-10 versus CIFAR-100 and Imagenette versus semantically close ImageNet classes.
+
+```{=html}
+<div class="ai-motion" data-paired-video>
+<div class="ai-pair">
+<figure><h4>Single-direction concentration · vMF</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-vmf-poster.webp" aria-label="Rotating coarse-grained latent representation for the von Mises–Fisher comparison"><source src="../assets/ai/visuals/latent-vmf.mp4" type="video/mp4"></video></figure>
+<figure><h4>Hyperspherical compression</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-compressed-poster.webp" aria-label="Rotating coarse-grained latent representation for the compressed VAE"><source src="../assets/ai/visuals/latent-compressed.mp4" type="video/mp4"></video></figure>
+</div>
+<div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both rotations</button><button type="button" class="ai-button" data-reset-pair>Reset views</button></div>
+<p class="ai-caption">Actual rotating plots from the final seminar. Both show coordinate-averaged views of high-dimensional Imagenette representations; colours distinguish ID classes and grey marks near-OOD samples. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to compare the views.</p>
+</div>
+```
+
+### What changes for generation? {#generation}
+
+Reconstructing an encoded image and decoding a newly sampled latent vector are different tests. A decoder can work well near the encoded observations while behaving poorly in other regions visited by its sampling distribution. This is especially visible when we give a relatively simple VAE a large latent space.
+
+![MNIST with 128 latent dimensions: standard VAE on the left, compressed VAE on the right. Each panel shows original images, reconstructions, and newly generated samples in that order. In the compressed experiment, generation uses an effective prior fitted to the empirical latent mean and covariance, then normalized to the sphere.](../assets/ai/visuals/mnist-generation.webp){fig-alt="MNIST originals, reconstructions and generated digits compared between standard and compressed VAEs."}
+
+The thesis studies both generation and the routes between encoded examples. The sequences below decode intermediate latent locations for three digit pairs. They make it possible to inspect the continuity and recognizability of the outputs, rather than judging a representation only by reconstruction error.
+
+```{=html}
+<div class="ai-interpolation" data-interpolation>
+<div class="ai-pair">
+<figure><h4>Standard VAE</h4><img src="../assets/ai/visuals/interpolation-standard.webp" alt="Standard VAE interpolation sequences for zero to one, seven to two, and three to four." loading="lazy" data-interpolation-strip="standard"></figure>
+<figure><h4>Compressed VAE</h4><img src="../assets/ai/visuals/interpolation-compressed.webp" alt="Compressed VAE interpolation sequences for zero to one, seven to two, and three to four." loading="lazy" data-interpolation-strip="compressed"></figure>
+</div>
+<div class="ai-scrubber" hidden>
+<p class="ai-eyebrow">Inspect the saved interpolation steps</p>
+<div class="ai-frame-pair">
+<figure><img data-frame="standard" data-no-zoom src="../assets/ai/visuals/interpolation-standard-00.webp" alt="Standard VAE: three digit paths at the first saved interpolation step." width="160" height="480"><figcaption>Standard VAE</figcaption></figure>
+<div class="ai-path-labels" aria-hidden="true"><span>0 → 1</span><span>7 → 2</span><span>3 → 4</span></div>
+<figure><img data-frame="compressed" data-no-zoom src="../assets/ai/visuals/interpolation-compressed-00.webp" alt="Compressed VAE: three digit paths at the first saved interpolation step." width="160" height="480"><figcaption>Compressed VAE</figcaption></figure>
+</div>
+<label for="interpolation-step">Saved step <output id="interpolation-position" for="interpolation-step">1 of 10</output></label>
+<input id="interpolation-step" type="range" min="0" max="9" value="0" step="1" aria-describedby="interpolation-note">
+</div>
+<p class="ai-caption" id="interpolation-note">Three paths: 0 → 1, 7 → 2, and 3 → 4. Move the slider to compare the ten saved steps from the thesis experiment.</p>
+</div>
+```
+
+The comparison does not mean that the standard VAE had no class structure. In this MNIST experiment, kNN classification in the full latent space was already strong in both models, and was higher without compression (0.95 versus 0.88). Geometry that helps sampling or a particular anomaly score need not maximize every other task.
+
+<details class="ai-details">
+<summary>Reconstruction, generation, and the sampling distribution</summary>
+
+The MNIST compressed model samples from an **effective prior** fitted to the embedding's empirical mean and covariance; the reported experiment estimated those statistics from the embedded test set. Its generated samples therefore illustrate the combined compression-and-sampling prescription, rather than unchanged standard-Gaussian sampling.
+
+For CIFAR-10 and CelebA, the thesis examines the trade-off across latent sizes and regularization strengths. Reconstruction is measured by MSE. **Self-FID** compares generated images with reconstructed test images, so it measures agreement with the decoder's reconstructed distribution rather than conventional FID against the original images.
+
+![CIFAR-10 reconstruction–generation trade-off across latent dimensions and regularization strengths. Lower MSE and lower self-FID are preferable. Dashed curves denote standard VAEs and solid curves compressed VAEs; the original figure includes example outputs.](../assets/ai/visuals/generation-tradeoff.webp){fig-alt="CIFAR-10 MSE versus self-FID curves with example reconstructed and generated images."}
+
+</details>
+
+[Read the generation paper →](https://arxiv.org/abs/2507.15900){.card-link}
+
+### How much compression is useful? {#latent-phases}
+
+Compression is not a prescription to make every observation identical. Too little organization leaves a diffuse representation; too much can erase distinctions needed by the decoder or detector. In the experiments, useful behaviour appears in an intermediate, partially ordered regime.
+
+![Three Galaxy Zoo regimes from the phase study. Columns show overcompression, an intermediate regime, and undercompression. Each column combines detection curves, a coarse-grained latent view, and score distributions. The compactness of the visible cloud alone does not determine detection quality.](../assets/ai/visuals/phase-regimes.webp){fig-alt="Galaxy Zoo detection and latent geometry compared across overcompressed, intermediate and undercompressed regimes."}
+
+The spin-glass work develops a way to study this organization through **observables of the latent representations**. Fix a decoder and an observation: reconstruction and regularization define an energy over candidate latent configurations. Directions assigned to different observations can be compared through their overlaps, while coordinate coarse-graining tests which structures remain visible as detail is removed.
+
+Angular histograms provide another view. Instead of showing two projected axes, they display the distribution of every hyperspherical coordinate. The heatmaps below illustrate how the regularizer's preferred direction changes the hierarchy of angular organization.
+
+![Angular organization across the latent coordinates. These panels compare three preferred field directions, from an equatorial configuration through the direction (1,…,1) to the north pole. They are different directional prescriptions, rather than three stages of training. Colour shows histogram density; lines summarize each coordinate's distribution.](../assets/ai/visuals/phase-angular.webp){fig-alt="Three heatmaps showing distributions of hyperspherical angular coordinates under different preferred field directions."}
+
+The phase diagnostics ask more than whether a cloud looks clustered. Both standard and compressed models can contain class information, but differ in the stability of that organization under coarse-graining and in its usefulness for generation or distance-based detection. The interpretation concerns finite trained systems, with the diagnostics checked against their task performance.
+
+[Read the latent-phase study →](https://arxiv.org/abs/2606.02600){.card-link}
+
+### When the benchmark changes the answer {#benchmark-geometry}
+
+A common AD test declares one class anomalous and trains on all the others. This creates a semantic distinction, but it does not guarantee that the held-out class will be far from the normal mixture. If it lies in the mixture's interior, an ordinary distance-based score can rank its examples as *less* unusual than the designated normal examples.
+
+```{=html}
+<div class="ai-pair">
+<figure><h4>FashionMNIST</h4><img src="../assets/ai/visuals/benchmark-fashion.webp" alt="t-SNE of FashionMNIST pixel representations, coloured by class." loading="lazy"></figure>
+<figure><h4>CIFAR-10</h4><img src="../assets/ai/visuals/benchmark-cifar.webp" alt="t-SNE of CIFAR-10 pixel representations, coloured by class." loading="lazy"></figure>
+</div>
+```
+
+These projections illustrate contrasting degrees of class overlap; the study evaluates the effect using scores in the underlying representations. A detector with a fixed score direction can move from a useful ranking to chance or inversion as the held-out class changes. This makes the geometry of the evaluation protocol part of the scientific question.
+
+<details class="ai-details">
+<summary>See the per-class score reversals</summary>
+
+![CIFAR-10 class-split AUROC for several pixel-space detectors. Some held-out classes fall below chance with the fixed anomaly-score direction. The phenomenon varies with the chosen anomaly class and representation.](../assets/ai/visuals/benchmark-auroc.webp){fig-alt="Per-class CIFAR-10 AUROC curves crossing the chance line for different anomaly detectors."}
+
+</details>
+
+[Read “Testing the Test” →](https://arxiv.org/abs/2606.02601){.card-link}
+
+### From images to molecules {#molecular-anomalies}
+
+Can the same approach expose structure associated with a much different kind of property? In an extension beyond the thesis's image experiments, I apply hyperspherical compression to an NP-VAE molecular model trained on **random ZINC molecules**, without docking scores, docking poses, or protein-target information in its training objective.
+
+The evaluation uses molecules selected from the favourable and unfavourable extremes of an NSP14 docking-score collection. Each group is compared separately with held-out random ZINC. The question is whether an unsupervised molecular geometry makes membership in those externally selected populations accessible through a simple latent-distance score.
+
+![Molecular examples from the compressed-model experiments: nominal ZINC above and favourable-docking molecules below. These selected structures illustrate the two populations; they are not a latent anomaly-score ranking.](../assets/ai/visuals/molecular-examples.webp){fig-alt="Examples of two-dimensional molecular structures from the molecular VAE experiments."}
+
+![Latent organization in the molecular experiment, shown through angular distributions and a coordinate-averaged three-dimensional view. These are visual diagnostics; the anomaly score uses distances in the full latent representation.](../assets/ai/visuals/molecular-latent.webp){fig-alt="Molecular latent coordinate histograms and a three-dimensional view of the corresponding point cloud."}
+
+In a representative matched comparison, compressed latent kNN reaches AUROC **0.892** for the favourable-docking subset and **0.787** for the unfavourable subset, compared with **0.780** and **0.653** for Morgan-fingerprint/Tanimoto kNN. The corresponding uncompressed-VAE scores are **0.722** and **0.635**. These are individual matched results, rather than averages over runs.
+
+![Docking-selected molecules versus random ZINC. Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN, using the archived scores presented in the molecular draft. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
+
+The result concerns **docking-related population structure accessible without docking supervision**. Docking is a three-dimensional, target-dependent scoring task, yet molecular differences associated with its selected extremes become accessible through a representation trained on molecular structure alone. Compression improves that accessibility beyond the tested fingerprint baseline. Both extremes can be atypical relative to random ZINC, so distance alone does not supply a favourable or unfavourable direction.
+
+There is a second connection to the image experiments: continued training can improve molecular reconstruction while removing the AD advantage. Preserving information for decoding and arranging it for a useful distance score are related but different objectives. This molecular work is ongoing; its representative results currently concern one docking collection and target.
+
+## 2. Learning to recognise logical violations {#logical-anomalies}
+
+The geometric approach asks where an observation lies relative to a reference population. A different kind of question begins with an explicit expectation: **which relation should hold, and does this observation support it?** An ordinary-looking scene can violate that expectation, while a visually unusual scene may satisfy it.
 
 Watch the two short videos below. In both, a cube collides with a blue object during the first half of the clip. Yet only one satisfies the rule we are testing: **a cube–blue-object collision must be preceded by an entry event, and an entry followed by a collision must lead to a collision in the first half.** In the first video, the colliding objects are already present at the start. In the second, the yellow cube enters the scene and then collides with the blue sphere. The difference lies in the sequence of events, even though both scenes look ordinary.
 
@@ -21,6 +225,7 @@ $$
 
 Here “cube” and “blue” select the two participants; they do not require the cube itself to be blue. The truth values below follow the annotations used in the experiment.
 
+```{=html}
 <div class="clevr-video-pair" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
 <figure style="margin: 0;">
 <video controls loop muted playsinline preload="metadata" width="480" height="320" poster="../assets/ai/clevrer/chain-violation.jpg" aria-label="CLEVRER chain-rule violation: a cube and a blue object collide without a preceding entry event" style="display: block; width: 100%; height: auto;">
@@ -37,30 +242,11 @@ Here “cube” and “blue” select the two participants; they do not require 
 <figcaption><strong>Rule satisfied.</strong> The yellow cube enters and collides with the blue sphere in the first half. Both implications hold. Ground truth: A = true, B = true, C = true.</figcaption>
 </figure>
 </div>
+```
 
 *CLEVRER examples from my logical anomaly-detection experiments. Press play to watch each clip; playback loops until paused. Each full clip lasts about five seconds.*
 
-**What does a machine need to represent in order to see the difference?** My work on anomaly detection led me to two ways of asking this question. One concerns the geometry of the space in which observations are compared. The other concerns the concepts and relations that let us say *what happened*. Following the second question eventually leads to a third: how could we judge whether the concepts themselves were well chosen?
-
-The geometry and logical anomaly detection described below have been studied experimentally. The Logic VAE has a synthetic prototype. The witnessed constructions, semantic planning interface, and ontology-search programme describe the direction I am developing from those foundations.
-
-## 1. What makes an observation unusual?
-
-An autoencoder compresses an observation into a latent vector and tries to reconstruct it. Train it on ordinary examples and a tempting prediction follows: an unusual example should be harder to reconstruct. In a chest X-ray experiment from my thesis, a model trained on images labelled “No Finding” could also reconstruct images labelled “Pneumothorax.” Reconstruction error separated the groups about as well as chance. The ability to reproduce much of an image can coexist with insensitivity to the particular feature we care about.
-
-We can instead ask how close a new observation lies to ordinary examples in the *latent space*. This makes the geometry of that space consequential. Consider a high-dimensional standard Gaussian. Its typical draws have similar radii, concentrated near a shell. There is a second, angular effect. Pick an axis: almost all directions lie close to the equator perpendicular to it. The choice of axis was arbitrary. Our picture of the surface of a ball in three dimensions is a poor guide to how densely a finite training set covers that shell.
-
-![In high dimensions a narrow belt around any fixed equator contains most of the uniform measure on the sphere. Schematic from my thesis.](../assets/ai/equatorial-belt.webp){fig-alt="A sphere with a shaded equatorial belt and a profile showing concentration near the equator."}
-
-The hyperspherical-coordinate VAE lets us control the radius and several angular coordinates explicitly. Constraining the angular spread reduces the volume occupied by the nominal representations. This gives a simple nearest-neighbour score a chance to separate observations that previously lay at similar distances. There is a trade-off: excessive compression can discard distinctions that reconstruction or generation needs. The setting of interest is where ordinary observations cluster more tightly while retaining useful internal variation.
-
-![Galaxy Zoo anomaly scores before and after hyperspherical compression. The distributions show how the same nearest-neighbour scoring principle behaves in two learned representations. From my thesis seminar.](../assets/ai/galaxy-zoo-scores.webp){fig-alt="Two Galaxy Zoo score histograms compare the baseline VAE and the compressed VAE for ordinary and anomalous galaxies."}
-
-The spin-glass work asks what kind of organization the encoder has learned. Fix the decoder and an observation. The reconstruction term and latent prior define an energy over candidate latent configurations. One diagnostic compares directions assigned to different observations: two aligned directions have a large overlap, while nearly perpendicular directions have an overlap near zero. The *distribution* of these overlaps can reveal partial ordering that is invisible in a single mean reconstruction error. The experiments relate this intermediate regime to improvements in generation and anomaly detection.
-
-There is a useful check on the interpretation of these scores. In a class-split test, the researcher designates one class as anomalous. If that class occupies the interior of the mixture of training classes, its examples can have *smaller* anomaly scores than ordinary examples. The resulting reversal tells us something about the benchmark geometry. The collision example poses a further problem: even a well-behaved distance score gives us no direct way to ask *which expectation the clip violated*.
-
-## 2. How does a scene give evidence for a rule?
+### How does a scene give evidence for a rule? {#rule-evaluation}
 
 Return to the two videos. The first implication, $A\Rightarrow B$, is false precisely when the collision occurs but the entry-then-collision event is absent. The second, $B\Rightarrow C$, tests whether an entry-then-collision event is accompanied by a collision in the first half. Their conjunction requires both implications to hold. The first clip is therefore an anomaly **relative to that rule**. A reader who disagrees with the expectation can inspect it, replace it, and ask a different question of the same video.
 
@@ -70,6 +256,7 @@ $$
 A_{\rm sc}\Rightarrow(C_{\rm sc}\wedge B_{\rm sc}).
 $$
 
+```{=html}
 <figure style="max-width: 480px; margin: 1.5rem auto;">
 <video controls loop muted playsinline preload="metadata" width="480" height="320" poster="../assets/ai/clevrer/compound-violation.jpg" aria-label="CLEVRER compound-rule violation: a sphere and cylinder collide after the halfway point" style="display: block; width: 100%; height: auto;">
 <source src="../assets/ai/clevrer/compound-violation.mp4" type="video/mp4">
@@ -77,6 +264,7 @@ $$
 </video>
 <figcaption><strong>Compound rule violated.</strong> The sphere–cylinder collision and the entry-then-collision event are present, but the first-half collision condition is false. One failed conjunct is enough to violate the rule. Ground truth: A<sub>sc</sub> = true, B<sub>sc</sub> = true, C<sub>sc</sub> = false.</figcaption>
 </figure>
+```
 
 Even perfect knowledge of the marginal probabilities would leave something unresolved. For the first implication of the cube–blue-object rule, the violation probability is $P(A\wedge\neg B)$, which depends on how the events are related. Here an entry followed by a collision is itself evidence for a collision. Multiplying scalar probabilities under an independence assumption discards that relationship. A learned evaluator can carry perceptual evidence for both operands into the decision.
 
@@ -86,7 +274,7 @@ During training, annotated concept values determine an exact Boolean target at e
 
 ![Training proceeds from the perceptual encoder to individual subexpressions and then to their parents. Inference follows the trained graph on a single observation. Figure from my thesis.](../assets/ai/subtree-training.webp){fig-alt="Diagram of perceptual training, local gate training, reuse within a larger expression, and inference."}
 
-## 3. How can it learn a violation it has never seen?
+### How can it learn a violation it has never seen? {#chimera-training}
 
 Suppose every training clip with a cube–blue-object collision also has the corresponding entry-then-collision event. The implication is always satisfied. A classifier that always answers “true” fits those examples perfectly. Yet the collection may contain plenty of evidence for each side of the missing combination: clips in which a collision occurs, and other clips in which the entry-then-collision event is absent.
 
@@ -98,17 +286,43 @@ A small image experiment makes the effect visible. Train a conjunction on the co
 
 The role of dependence also shows up in the video experiments. On the tested static CLEVR rules, composing independent probabilities was already near perfect. On the event-rich CLEVRER rules, mean anomaly AUROC rose from 0.750 under independent composition to 0.833 with the learned evaluator. The point of the comparison is that the value of retaining features depends on the relations the task actually contains.
 
-## 4. What if the formula is the unknown?
+
+### Logical anomalies in ordinary photographs {#photographic-rules}
+
+The same approach can evaluate rules about real images. Here the test rule asks that an image containing a land vehicle also contain both a bicycle and a car:
+
+$$
+\mathrm{LandVehicle}\Rightarrow(\mathrm{Bicycle}\wedge\mathrm{Car}).
+$$
+
+This deliberately restrictive constraint is about concept presence in an image, not an object being both types of vehicle. A car-only or bicycle-only image can violate it. The two panels rank the same annotated Open Images test examples using independent probability composition and the learned evaluator. Green borders indicate examples satisfying the rule under the experimental annotations; red indicates violations. Anomaly score increases along the displayed ordering.
+
+```{=html}
+<div class="ai-pair">
+<figure><h4>Independent composition</h4><img src="../assets/ai/visuals/logic-openimages-independent.webp" alt="Open Images photographs ranked by independent evaluation of the land-vehicle rule, with satisfying and violating examples interspersed." loading="lazy"></figure>
+<figure><h4>Learned evaluator</h4><img src="../assets/ai/visuals/logic-openimages-neural.webp" alt="The same Open Images photographs ranked by the neural evaluator, with satisfying examples nearer the beginning and violations nearer the end." loading="lazy"></figure>
+</div>
+```
+
+The comparisons retain examples in which the antecedent is absent. Those satisfy the implication too: the task is to evaluate the whole rule, including its context, rather than only classify images already known to contain a land vehicle.
+
+## 3. Generating reasoning structures {#generative-reasoning}
+
+The evaluator asks whether an observation supports a supplied rule. The next step is to make reasoning structures themselves objects of generative modelling. This part brings the compression VAE and logical evaluation together, then develops witnessed relations, world models, and ontology search. The generative work is ongoing; the planning and ontology-search sections describe the broader research programme.
+
+### Generating rules and their truth profiles {#logic-vae}
 
 So far the question has been “given this rule, how well does the observation support it?” Reverse the experiment. **Fix one video and vary the reasoning.** For each rule we evaluate, attach the truth estimate of every node to its place in the tree. Two trees can have similar root scores while relying on different intermediate claims. The training object is now a reasoning structure together with this whole truth profile.
 
-The **Logic VAE** is intended to learn a space of such objects for a fixed vocabulary. An encoder maps examples into a latent space. Sampling, interpolating, or searching in that space provides candidate latent codes. The decoder turns a code back into an explicit rule that a person can read. A probability predictor estimates the profile associated with the candidate and the observation. This is where the larger system can propose and score a composition for which no individual subtree evaluator was trained.
+The **Logic VAE** learns a space of such objects for a fixed vocabulary. The compression VAE developed above is also used in this line of work: its role is now to organize a generative space of reasoning structures and truth profiles. An encoder maps examples into a latent space. Sampling, interpolating, or searching in that space provides candidate latent codes. The decoder turns a code back into an explicit rule that a person can read. A probability predictor estimates the profile associated with the candidate and the observation. This is where the larger system can propose and score a composition for which no individual subtree evaluator was trained.
+
+<!-- Additional Logic VAE result galleries belong here: decoded graphs, truth profiles, and interpolation. -->
 
 These roles lead to two separate tests. Does decoding yield a well-formed, genuinely held-out structure? Do the predicted values agree with a reference evaluation of *that structure on that observation*? An attractive rule with an inaccurate root estimate fails the second test. Good root predictions that conceal errors in the clauses also matter if someone plans to use the reasoning as an explanation.
 
 The current conditional prototype uses synthetic probability profiles computed with independent-event formulas. Its probability head reads decoder states informed by the latent code, leaf probabilities, and the decoded prefix. In the intended perceptual experiment, the training profiles come from the feature-aware evaluator. Fixing one video first isolates variation across rules. Extending the model across videos requires conditioning that preserves the evidence needed to distinguish them, including cases where similar leaf probabilities hide different dependencies.
 
-## 5. When are two routes through an implication related?
+### Relating different reasoning paths {#witnessed-relations}
 
 A rule can say more than that $A$ implies $C$. It can record *how* the reasoning goes from one to the other. Choose two intermediate concepts, $B$ and $B'$, and form the syntactic paths
 
@@ -137,7 +351,7 @@ $$
 
 This is the sense in which the construction is higher-dimensional. First we have paths, then witnesses between paths, then witnesses between witnessed relations. Formula depth alone would count additional connectives without telling us *what kinds of objects* they relate. There is also a distinction between the structure we encode and the evidence that supports it. Under Boolean semantics the first block can be true when both paths and the witness are false. Reading a block as a positively supported explanation requires inspecting the witness and path values themselves.
 
-## 6. How would a logical world model use these objects?
+### A logical world model {#world-model}
 
 Suppose a vocabulary distinguishes the current state, actions one could take, and later consequences. A goal can then be expressed as a formula. Holding the observed state fixed, we can ask which candidate action the model expects to make that goal more likely. A generative model can also estimate how plausible the proposed configuration is. Together these give us two reasons to examine a candidate: the clauses that support the goal, and whether the configuration resembles ones for which the system has evidence.
 
@@ -145,7 +359,7 @@ Suppose a vocabulary distinguishes the current state, actions one could take, an
 
 For example, a manipulation system might ask whether releasing a grasp now would leave an object supported. Changing an action atom provides a way to *pose* that question. Evidence from executed actions and their outcomes is what would justify interpreting the answer as a prediction of an intervention. Chimera pairs provide supervision for logical combinations; they cannot supply that evidence about the world. The proposed planning interface would expose which rules support a choice and allow their predictions to be tested against what subsequently happens.
 
-## 7. How should a machine choose its concepts?
+### Searching for the concepts themselves {#ontology-search}
 
 Everything above presupposes a vocabulary. To see what is at stake in choosing one, consider a small world with two routes between the same states: $A\to B\to C$ and $A\to D\to C$. Suppose $B$ and $D$ look similar. One candidate description distinguishes them, while another merges them. The experiment can be constructed so that both descriptions predict one-step observations equally well. Yet merging the intermediates collapses the two routes. A system can then lose the distinction needed even to *ask* how those routes are related.
 
@@ -155,9 +369,13 @@ My proposed first test is a benchmark of **Hidden Higher-Structure Worlds**. The
 
 A later meta-world-model would learn from completed ontology trials to estimate which concept systems deserve further investigation. The distinction from the Logic VAE is simple: the VAE searches for *reasonings within a vocabulary*. Ontology search changes *the vocabulary in which those reasonings can exist*. This brings us back to the opening question. Two descriptions may agree about what happens next. What else can each one explain, and what experiment would reveal a difference?
 
+<!-- Additional witnessed-relation experiment figures belong in the subsection above, alongside their definitions. -->
+
 ## Further reading
 
 - [Improving VAE generation with hyperspherical coordinates](https://arxiv.org/abs/2507.15900) and [anomaly detection from hypervolume-compressed latent space](https://arxiv.org/abs/2601.18823)
 - [Phase structure and nested ordering in high-dimensional autoencoder latent spaces](https://arxiv.org/abs/2606.02600)
 - [Testing the Test: Score-Direction Instability in Class-Split Anomaly Detection](https://arxiv.org/abs/2606.02601)
 - [When Rule Violations Are Rare: Chimera Training for Logical Anomaly Detection](https://arxiv.org/abs/2605.26171)
+
+<script src="../assets/ai-explorer.js" defer></script>
