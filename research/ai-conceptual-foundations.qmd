@@ -5,6 +5,8 @@ description: "A conceptual introduction to latent geometry, chimera training, th
 toc: true
 toc-depth: 2
 page-layout: article
+resources:
+  - ../assets/ai/clevrer/*.jpg
 ---
 
 [← Artificial Intelligence](artificial-intelligence.qmd)
@@ -76,7 +78,7 @@ $$
 <figcaption><strong>Compound rule violated.</strong> The sphere–cylinder collision and the entry-then-collision event are present, but the first-half collision condition is false. One failed conjunct is enough to violate the rule. Ground truth: A<sub>sc</sub> = true, B<sub>sc</sub> = true, C<sub>sc</sub> = false.</figcaption>
 </figure>
 
-Even perfect knowledge of the two marginal probabilities would leave something unresolved. The violation probability is $P(A\wedge\neg B)$, which depends on how the events are related. Here an entry followed by a collision is itself evidence for a collision. Multiplying scalar probabilities under an independence assumption discards that relationship. A learned evaluator can carry perceptual evidence for both operands into the decision.
+Even perfect knowledge of the marginal probabilities would leave something unresolved. For the first implication of the cube–blue-object rule, the violation probability is $P(A\wedge\neg B)$, which depends on how the events are related. Here an entry followed by a collision is itself evidence for a collision. Multiplying scalar probabilities under an independence assumption discards that relationship. A learned evaluator can carry perceptual evidence for both operands into the decision.
 
 I specify the expression as a tree, or a graph when subexpressions are shared. A perceptual encoder supplies visual features and the leaf bank estimates the concepts. In the current trainer the same encoder feature vector is available at each leaf. For every internal node, a small network learns its particular subexpression from its children's features and the negations on the incoming edges. It returns a local truth estimate and a new feature vector. The vector travels upward. The estimate lets us inspect the clause in its own right.
 
