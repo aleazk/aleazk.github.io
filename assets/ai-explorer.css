@@ -82,3 +82,33 @@
 
 .ai-topic-links { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin: 1rem 0 2rem; }
 .ai-topic-links a { font-size: .82rem; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: .1rem; }
+
+/* Logic-VAE results: keep the saved tree frames stationary while stepping. */
+#logic-vae > section.level4 > h4 { font-size: 1.25rem; line-height: 1.3; color: var(--ink); margin: 2.2rem 0 1rem; }
+.ai-logic-viewer { margin: 2rem 0; }
+.ai-logic-controls { border: 1px solid var(--line); padding: 1rem 1.2rem; background: var(--accent-soft); border-radius: 4px; }
+.ai-logic-controls[hidden] { display: none; }
+.ai-logic-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem; margin-bottom: 1rem; }
+.ai-logic-toolbar label { font-size: .85rem; font-weight: 600; display: flex; align-items: center; gap: .6rem; margin-right: auto; }
+.ai-logic-toolbar select { max-width: 100%; font: inherit; padding: .5rem; background: white; color: var(--ink); border: 1px solid var(--line); border-radius: 3px; }
+.ai-logic-toolbar select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.ai-logic-step-label { display: flex; justify-content: space-between; gap: .6rem; font-size: .85rem; }
+.ai-logic-step-label output { font-variant-numeric: tabular-nums; }
+.ai-logic-controls input[type=range] { width: 100%; display: block; accent-color: var(--accent); margin: .8rem 0 .2rem; }
+.ai-logic-tree-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: center; font-size: .83rem; line-height: 1.5; color: var(--accent); margin-top: 1.5rem; min-height: 2.5em; }
+.ai-story .ai-logic-tree { margin-top: .65rem; }
+.ai-logic-tree img { aspect-ratio: 1155 / 1045; object-fit: contain; }
+.ai-logic-diagnostics { max-width: 650px; margin-inline: auto; }
+.ai-logic-diagnostics img { max-height: 440px; object-fit: contain; }
+.ai-dialog-viewport { overflow: auto; max-height: 70vh; }
+.ai-enlarged .ai-dialog-image { max-width: none; max-height: none; width: max(1200px, 100%); }
+.ai-dialog-toolbar { flex-wrap: wrap; }
+.ai-dialog-toolbar a { margin-right: auto; }
+@media (max-width: 600px) {
+  .ai-logic-toolbar label { width: 100%; }
+  .ai-logic-step-label { flex-wrap: wrap; }
+  .ai-logic-tree-labels { font-size: .74rem; gap: .7rem; }
+  .ai-logic-controls { padding: .8rem; }
+  .ai-dialog-toolbar { gap: .45rem; }
+  .ai-dialog-toolbar a { width: 100%; }
+}

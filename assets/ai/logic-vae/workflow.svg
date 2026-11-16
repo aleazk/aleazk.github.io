@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" role="img" aria-labelledby="title desc">
+<title id="title">Conditional Logic VAE</title><desc id="desc">A tree and node probabilities pass through an encoder, latent representation and decoder. The decoder generates a tree and predicts its internal probabilities. Leaf probabilities condition both encoder and decoder.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="none" stroke="#285a61" stroke-width="1.2"/></marker></defs>
+<rect width="960" height="270" fill="#fff"/>
+<g stroke="#285a61" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M190 108H230"/><path d="M370 108H418"/><path d="M542 108H590"/><path d="M730 108H768"/><path d="M480 205H300V166"/><path d="M480 205H660V166"/></g>
+<g stroke="#285a61" stroke-width="1.6" fill="#e8efed"><path d="M235 48H280L365 80V136L280 168H235Z"/><ellipse cx="480" cy="108" rx="58" ry="58"/><path d="M595 80 680 48H725V168H680L595 136Z"/></g>
+<g font-family="system-ui, sans-serif" text-anchor="middle" fill="#1c2528"><text x="100" y="92" font-size="20">Logical tree</text><text x="100" y="122" font-size="17">+ node probabilities</text><text x="294" y="115" font-size="18">Encoder</text><text x="480" y="104" font-size="20">Latent</text><text x="480" y="128" font-size="15">512 dimensions</text><text x="665" y="115" font-size="18">Decoder</text><text x="862" y="83" font-size="20">Generated tree</text><text x="862" y="113" font-size="17">+ predicted internal</text><text x="862" y="136" font-size="17">probabilities</text><text x="480" y="238" font-size="18" fill="#285a61">Leaf-probability condition</text></g>
+</svg>
