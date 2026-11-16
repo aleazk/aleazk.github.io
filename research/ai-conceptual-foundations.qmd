@@ -116,7 +116,7 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 <figure class="ai-gallery">
 <h4>Imagenette · conditional near-OOD detection</h4>
 <img src="../assets/ai/visuals/imagenette-seminar-static.webp" width="1792" height="1696" alt="Slide 15 Imagenette comparison: von Mises–Fisher and compressed VAE representations, coloured nominal classes and black anomaly points. Arrows link nominal tench and golf-ball examples and anomalous goldfish and tennis-ball examples to the compressed representation." loading="lazy">
-<figcaption>The complete conditional comparison from slide 15. Left: von Mises–Fisher VAE; right: hyperspherical compression. Colours distinguish nominal classes, while <strong>black points mark anomalies</strong> from semantically close ImageNet classes. The examples show nominal tench and golf balls alongside anomalous goldfish and tennis balls, with the slide's arrows linking them to the coarse-grained representation.</figcaption>
+<figcaption>Conditional comparison. Left: von Mises–Fisher VAE; right: hyperspherical compression. Colours distinguish nominal classes, while black points mark anomalies from semantically close ImageNet classes. The examples show nominal tench and golf balls alongside anomalous goldfish and tennis balls, with the slide's arrows linking them to the coarse-grained representation.</figcaption>
 </figure>
 ```
 
