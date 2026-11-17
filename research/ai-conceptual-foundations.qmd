@@ -104,7 +104,7 @@ Here $\langle\cdot\rangle_b$ and $s_b$ are the minibatch mean and standard devia
 
 These contributions are summed over angles for both the encoder's mean and standard-deviation vectors, with analogous penalties on their radii. Sampling uses Cartesian reparameterization. The loss therefore changes the learned geometry while retaining the latent coordinates used by the decoder.
 
-This is a KL-inspired moment penalty; it is not an exact closed-form hyperspherical KL divergence. Likewise, finite widths in the marginal histograms show retained coordinate variation, but do not by themselves establish the joint distribution's intrinsic dimension. The [method paper](https://arxiv.org/abs/2507.15900) gives the full objective and experimental settings.
+This KL-inspired moment regularizer is developed in the [method paper](https://arxiv.org/abs/2507.15900), which gives the full objective and experimental settings.
 
 </details>
 
