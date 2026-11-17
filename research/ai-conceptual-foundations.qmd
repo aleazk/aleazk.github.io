@@ -84,7 +84,20 @@ The powers of the sines make angular location consequential in high dimension. T
 
 ### How to read the coarse representations {#coarse-representations}
 
-**One point represents one observation.** An image, molecule, or logical tree with its leaf-probability condition is encoded as a high-dimensional latent vector. The coarse views summarize that vector with three numbers, allowing us to inspect the collective organization of its coordinates. The encoder, decoder, and latent-distance calculations continue to use the full representation.
+**Each point represents one observation.** To obtain its coarse view, group the coordinates of its high-dimensional latent mean into three fixed blocks and average within each block. These three averages supply the plotted $x,y,z$ coordinates, followed by display rescaling. Apply the same grouping separately to every observation. This lets us see collective patterns across the coordinates while the model and its distance calculations retain the full latent dimension.
+
+![From 128 latent coordinates to a three-coordinate view. Yellow brackets mark the groups to average; the “Zoom out” arrows lead to the resulting clouds. Compressed VAE on the left, standard VAE on the right; point colours identify digit classes.](../assets/ai/visuals/coarse-latent-zoom.webp){fig-alt="VAE panel from the phase paper, with yellow coordinate-grouping brackets and zoom-out arrows connecting the coordinate distributions to the coarse views."}
+
+<details class="ai-details">
+<summary>The Ising comparison, coordinates, and interpretation</summary>
+
+**Why call this coarse-graining?** In the 2D Ising model, zooming out replaces a block of up/down spins by its majority orientation. Small fluctuations disappear, while sufficiently coherent domains remain visible. Repeating the operation distinguishes ordered configurations, disordered ones, and the patterns extending across many scales near the critical point.
+
+![Block-spin coarse-graining in the 2D Ising model. The columns compare temperatures below, at, and above the critical temperature. The dashed yellow arrow illustrates replacing a block by one spin; the long arrows show zooming out. The labels above each configuration give its scale parameters.](../assets/ai/visuals/coarse-ising-zoom.webp){fig-alt="Ising panel from the phase paper: three temperature regimes before and after coarse-graining, with block-spin and zoom-out arrows."}
+
+The latent-space analogy treats the coordinates as continuous spins: **one whole latent vector corresponds to one whole spin configuration**. Block averages play the role of local magnetizations. A directional bias shared by many coordinates can survive averaging; positive and negative fluctuations can cancel. This motivates the [latent-phase diagnostics](#latent-phases).
+
+**The coordinate map.**
 
 For the coordinate-averaged views, take the encoder's latent mean $\mu=(\mu_1,\ldots,\mu_d)$ and group its coordinates into three fixed blocks of roughly equal size, $B_1,B_2,B_3$. Each displayed axis starts from a block average:
 
@@ -93,24 +106,15 @@ c_k(\mu)=\frac{1}{|B_k|}\sum_{j\in B_k}\mu_j,
 \qquad k=1,2,3.
 $$
 
-Thus an illustrative vector $(3,1\mid 2,0\mid -1,1)$ becomes $(2,1,0)$ before display rescaling. We average **within each observation's vector**; different observations remain separate points. The same grouping is used for every point. Colours then identify classes, nominal and anomalous populations, or a property such as a tree's root probability, as specified in each caption.
-
-**Why call this coarse-graining?** In a magnetic system, zooming out replaces many microscopic spins by a collective quantity for each block. In the Ising example from my seminar, a block's majority orientation replaces its individual up/down spins. Small fluctuations disappear, while sufficiently coherent domains remain visible. Repeating the operation reveals how organization changes with scale: ordered configurations become dominated by one orientation, disordered ones lack persistent large domains, and near the critical point correlated patterns extend across many scales.
-
-The latent-space analogy treats the coordinates as continuous spins: **one whole latent vector corresponds to one whole spin configuration**. Block averages play the role of local magnetizations. A directional bias shared by many coordinates can survive averaging; positive and negative fluctuations can cancel. Across observations, these collective quantities reveal organization that is difficult to inspect coordinate by coordinate. This is the motivation for the [latent-phase diagnostics](#latent-phases), and for using the same kind of view in the image, molecular, and Logic VAE experiments.
-
-Coarse-graining is a many-to-one summary. Different vectors can have identical block averages, and the result depends on the coordinate basis and grouping. It does not preserve all distances or class structure, or by itself establish a phase transition. A diffuse coarse cloud can therefore coexist with useful neighbourhoods in the full latent space. The coordinate distributions and task measurements below supply the complementary evidence.
-
-<details class="ai-details">
-<summary>Compare coarse views, coordinate distributions, and t-SNE</summary>
-
-![Compressed VAE on the left; standard VAE on the right. The upper panels show the distribution of each Cartesian latent-mean coordinate across observations. The lower panels summarize each observation by three coordinate averages. Colours in the lower panels distinguish classes. The compressed representation retains variation across its coordinates while showing collective directional organization.](../assets/ai/visuals/coarse-coordinate-comparison.jpg){fig-alt="Seminar comparison of Cartesian-coordinate distributions and coarse three-dimensional views for compressed and standard VAEs."}
-
-![The corresponding t-SNE views show class structure in both representations. t-SNE adapts a low-dimensional layout to neighbourhood relationships; block averaging asks which collective coordinate patterns survive the removal of detail. These are complementary questions.](../assets/ai/visuals/coarse-tsne-comparison.jpg){fig-alt="Class-coloured t-SNE plots with visible class structure for both the ordered and disordered latent representations."}
+Thus an illustrative vector $(3,1\mid 2,0\mid -1,1)$ becomes $(2,1,0)$ before display rescaling. We average **within each observation's vector**; different observations remain separate points. Colours identify classes, nominal and anomalous populations, or a property such as a tree's root probability, as specified in each caption.
 
 **Read the normalization as well as the shape.** After averaging, a plot may rescale all points by one common factor, or normalize each point separately. A common factor preserves the relative radii of the coarse vectors. Per-point normalization keeps only their directions and places every point on a sphere; that shell is then part of the display prescription.
 
 For example, the Logic VAE coarse views use $\sqrt{3}\,c/\|c\|$ without compression, and $\sqrt{3}\,c/\langle\|c\|\rangle$ with compression, where the latter denominator is the mean coarse-vector norm over the displayed observations. The apparent three-dimensional volumes are consequently not a measurement of high-dimensional compression. Reconstruction, interpolation, and anomaly scores are evaluated using the original latent vectors.
+
+**What survives the summary?** Different vectors can have identical block averages, and the result depends on the coordinate basis and grouping. Coarse-graining does not preserve all distances or class structure, or by itself establish a phase transition. A diffuse coarse cloud can coexist with useful neighbourhoods in the full latent space, so coordinate distributions and task measurements provide complementary evidence.
+
+![The corresponding t-SNE views show class structure in both representations. t-SNE adapts a low-dimensional layout to neighbourhood relationships; block averaging asks which collective coordinate patterns survive the removal of detail.](../assets/ai/visuals/coarse-tsne-comparison.jpg){fig-alt="Class-coloured t-SNE plots with visible class structure for both the ordered and disordered latent representations."}
 
 </details>
 

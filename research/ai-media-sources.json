@@ -544,15 +544,6 @@
     "caption": "Imagenette conditional near-OOD: vMF/compressed coarse-grained plots; coloured nominal classes and black anomalies; tench/goldfish and golf-ball/tennis-ball examples with arrows."
   },
   {
-    "file": "coarse-coordinate-comparison.jpg",
-    "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 21, image56.jpg",
-    "transformation": "Original embedded JPEG copied without changing its plots or annotations.",
-    "caption": "Cartesian coordinate distributions and coarse views of the compressed and standard VAE.",
-    "width": 1756,
-    "height": 2108,
-    "bytes": 454535
-  },
-  {
     "file": "coarse-tsne-comparison.jpg",
     "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 21, image63.jpg",
     "transformation": "Original embedded JPEG copied without changing its plots or annotations.",
@@ -560,5 +551,35 @@
     "width": 2438,
     "height": 1164,
     "bytes": 425739
+  },
+  {
+    "file": "coarse-latent-zoom.webp",
+    "source": "Alejandro___Thesis__Anomaly_Detection_using_Self_Supervised_Learning(1).zip: figures/renorm_diags.jpg; chapters/spin_glass.tex, figure renorm_diags",
+    "crop_pixels": [
+      3007,
+      0,
+      5602,
+      3249
+    ],
+    "transformation": "Panel crop only, encoded as high-quality WebP at original pixel dimensions. Original arrows, coordinate brackets, labels and plotted values retained.",
+    "caption": "Right-hand VAE panel: coordinate-grouping brackets and zoom-out arrows to coarse latent views.",
+    "width": 2595,
+    "height": 3249,
+    "bytes": 790062
+  },
+  {
+    "file": "coarse-ising-zoom.webp",
+    "source": "Alejandro___Thesis__Anomaly_Detection_using_Self_Supervised_Learning(1).zip: figures/renorm_diags.jpg; chapters/spin_glass.tex, figure renorm_diags",
+    "crop_pixels": [
+      0,
+      0,
+      3007,
+      3249
+    ],
+    "transformation": "Panel crop only, encoded as high-quality WebP at original pixel dimensions. Original arrows, coordinate brackets, labels and plotted values retained.",
+    "caption": "Left-hand 2D Ising panel: block-spin coarse-graining below, at, and above the critical temperature.",
+    "width": 3007,
+    "height": 3249,
+    "bytes": 1255200
   }
 ]
