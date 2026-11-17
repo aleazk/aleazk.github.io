@@ -33,11 +33,13 @@ A model can reconstruct an image faithfully and still miss what makes it unusual
 
 The main body of my PhD studies high-dimensional VAE representations: how to organize them, how to sample from them, and how to use their distances to detect anomalies. Logical anomaly detection extends that work by making the expectation itself explicit. The Logic VAE brings the two lines together, using a generative latent space for rules and their truth profiles.
 
+The three-dimensional clouds throughout this page summarize many latent coordinates. [How to read the coarse representations](#coarse-representations) explains what their points and axes mean.
+
 ## 1. Latent geometry, generation, and anomaly detection {#latent-geometry}
 
 ```{=html}
 <nav class="ai-topic-links" aria-label="Topics in latent geometry">
-<a href="#reconstruction">Reconstruction</a><a href="#compression">Compression</a><a href="#image-anomalies">Image AD</a><a href="#generation">Generation</a><a href="#latent-phases">Latent phases</a><a href="#benchmark-geometry">Benchmarks</a><a href="#molecular-anomalies">Molecules</a>
+<a href="#reconstruction">Reconstruction</a><a href="#compression">Compression</a><a href="#coarse-representations">Reading the plots</a><a href="#image-anomalies">Image AD</a><a href="#generation">Generation</a><a href="#latent-phases">Latent phases</a><a href="#benchmark-geometry">Benchmarks</a><a href="#molecular-anomalies">Molecules</a>
 </nav>
 ```
 
@@ -80,6 +82,38 @@ The powers of the sines make angular location consequential in high dimension. T
 
 </details>
 
+### How to read the coarse representations {#coarse-representations}
+
+**One point represents one observation.** An image, molecule, or logical tree with its leaf-probability condition is encoded as a high-dimensional latent vector. The coarse views summarize that vector with three numbers, allowing us to inspect the collective organization of its coordinates. The encoder, decoder, and latent-distance calculations continue to use the full representation.
+
+For the coordinate-averaged views, take the encoder's latent mean $\mu=(\mu_1,\ldots,\mu_d)$ and group its coordinates into three fixed blocks of roughly equal size, $B_1,B_2,B_3$. Each displayed axis starts from a block average:
+
+$$
+c_k(\mu)=\frac{1}{|B_k|}\sum_{j\in B_k}\mu_j,
+\qquad k=1,2,3.
+$$
+
+Thus an illustrative vector $(3,1\mid 2,0\mid -1,1)$ becomes $(2,1,0)$ before display rescaling. We average **within each observation's vector**; different observations remain separate points. The same grouping is used for every point. Colours then identify classes, nominal and anomalous populations, or a property such as a tree's root probability, as specified in each caption.
+
+**Why call this coarse-graining?** In a magnetic system, zooming out replaces many microscopic spins by a collective quantity for each block. In the Ising example from my seminar, a block's majority orientation replaces its individual up/down spins. Small fluctuations disappear, while sufficiently coherent domains remain visible. Repeating the operation reveals how organization changes with scale: ordered configurations become dominated by one orientation, disordered ones lack persistent large domains, and near the critical point correlated patterns extend across many scales.
+
+The latent-space analogy treats the coordinates as continuous spins: **one whole latent vector corresponds to one whole spin configuration**. Block averages play the role of local magnetizations. A directional bias shared by many coordinates can survive averaging; positive and negative fluctuations can cancel. Across observations, these collective quantities reveal organization that is difficult to inspect coordinate by coordinate. This is the motivation for the [latent-phase diagnostics](#latent-phases), and for using the same kind of view in the image, molecular, and Logic VAE experiments.
+
+Coarse-graining is a many-to-one summary. Different vectors can have identical block averages, and the result depends on the coordinate basis and grouping. It does not preserve all distances or class structure, or by itself establish a phase transition. A diffuse coarse cloud can therefore coexist with useful neighbourhoods in the full latent space. The coordinate distributions and task measurements below supply the complementary evidence.
+
+<details class="ai-details">
+<summary>Compare coarse views, coordinate distributions, and t-SNE</summary>
+
+![Compressed VAE on the left; standard VAE on the right. The upper panels show the distribution of each Cartesian latent-mean coordinate across observations. The lower panels summarize each observation by three coordinate averages. Colours in the lower panels distinguish classes. The compressed representation retains variation across its coordinates while showing collective directional organization.](../assets/ai/visuals/coarse-coordinate-comparison.jpg){fig-alt="Seminar comparison of Cartesian-coordinate distributions and coarse three-dimensional views for compressed and standard VAEs."}
+
+![The corresponding t-SNE views show class structure in both representations. t-SNE adapts a low-dimensional layout to neighbourhood relationships; block averaging asks which collective coordinate patterns survive the removal of detail. These are complementary questions.](../assets/ai/visuals/coarse-tsne-comparison.jpg){fig-alt="Class-coloured t-SNE plots with visible class structure for both the ordered and disordered latent representations."}
+
+**Read the normalization as well as the shape.** After averaging, a plot may rescale all points by one common factor, or normalize each point separately. A common factor preserves the relative radii of the coarse vectors. Per-point normalization keeps only their directions and places every point on a sphere; that shell is then part of the display prescription.
+
+For example, the Logic VAE coarse views use $\sqrt{3}\,c/\|c\|$ without compression, and $\sqrt{3}\,c/\langle\|c\|\rangle$ with compression, where the latter denominator is the mean coarse-vector norm over the displayed observations. The apparent three-dimensional volumes are consequently not a measurement of high-dimensional compression. Reconstruction, interpolation, and anomaly scores are evaluated using the original latent vectors.
+
+</details>
+
 ### Detecting anomalies in images {#image-anomalies}
 
 **Training on nominal images alone.** Galaxy Zoo and Mars Rover Mastcam provide two applications without normal-subclass labels in representation training. After training, the nominal latent means form a reference set. A test image is scored by its distance to nearby reference examples. Compression changes that reference geometry; the scoring principle remains the same.
@@ -110,7 +144,7 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 <figure><h4>Hyperspherical compression</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-compressed-poster.webp" aria-label="Training evolution of nominal Imagenette representations for the compressed VAE"><source src="../assets/ai/visuals/latent-compressed.mp4" type="video/mp4"></video></figure>
 </div>
 <div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both training animations</button><button type="button" class="ai-button" data-reset-pair>Restart animations</button></div>
-<p class="ai-caption">Evolution of the latent representations during training. Both show coordinate-averaged views of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
+<p class="ai-caption">Evolution of the latent representations during training. Both show <a href="#coarse-representations">coordinate-averaged views</a> of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
 </div>
 ```
 
@@ -171,7 +205,7 @@ Compression is not a prescription to make every observation identical. Too littl
 
 ![Three Galaxy Zoo regimes from the phase study. Columns show overcompression, an intermediate regime, and undercompression. Each column combines detection curves, a coarse-grained latent view, and score distributions. The compactness of the visible cloud alone does not determine detection quality.](../assets/ai/visuals/phase-regimes.jpg){fig-alt="Galaxy Zoo detection and latent geometry compared across overcompressed, intermediate and undercompressed regimes."}
 
-The spin-glass work develops a way to study this organization through **observables of the latent representations**. Fix a decoder and an observation: reconstruction and regularization define an energy over candidate latent configurations. Directions assigned to different observations can be compared through their overlaps, while coordinate coarse-graining tests which structures remain visible as detail is removed.
+The spin-glass work develops a way to study this organization through **observables of the latent representations**. Fix a decoder and an observation: reconstruction and regularization define an energy over candidate latent configurations. Directions assigned to different observations can be compared through their overlaps, while [coordinate coarse-graining](#coarse-representations) tests which structures remain visible as detail is removed.
 
 Angular histograms provide another view. Instead of showing two projected axes, they display the distribution of every hyperspherical coordinate. The heatmaps below illustrate how the regularizer's preferred direction changes the hierarchy of angular organization.
 
@@ -231,7 +265,7 @@ The following three views show the **same nominal ZINC island in red**. The grey
 <figure><h4>View c</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-c-low.webp" aria-label="View c: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-c.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-c.mp4">Download view c.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-c-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-c-high.webp">high docking</a>.</figcaption></figure>
 </div>
 <div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play all three comparisons</button><button type="button" class="ai-button" data-reset-pair>Return to low docking</button></div>
-<p class="ai-caption">Three perspectives of the compressed molecular representation. Each alternates the observed low- and high-docking populations every 1.5 seconds, keeping its axes, viewpoint, and nominal reference in place. Red: nominal ZINC. Grey: docking-selected molecules. These coarse-grained views illustrate the geometry; anomaly scores use distances in the full 256-dimensional latent space.</p>
+<p class="ai-caption">Three perspectives of the compressed molecular representation. Each alternates the observed low- and high-docking populations every 1.5 seconds, keeping its axes, viewpoint, and nominal reference in place. Red: nominal ZINC. Grey: docking-selected molecules. These <a href="#coarse-representations">coarse-grained views</a> illustrate the geometry; anomaly scores use distances in the full 256-dimensional latent space.</p>
 </div>
 ```
 
@@ -434,7 +468,7 @@ These selected examples illustrate the behaviour of each model; they are not a r
 <summary>Follow the path through the latent space</summary>
 <div class="ai-pair">
 <figure><h4>t-SNE view</h4><img data-logic-asset="path-tsne" src="../assets/ai/logic-vae/full-path-tsne.webp" alt="t-SNE view of the compressed latent means with the interpolation path marked in black." loading="lazy"><figcaption>Background colours indicate reference root probabilities. Black dots mark the interpolation path.</figcaption></figure>
-<figure><h4>Coarse coordinate view</h4><img data-logic-asset="path-coarse" src="../assets/ai/logic-vae/full-path-coarse.webp" alt="Coarse three-dimensional view of the compressed latent means with the interpolation path marked in black." loading="lazy"><figcaption>Coordinate averages give a second view of the same path through the high-dimensional representation.</figcaption></figure>
+<figure><h4>Coarse coordinate view</h4><img data-logic-asset="path-coarse" src="../assets/ai/logic-vae/full-path-coarse.webp" alt="Coarse three-dimensional view of the compressed latent means with the interpolation path marked in black." loading="lazy"><figcaption><a href="#coarse-representations">Coordinate averages</a> give a second view of the same path through the high-dimensional representation.</figcaption></figure>
 </div>
 </details>
 <noscript><p>The first compressed-model frame is shown above. Enable JavaScript to animate the trees and error curve together or switch between models.</p><style>.ai-logic-error { display: none; }</style><img src="../assets/ai/logic-vae/full-error-curve.webp" alt="Complete probability-error curve for the compressed interpolation."></noscript>
@@ -443,7 +477,7 @@ These selected examples illustrate the behaviour of each model; they are not a r
 
 #### Geometry, interpolation, and the reconstruction trade-off {#logic-vae-results}
 
-The geometric question carries over from images and molecules: can we organize the latent representation so that moving through it remains useful? These animations show the evolution during training. Colours indicate reference root probabilities. The high-dimensional space is shown through coarse coordinate averages.
+The geometric question carries over from images and molecules: can we organize the latent representation so that moving through it remains useful? These animations show the evolution during training. Colours indicate reference root probabilities. The high-dimensional space is shown through [coarse coordinate averages](#coarse-representations).
 
 ```{=html}
 <div class="ai-motion" data-paired-video>

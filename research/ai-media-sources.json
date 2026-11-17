@@ -542,5 +542,23 @@
     "height": 1696,
     "bytes": 375436,
     "caption": "Imagenette conditional near-OOD: vMF/compressed coarse-grained plots; coloured nominal classes and black anomalies; tench/goldfish and golf-ball/tennis-ball examples with arrows."
+  },
+  {
+    "file": "coarse-coordinate-comparison.jpg",
+    "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 21, image56.jpg",
+    "transformation": "Original embedded JPEG copied without changing its plots or annotations.",
+    "caption": "Cartesian coordinate distributions and coarse views of the compressed and standard VAE.",
+    "width": 1756,
+    "height": 2108,
+    "bytes": 454535
+  },
+  {
+    "file": "coarse-tsne-comparison.jpg",
+    "source": "final_seminar_thesis_presentation_draft_short(1).pptx, slide 21, image63.jpg",
+    "transformation": "Original embedded JPEG copied without changing its plots or annotations.",
+    "caption": "Class structure remains visible in t-SNE for both ordered and disordered latent representations.",
+    "width": 2438,
+    "height": 1164,
+    "bytes": 425739
   }
 ]
