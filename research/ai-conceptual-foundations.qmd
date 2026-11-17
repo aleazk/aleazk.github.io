@@ -169,7 +169,7 @@ For CIFAR-10 and CelebA, the thesis examines the trade-off across latent sizes a
 
 Compression is not a prescription to make every observation identical. Too little organization leaves a diffuse representation; too much can erase distinctions needed by the decoder or detector. In the experiments, useful behaviour appears in an intermediate, partially ordered regime.
 
-![Three Galaxy Zoo regimes from the phase study. Columns show overcompression, an intermediate regime, and undercompression. Each column combines detection curves, a coarse-grained latent view, and score distributions. The compactness of the visible cloud alone does not determine detection quality.](../assets/ai/visuals/phase-regimes.webp){fig-alt="Galaxy Zoo detection and latent geometry compared across overcompressed, intermediate and undercompressed regimes."}
+![Three Galaxy Zoo regimes from the phase study. Columns show overcompression, an intermediate regime, and undercompression. Each column combines detection curves, a coarse-grained latent view, and score distributions. The compactness of the visible cloud alone does not determine detection quality.](../assets/ai/visuals/phase-regimes.jpg){fig-alt="Galaxy Zoo detection and latent geometry compared across overcompressed, intermediate and undercompressed regimes."}
 
 The spin-glass work develops a way to study this organization through **observables of the latent representations**. Fix a decoder and an observation: reconstruction and regularization define an energy over candidate latent configurations. Directions assigned to different observations can be compared through their overlaps, while coordinate coarse-graining tests which structures remain visible as detail is removed.
 
@@ -482,7 +482,7 @@ Each model was evaluated on 100 interpolation paths with 20 steps per path. Reco
 | Without compression · epoch 200 | 0.245 | 0.075 |
 | With compression · epoch 520 | 0.099 | 0.024 |
 
-![Distribution of peak normalized probability errors across 100 interpolation paths per model.](../assets/ai/logic-vae/error-distribution.webp){fig-alt="Histogram comparison showing lower and more concentrated interpolation peak errors with compression than without compression."}
+![Distribution of peak normalized probability errors across 100 interpolation paths per model, shown as kernel density estimates.](../assets/ai/logic-vae/error-distribution.webp?v=density-20261117){fig-alt="Filled density curves showing lower and more concentrated interpolation peak errors with compression than without compression."}
 
 **The compressed representation gives more coherent interpolation behaviour, while reconstruction quality deteriorates to some extent.** The numerical comparison supports better agreement between predicted and reference truth profiles along the decoded paths. Together with the displayed transitions, it motivates the next objective: preserve the interpolation gain while improving reconstruction.
 

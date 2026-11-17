@@ -36,13 +36,14 @@
     "bytes": 105186
   },
   {
-    "file": "phase-regimes.webp",
-    "source": "ai-review/thesis/figures/ad_edge_stabc.jpg",
+    "file": "phase-regimes.jpg",
+    "source": "AD_edge_stab_.jpg (author-supplied revised figure, 2026-11-17)",
     "caption": "Galaxy Zoo: ROC curves, latent visualizations and kNN-score histograms across three compression regimes.",
     "caveat": "Left to right: overcompression, intermediate edge-of-stability, undercompression, as identified by companion figure ad_edge_stabb.jpg.",
-    "width": 1900,
-    "height": 1333,
-    "bytes": 271718
+    "width": 2048,
+    "height": 1423,
+    "bytes": 409121,
+    "sha256": "9626b3574c8f27c4b08004c2ea06fb5a23eab8973bbd4bae82675c0165abe06a"
   },
   {
     "file": "benchmark-auroc.webp",

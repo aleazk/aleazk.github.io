@@ -32,9 +32,10 @@
     "*-error-curve.webp": "Saved error plot upper panel; erroneous MSE title replaced by Normalized probability error. Data and axes retained.",
     "*-training.mp4": "Saved Fig-3 at every 10 epochs: zero 10..540, full 10..520. Fixed crop (205,0,1920,1500), resized to 960x840 with epoch label. 4 fps, final frame held 2 seconds. No synthetic intermediate data.",
     "*-training-poster.webp": "Corresponding selected-epoch training frame.",
-    "error-distribution.webp": "Replotted directly from the two saved 100-element peak_err arrays; common bins of width 0.025 and dashed mean lines.",
+    "error-distribution.webp": "Gaussian kernel density estimates of the original 100-element peak_err arrays for each model, using Scott bandwidth and reflection at zero. Solid outlines and translucent fills. Reproduce with tools/plot_logic_error_density.py.",
     "workflow.svg": "Conditional labelled-tree encoder/decoder with leaf-probability conditioning and a separate predictor from the latent representation. Internal-node probabilities are supervision only.",
-    "interactive-error-reveal": "Original error-curve images reused without numerical extraction. SVG masks the plot to the right of each of 20 interpolation steps; original axes and legend retained. Pixel positions k=0:112, k=19:995."
+    "interactive-error-reveal": "Original error-curve images reused without numerical extraction. SVG masks the plot to the right of each of 20 interpolation steps; original axes and legend retained. Pixel positions k=0:112, k=19:995.",
+    "peak-errors.json": "Exact numerical values converted from peak_err.npz in each source archive; no resampling or synthetic observations."
   },
   "metric": "max over 20 path steps of ||p_pred - p_ind||_2 / ||max(p_ind, 1-p_ind)||_2 across internal nodes including root",
   "limitations": [
@@ -45,7 +46,7 @@
   "files": [
     {
       "path": "error-distribution.webp",
-      "sha256": "9a022079a5bbcf3019a90f4078dc5abedc3a48962368caf60701b5ce35041465"
+      "sha256": "5a5048d8d3935f50a422bfa5cd4cf2e9481a3ed03798b1aaf055a3b38e9550bf"
     },
     {
       "path": "full-angles.webp",
@@ -294,6 +295,10 @@
     {
       "path": "zero-training.mp4",
       "sha256": "6abc00dd688fdaa57aa7a2799853bb754cc41507c9e614f2535e428b067eedb7"
+    },
+    {
+      "path": "peak-errors.json",
+      "sha256": "7b2f1d66da382f32c8789598dfadf8f317812138429e57e215fbef57dc7ce8ac"
     }
   ]
 }
