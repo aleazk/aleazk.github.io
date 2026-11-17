@@ -61,16 +61,20 @@ This motivates a second question: **where does an observation lie relative to th
 
 ### Changing the geometry without reducing the dimension {#compression}
 
-Our intuition from a two- or three-dimensional Gaussian is misleading in high dimension. Typical samples from $\mathcal N(0,I_n)$ have radii close to $\sqrt n$. There is also an angular effect: relative to any fixed axis, most directions lie near its perpendicular equator. A finite dataset can be sparse on this large shell even though the radii and angles concentrate sharply.
+High-dimensional geometry creates a difficulty for a Gaussian latent prior. Typical samples from $\mathcal N(0,I_n)$ have radii close to $\sqrt n$, and almost every direction lies near the equator perpendicular to any fixed axis. Yet this narrow belt contains an enormous range of distinct directions: a finite training set can remain very sparse within it. Concentration near an equator does not mean concentration into a small, densely populated neighbourhood.
 
 ![In high dimension, a narrow belt around any fixed equator contains most of the uniform measure on the sphere. The chosen north-pole direction is arbitrary. Schematic from my thesis.](../assets/ai/equatorial-belt.webp){fig-alt="A sphere with a shaded equatorial belt illustrating concentration of measure." width=80%}
 
-My **hyperspherical-coordinate VAE** makes the radius and angular coordinates explicit. The regularizer controls their batch statistics, allowing the encoder to move nominal observations away from the high-volume equatorial regimes and reduce the region they occupy. This changes the arrangement of the representations while retaining the latent dimension. It also allows control over the angular hierarchy, beyond the single directional concentration of the von Mises–Fisher comparison.
+My **hyperspherical-coordinate VAE** addresses this geometry directly. Its loss sets preferred means and spreads for the angular coordinates, alongside the radius. Moving the angular distributions away from their equatorial values reduces the volume occupied by the representation while keeping the same number of latent coordinates. Acting across the angular hierarchy gives more control than concentrating around a single direction.
 
-Reconstruction opposes complete collapse: the decoder still needs enough variation to distinguish observations. The useful question is how to make the occupied region compact **while preserving the internal structure needed for a task**.
+**Volume compression can preserve variation across coordinates.** The histograms below show the angular distributions shifting while retaining finite widths. The reconstruction term helps preserve the distinctions the decoder needs; the aim is a compact region with useful internal structure.
+
+![Angular distributions for three directional prescriptions: equatorial, towards (1,…,1), and towards the north pole, from left to right. Each row shows one angular cosine across observations; red indicates higher density. White dots mark its mean and black dots its standard deviation. The distributions shift without all becoming fixed values.](../assets/ai/visuals/phase-angular.webp){#fig-compression-angles fig-alt="Coordinate-wise angular histograms for three directional prescriptions, showing shifted distributions with nonzero spreads across the latent coordinates."}
 
 <details class="ai-details">
-<summary>The geometric idea in coordinates</summary>
+<summary>Why the equator matters, and how the loss addresses it</summary>
+
+**The geometric mechanism.** Hyperspherical angles describe direction through a sequence of nested subspheres. For each polar angle, the equatorial value is $\varphi_k=\pi/2$, or $\cos\varphi_k=0$. Under uniform spherical measure, angles associated with higher-dimensional subspheres concentrate especially strongly near these values.
 
 For $z\in\mathbb R^n$, write its hyperspherical coordinates as $(r,\varphi_1,\ldots,\varphi_{n-1})$. The Euclidean volume element contains
 
@@ -78,7 +82,29 @@ $$
 \mathrm dV=r^{n-1}\prod_{j=1}^{n-2}(\sin\varphi_j)^{n-j-1}\,\mathrm dr\,\mathrm d\varphi_1\cdots\mathrm d\varphi_{n-1}.
 $$
 
-The powers of the sines make angular location consequential in high dimension. The method regularizes the means and spreads of the angular coordinates, expressed through their cosines, alongside the radial statistics. The reconstruction term balances this drive toward concentration. The [method paper](https://arxiv.org/abs/2507.15900) gives the full training objective.
+The sine factors are largest at the equators. Moving a fixed-width angular region away from them makes these factors smaller; their large powers amplify the change in high dimension. This is why the method acts on angular location as well as spread, even when the radius is held fixed.
+
+**A schematic loss.** Training balances reconstruction against angular and radial regularization:
+
+$$
+\mathcal L=\mathcal L_{\mathrm{rec}}
++\lambda\bigl(\mathcal R_{\mathrm{angular}}+\mathcal R_{\mathrm{radial}}\bigr).
+$$
+
+For an angular cosine $u_k=\cos\varphi_k$, a coordinate contributes
+
+$$
+\begin{aligned}
+\mathcal R_k={}&\alpha_k\bigl(\langle u_k\rangle_b-a_k\bigr)^2\\
+&+\gamma_k\bigl(s_b(u_k)-b_k\bigr)^2.
+\end{aligned}
+$$
+
+Here $\langle\cdot\rangle_b$ and $s_b$ are the minibatch mean and standard deviation. The targets $a_k$ choose angular location, the targets $b_k$ choose spread, and the weights control each constraint. Choosing polar-cosine means away from zero drives the representation away from the equatorial regime. Nonzero spread targets and reconstruction allow observations to remain distinguishable.
+
+These contributions are summed over angles for both the encoder's mean and standard-deviation vectors, with analogous penalties on their radii. Sampling uses Cartesian reparameterization. The loss therefore changes the learned geometry while retaining the latent coordinates used by the decoder.
+
+This is a KL-inspired moment penalty; it is not an exact closed-form hyperspherical KL divergence. Likewise, finite widths in the marginal histograms show retained coordinate variation, but do not by themselves establish the joint distribution's intrinsic dimension. The [method paper](https://arxiv.org/abs/2507.15900) gives the full objective and experimental settings.
 
 </details>
 
@@ -211,9 +237,7 @@ Compression is not a prescription to make every observation identical. Too littl
 
 The spin-glass work develops a way to study this organization through **observables of the latent representations**. Fix a decoder and an observation: reconstruction and regularization define an energy over candidate latent configurations. Directions assigned to different observations can be compared through their overlaps, while [coordinate coarse-graining](#coarse-representations) tests which structures remain visible as detail is removed.
 
-Angular histograms provide another view. Instead of showing two projected axes, they display the distribution of every hyperspherical coordinate. The heatmaps below illustrate how the regularizer's preferred direction changes the hierarchy of angular organization.
-
-![Angular organization across the latent coordinates. These panels compare three preferred field directions, from an equatorial configuration through the direction (1,…,1) to the north pole. They are different directional prescriptions, rather than three stages of training. Colour shows histogram density; lines summarize each coordinate's distribution.](../assets/ai/visuals/phase-angular.webp){fig-alt="Three heatmaps showing distributions of hyperspherical angular coordinates under different preferred field directions."}
+The [angular histograms above](#fig-compression-angles) complement these coarse views: they show how each coordinate's distribution responds to the preferred direction, revealing the hierarchy of angular organization.
 
 The phase diagnostics ask more than whether a cloud looks clustered. Both standard and compressed models can contain class information, but differ in the stability of that organization under coarse-graining and in its usefulness for generation or distance-based detection. The interpretation concerns finite trained systems, with the diagnostics checked against their task performance.
 
