@@ -4,6 +4,14 @@
   // The full source figures and native video controls also work without JavaScript.
   document.querySelectorAll('[data-paired-video]').forEach((group) => {
     const videos = Array.from(group.querySelectorAll('video'));
+    const playbackRate = Number(group.dataset.playbackRate || 1);
+    if (Number.isFinite(playbackRate) && playbackRate > 0) {
+      videos.forEach((video) => {
+        video.defaultPlaybackRate = playbackRate;
+        video.playbackRate = playbackRate;
+        video.addEventListener('loadedmetadata', () => { video.playbackRate = playbackRate; });
+      });
+    }
     const controls = group.querySelector('.ai-media-controls');
     const play = group.querySelector('[data-play-pair]');
     const reset = group.querySelector('[data-reset-pair]');
@@ -47,7 +55,7 @@
         output.textContent = `${step + 1} of 10`;
         frames.forEach((img) => {
           img.src = img.src.replace(/-\d{2}\.webp$/, `-${String(step).padStart(2, '0')}.webp`);
-          img.alt = `${img.dataset.frame === 'standard' ? 'Standard' : 'Compressed'} VAE: zero to one, seven to two, and three to four at saved step ${step + 1} of 10.`;
+          img.alt = `${img.dataset.frame === 'standard' ? 'Standard' : 'Compressed'} VAE: zero to one, seven to two, and three to four at step ${step + 1} of 10.`;
         });
       };
       slider.addEventListener('input', update);
@@ -64,6 +72,25 @@
     const reference = viewer.querySelector('[data-logic-reference]');
     const frameCaption = viewer.querySelector('[data-logic-frame-caption]');
     const run = viewer.querySelector('[data-logic-run]');
+    const errorImages = viewer.querySelectorAll('[data-logic-error-image]');
+    const errorMask = viewer.querySelector('[data-logic-error-mask]');
+    const errorCursor = viewer.querySelector('[data-logic-error-cursor]');
+    const errorStep = viewer.querySelector('[data-logic-error-step]');
+    const errorDescription = viewer.querySelector('#logic-error-description');
+    // Reveal the existing raster curve; no probabilities are reconstructed from pixels.
+    // Both plots have the same pixel coordinates for k=0 and k=19.
+    const updateError = (mode, step) => {
+      if (!errorMask || !errorCursor || !errorStep || !errorDescription) return;
+      const x = 112 + (995 - 112) * step / 19;
+      const maskX = step === 19 ? 1038 : x + 1;
+      errorImages.forEach((img) => img.setAttribute('href', `${root}${mode}-error-curve.webp`));
+      errorMask.setAttribute('x', maskX);
+      errorMask.setAttribute('width', 1038 - maskX);
+      errorCursor.setAttribute('x1', x);
+      errorCursor.setAttribute('x2', x);
+      errorStep.textContent = step;
+      errorDescription.textContent = `${mode === 'full' ? 'Compressed' : 'Uncompressed'} model: node-probability error through step ${step + 1} of 20.`;
+    };
     if (!model || !slider || !frame || !play || !reset) return;
     const root = viewer.dataset.assetRoot;
     const labels = {full: 'With compression', zero: 'Without compression'};
@@ -78,8 +105,7 @@
       play.textContent = 'Play interpolation';
       play.setAttribute('aria-pressed', 'false');
     };
-    const getFrame = (mode, step) => {
-      const url = `${root}${mode}-step-${String(step).padStart(2, '0')}.webp`;
+    const getImage = (url) => {
       if (!cache.has(url)) {
         const img = new Image();
         const ready = new Promise((resolve, reject) => {
@@ -91,17 +117,32 @@
       }
       return cache.get(url);
     };
+    const getFrame = (mode, step) => getImage(`${root}${mode}-step-${String(step).padStart(2, '0')}.webp`);
     const show = async () => {
       const version = ++revision;
       const mode = model.value;
       const step = Number(slider.value);
       try {
-        const url = await getFrame(mode, step);
+        const [url] = await Promise.all([
+          getFrame(mode, step),
+          getImage(`${root}${mode}-error-curve.webp`)
+        ]);
         if (version !== revision) return;
         frame.src = url;
+        updateError(mode, step);
+        viewer.querySelectorAll('[data-logic-asset]').forEach((img) => {
+          const src = `${root}${mode}-${img.dataset.logicAsset}.webp`;
+          if (img.getAttribute('src') !== src) img.src = src;
+          const descriptions = {
+            'path-tsne': 't-SNE view of latent means, coloured by reference root probability, with the interpolation path in black',
+            'path-coarse': 'Coarse coordinate view of latent means with the interpolation path in black'
+          };
+          img.alt = `${labels[mode]}: ${descriptions[img.dataset.logicAsset]}.`;
+        });
+
         const endpoint = step === 0 || step === 19;
         reference.textContent = endpoint ? 'Original endpoint tree · reference profile' : 'Decoded tree · formula-derived profile';
-        frameCaption.textContent = endpoint ? 'At this endpoint, the left tree is the original example.' : 'At this intermediate step, the same decoded structure is evaluated in two ways.';
+        frameCaption.textContent = endpoint ? 'The original endpoint tree and reference profile are on the left; reconstruction and predictions are on the right.' : 'The decoded tree has analytical node probabilities on the left and predictor estimates on the right.';
         frame.alt = `${labels[mode]}, interpolation step ${step + 1} of 20: ${endpoint ? 'original endpoint tree' : 'decoded tree with formula-derived probabilities'} at left; decoded tree with predicted probabilities at right.`;
         output.textContent = `${step + 1} of 20 · t = ${(step / 19).toFixed(2)}`;
         slider.setAttribute('aria-valuetext', `Step ${step + 1} of 20`);
@@ -133,19 +174,11 @@
     reset.addEventListener('click', () => { pause(); slider.value = 0; show(); });
     model.addEventListener('change', () => {
       pause();
-      viewer.querySelectorAll('[data-logic-asset]').forEach((img) => {
-        img.src = `${root}${model.value}-${img.dataset.logicAsset}.webp`;
-        const descriptions = {
-          'path-tsne': 't-SNE view of latent means, coloured by reference root probability, with the interpolation path in black',
-          'path-coarse': 'Coarse coordinate view of latent means with the interpolation path in black',
-          'error-curve': 'Normalized probability error along the 20-step representative interpolation'
-        };
-        img.alt = `${labels[model.value]}: ${descriptions[img.dataset.logicAsset]}.`;
-      });
       show();
     });
     document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
     document.addEventListener('ai:figure-open', pause);
+    updateError(model.value, Number(slider.value));
     viewer.querySelector('.ai-logic-controls').hidden = false;
     pause();
   });

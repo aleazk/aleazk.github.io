@@ -112,3 +112,9 @@
   .ai-dialog-toolbar { gap: .45rem; }
   .ai-dialog-toolbar a { width: 100%; }
 }
+
+/* Keep the tree and its probability-error trace close enough to follow together. */
+.ai-story .ai-logic-tree img { width: auto; max-height: 430px; }
+.ai-logic-tree-labels { max-width: 475px; margin-inline: auto; }
+.ai-story .ai-logic-error { max-width: 700px; margin: .8rem auto 1.2rem; }
+.ai-logic-error-plot { display: block; width: 100%; height: auto; background: white; border: 1px solid var(--line); }

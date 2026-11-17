@@ -7,7 +7,7 @@ toc-depth: 3
 toc-expand: true
 page-layout: article
 body-classes: ai-story
-css: ../assets/ai-explorer.css?v=logic-vae-20261116
+css: ../assets/ai-explorer.css?v=logic-vae-20261117
 html-math-method: mathjax
 resources:
   - ../assets/ai/clevrer/*.jpg
@@ -88,7 +88,7 @@ The powers of the sines make angular location consequential in high dimension. T
 <figure class="ai-gallery">
 <h4>Galaxy Zoo · unconditional anomaly detection</h4>
 <img src="../assets/ai/visuals/galaxy-zoo-seminar-static.webp" width="1676" height="1612" alt="Slide 15 Galaxy Zoo comparison: standard and compressed VAE coarse-grained representations, green nominal galaxies, red anomalies, arrows to two image examples from each population, and a nearest-neighbour scoring schematic." loading="lazy">
-<figcaption>The complete Galaxy Zoo comparison from slide 15 of my final seminar. The standard VAE is on the left and the compressed VAE on the right. Green marks nominal galaxies; red marks anomalies. Arrows connect the compressed representation to explicit examples from each population. The inset illustrates the nearest-neighbour distance used for anomaly scoring.</figcaption>
+<figcaption>Galaxy Zoo: standard and compressed latent representations. The standard VAE is on the left and the compressed VAE on the right. Green marks nominal galaxies; red marks anomalies. Arrows connect the compressed representation to explicit examples from each population. The inset illustrates the nearest-neighbour distance used for anomaly scoring.</figcaption>
 </figure>
 ```
 
@@ -110,7 +110,7 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 <figure><h4>Hyperspherical compression</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-compressed-poster.webp" aria-label="Training evolution of nominal Imagenette representations for the compressed VAE"><source src="../assets/ai/visuals/latent-compressed.mp4" type="video/mp4"></video></figure>
 </div>
 <div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both training animations</button><button type="button" class="ai-button" data-reset-pair>Restart animations</button></div>
-<p class="ai-caption">Animations of the full training process from the final seminar. Both show coordinate-averaged views of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
+<p class="ai-caption">Evolution of the latent representations during training. Both show coordinate-averaged views of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
 </div>
 ```
 
@@ -118,7 +118,7 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 <figure class="ai-gallery">
 <h4>Imagenette · conditional near-OOD detection</h4>
 <img src="../assets/ai/visuals/imagenette-seminar-static.webp" width="1792" height="1696" alt="Slide 15 Imagenette comparison: von Mises–Fisher and compressed VAE representations, coloured nominal classes and black anomaly points. Arrows link nominal tench and golf-ball examples and anomalous goldfish and tennis-ball examples to the compressed representation." loading="lazy">
-<figcaption>Conditional comparison. Left: von Mises–Fisher VAE; right: hyperspherical compression. Colours distinguish nominal classes, while black points mark anomalies from semantically close ImageNet classes. The examples show nominal tench and golf balls alongside anomalous goldfish and tennis balls, with the slide's arrows linking them to the coarse-grained representation.</figcaption>
+<figcaption>Conditional comparison. Left: von Mises–Fisher VAE; right: hyperspherical compression. Colours distinguish nominal classes, while black points mark anomalies from semantically close ImageNet classes. The examples show nominal tench and golf balls alongside anomalous goldfish and tennis balls, with arrows linking them to the coarse-grained representation.</figcaption>
 </figure>
 ```
 
@@ -137,16 +137,16 @@ The thesis studies both generation and the routes between encoded examples. The 
 <figure><h4>Compressed VAE</h4><img src="../assets/ai/visuals/interpolation-compressed.webp" alt="Compressed VAE interpolation sequences for zero to one, seven to two, and three to four." loading="lazy" data-interpolation-strip="compressed"></figure>
 </div>
 <div class="ai-scrubber" hidden>
-<p class="ai-eyebrow">Inspect the saved interpolation steps</p>
+<p class="ai-eyebrow">Explore the interpolation</p>
 <div class="ai-frame-pair">
-<figure><img data-frame="standard" data-no-zoom src="../assets/ai/visuals/interpolation-standard-00.webp" alt="Standard VAE: three digit paths at the first saved interpolation step." width="160" height="480"><figcaption>Standard VAE</figcaption></figure>
+<figure><img data-frame="standard" data-no-zoom src="../assets/ai/visuals/interpolation-standard-00.webp" alt="Standard VAE: three digit paths at the first interpolation step." width="160" height="480"><figcaption>Standard VAE</figcaption></figure>
 <div class="ai-path-labels" aria-hidden="true"><span>0 → 1</span><span>7 → 2</span><span>3 → 4</span></div>
-<figure><img data-frame="compressed" data-no-zoom src="../assets/ai/visuals/interpolation-compressed-00.webp" alt="Compressed VAE: three digit paths at the first saved interpolation step." width="160" height="480"><figcaption>Compressed VAE</figcaption></figure>
+<figure><img data-frame="compressed" data-no-zoom src="../assets/ai/visuals/interpolation-compressed-00.webp" alt="Compressed VAE: three digit paths at the first interpolation step." width="160" height="480"><figcaption>Compressed VAE</figcaption></figure>
 </div>
 <label for="interpolation-step">Saved step <output id="interpolation-position" for="interpolation-step">1 of 10</output></label>
 <input id="interpolation-step" type="range" min="0" max="9" value="0" step="1" aria-describedby="interpolation-note">
 </div>
-<p class="ai-caption" id="interpolation-note">Three paths: 0 → 1, 7 → 2, and 3 → 4. Move the slider to compare the ten saved steps from the thesis experiment.</p>
+<p class="ai-caption" id="interpolation-note">Three paths: 0 → 1, 7 → 2, and 3 → 4. Move the slider to compare the ten interpolation steps.</p>
 </div>
 ```
 
@@ -212,32 +212,32 @@ The evaluation uses molecules selected from the favourable and unfavourable extr
 ```{=html}
 <figure class="ai-gallery ai-molecule-examples">
 <h4>Nominal · random ZINC</h4>
-<img src="../assets/ai/visuals/molecular-nominal-examples.webp" alt="Five nominal random ZINC molecules: the first row of the reference grid." loading="lazy">
+<img src="../assets/ai/visuals/molecular-nominal-examples.webp" alt="Five nominal random ZINC molecules." loading="lazy">
 <h4>Best docking</h4>
-<img src="../assets/ai/visuals/molecular-high-docking-examples.webp" alt="Five molecules from the best-docking subset: the first row of the lower-left source grid." loading="lazy">
+<img src="../assets/ai/visuals/molecular-high-docking-examples.webp" alt="Five molecules from the best-docking subset." loading="lazy">
 <h4>Worst docking</h4>
-<img src="../assets/ai/visuals/molecular-low-docking-examples.webp" alt="Five molecules from the worst-docking subset: the first row of the lower-right source grid." loading="lazy">
-<figcaption>The first row from each population in the molecular-results collection. These are molecular structures, not a ranking by latent anomaly score.</figcaption>
+<img src="../assets/ai/visuals/molecular-low-docking-examples.webp" alt="Five molecules from the worst-docking subset." loading="lazy">
+<figcaption>Examples from the nominal, best-docking, and worst-docking populations.</figcaption>
 </figure>
 ```
 
 The following three views show the **same nominal ZINC island in red**. The grey population changes from the low-docking subset, closer to that island, to the high-docking subset, farther away. In this experiment, the better-docking molecules are more specialized relative to random ZINC, and that distinction is visible in a representation learned without docking supervision. “High docking” here means better docking ability, rather than a numerically higher raw docking score.
 
 ```{=html}
-<div class="ai-motion" data-paired-video data-play-label="Play all three comparisons" data-pause-label="Pause all three comparisons">
+<div class="ai-motion" data-paired-video data-playback-rate="2" data-play-label="Play all three comparisons" data-pause-label="Pause all three comparisons">
 <div class="ai-triptych">
 <figure><h4>View a</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-a-low.webp" aria-label="View a: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-a.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-a.mp4">Download view a.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-a-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-a-high.webp">high docking</a>.</figcaption></figure>
 <figure><h4>View b</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-b-low.webp" aria-label="View b: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-b.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-b.mp4">Download view b.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-b-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-b-high.webp">high docking</a>.</figcaption></figure>
 <figure><h4>View c</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/molecular-view-c-low.webp" aria-label="View c: low- and high-docking molecular populations alternate around a fixed nominal ZINC reference"><source src="../assets/ai/visuals/molecular-view-c.mp4" type="video/mp4"><a href="../assets/ai/visuals/molecular-view-c.mp4">Download view c.</a></video><figcaption>Inspect stills: <a href="../assets/ai/visuals/molecular-view-c-low.webp">low docking</a> · <a href="../assets/ai/visuals/molecular-view-c-high.webp">high docking</a>.</figcaption></figure>
 </div>
 <div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play all three comparisons</button><button type="button" class="ai-button" data-reset-pair>Return to low docking</button></div>
-<p class="ai-caption">Three perspectives of the compressed molecular representation. Each alternates the observed low- and high-docking populations every three seconds, keeping its axes, viewpoint, and nominal reference in place. Red: nominal ZINC. Grey: docking-selected molecules. These coarse-grained views illustrate the geometry; anomaly scores use distances in the full 256-dimensional latent space.</p>
+<p class="ai-caption">Three perspectives of the compressed molecular representation. Each alternates the observed low- and high-docking populations every 1.5 seconds, keeping its axes, viewpoint, and nominal reference in place. Red: nominal ZINC. Grey: docking-selected molecules. These coarse-grained views illustrate the geometry; anomaly scores use distances in the full 256-dimensional latent space.</p>
 </div>
 ```
 
 In a representative matched comparison, compressed latent kNN reaches AUROC **0.892** for the favourable-docking subset and **0.787** for the unfavourable subset, compared with **0.780** and **0.653** for Morgan-fingerprint/Tanimoto kNN. The corresponding uncompressed-VAE scores are **0.722** and **0.635**. These are individual matched results, rather than averages over runs.
 
-![Docking-selected molecules versus random ZINC. Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN, using the archived scores presented in the molecular draft. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
+![Docking-selected molecules versus random ZINC. Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
 
 The result concerns **docking-related population structure accessible without docking supervision**. Docking is a three-dimensional, target-dependent scoring task, yet molecular differences associated with its selected extremes become accessible through a representation trained on molecular structure alone. Compression improves that accessibility beyond the tested fingerprint baseline. The low-to-high comparisons above make the observed direction concrete: the better-docking population lies farther from the random-ZINC reference island.
 
@@ -344,17 +344,19 @@ The evaluator asks whether an observation supports a supplied rule. The next ste
 
 ### Generating rules and their truth profiles {#logic-vae}
 
-So far the question has been “given this rule, how well does the observation support it?” Reverse the experiment. In the intended perceptual setting, **fix one video and vary the reasoning.** For each rule we evaluate, attach the truth estimate of every node to its place in the tree. Two trees can have similar root scores while relying on different intermediate claims. The training object is now a reasoning structure together with this whole truth profile.
+The **Logic VAE** learns a generative representation of labelled reasoning trees, conditioned on the probabilities of their leaves. Its input separates two kinds of information: the tree specifies the topology, logical operators, and concept identifiers; the condition specifies how probable those concepts are in a particular observation.
 
-The **Logic VAE** learns a space of such objects for a fixed vocabulary. The compression VAE developed above is also used in this line of work: its role is now to organize a generative space of reasoning structures and truth profiles. An encoder maps examples into a latent space. Sampling, interpolating, or searching in that space provides candidate latent codes. The decoder turns a code back into an explicit rule that a person can read. A probability predictor estimates the profile associated with the candidate and the observation. This is where the larger system can propose and score a composition for which no individual subtree evaluator was trained.
+The encoder maps the labelled tree and its leaf-probability condition to a latent representation. A conditional decoder reconstructs or generates the labelled tree. A **separate predictor network uses the latent representation to infer probabilities for the non-leaf nodes**, including the root. These internal-node probabilities are prediction targets during training; they are not supplied to the encoder.
 
-The present experiment tests this workflow with synthetic trees and analytically generated truth profiles. Its concrete focus is **interpolation between encoded examples**: can we move through the representation, decode explicit structures, and predict probabilities consistent with those structures along the way?
+This makes the observation part of the datapoint. The same syntactic tree, with exactly the same concept identifiers, can be evaluated for two different video clips. If the clips give different leaf-probability conditions, the resulting inputs will generally map to different latent points. Conversely, fixing a clip lets us explore different reasoning structures under its concept-probability condition.
 
-![The conditional Logic VAE learns from trees and their nodewise probability profiles. Both encoder and decoder receive the leaf-probability condition. Decoding produces a logical structure and predicted internal-node probabilities.](../assets/ai/logic-vae/workflow.svg){fig-alt="A logical tree and its probability profile enter an encoder, pass through a latent representation, and are decoded into a tree and predicted profile. Leaf probabilities condition both encoder and decoder."}
+![A labelled logical tree and its leaf-probability condition enter the conditional VAE. The decoder generates the labelled tree; a separate predictor uses the latent representation to infer internal-node probabilities.](../assets/ai/logic-vae/workflow.svg?v=20261117){fig-alt="A labelled tree enters a conditional encoder and latent space. The latent representation branches to a conditional decoder producing a tree and a separate predictor producing internal-node probabilities. Leaf probabilities condition the encoder and decoder; internal-node targets do not enter the encoder."}
+
+Sampling, interpolation, and search choose latent codes from which the model can generate reasoning structures and predict their truth profiles. The compression method introduced earlier now organizes this space of reasoning structures. The present synthetic experiment focuses on **interpolation**: as the code and condition vary, how accurately does the predictor estimate the probabilities of the resulting tree?
 
 #### A synthetic test of the workflow {#logic-vae-experiment}
 
-To test this workflow in a controlled setting, I construct synthetic witnessed trees built from alternative implication paths and explicit witness atoms, as explained in the [next section](#witnessed-relations), and compute their nodewise probability profiles using **independent-event composition formulas**. Repeated occurrences are treated as independent copies with the same marginal probability. This gives readily generated reference values throughout the tree, against which the model's predictions can be checked.
+To test this workflow in a controlled setting, I construct synthetic witnessed trees built from alternative implication paths and explicit witness atoms, using the [homotopical construction below](#witnessed-relations), and compute their nodewise probability profiles using **independent-event composition formulas**. Repeated occurrences are treated as independent copies with the same marginal probability. This gives readily generated reference values throughout the tree, against which the model's predictions can be checked.
 
 <details class="ai-details">
 <summary>The synthetic probability ground truth</summary>
@@ -372,41 +374,41 @@ Negation maps $a$ to $1-a$. The calculation proceeds from the leaves to the root
 
 </details>
 
-The experiment uses 64 concepts and a 512-dimensional latent space. The encoded object includes the labelled tree and its nodewise truth profile; a 64-component leaf-probability vector conditions the model. The decoder produces the tree, and its probability head predicts the internal-node values, including the root. Leaves receive the probabilities of their decoded concept identifiers from the condition. Interpolation starts from validation examples held out of gradient training. A reconstruction gives the first view of what the model has learned:
+The experiment uses 64 concepts and a 512-dimensional latent space. Each input is a labelled witnessed tree together with a 64-component leaf-probability condition. The analytical internal-node values supervise the predictor. Generated leaves receive the probabilities associated with their decoded concept identifiers. Interpolation starts from validation examples held out of gradient training. A reconstruction gives the first view of what the model has learned:
 
 ![Original tree and reference profile on the left; reconstruction and predicted profile on the right, using the compressed model at its selected checkpoint. Blue nodes show concept identifiers and leaf probabilities; internal nodes show logical operators and probabilities. Values in the drawing are rounded to one decimal place.](../assets/ai/logic-vae/full-reconstruction-1b.webp){fig-alt="Detailed original and reconstructed witnessed trees with probabilities at the leaves and internal nodes."}
 
-Reconstruction asks whether the original labels, branching structure, and node probabilities survive encoding and decoding. The galleries expose those components directly; values printed in the drawings are rounded, so numerical probability comparisons use the underlying values.
+Tree reconstruction asks whether the original labels and branching structure survive encoding and decoding. Truth-profile prediction asks whether the inferred internal-node probabilities agree with the analytical evaluation. The figure displays both tests; node probabilities are rounded to one decimal place.
 
 <details class="ai-details">
 <summary>Compare reconstructions and browse more examples</summary>
 
-![Without compression: original on the left, reconstruction on the right, at the selected checkpoint.](../assets/ai/logic-vae/zero-reconstruction-1b.webp){fig-alt="Original and reconstructed trees from the model without compression, with node probabilities."}
-
 ```{=html}
 <div class="ai-pair">
-<figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-reconstruction-1a.webp" alt="Five original trees in the top row and their uncompressed-model reconstructions below." loading="lazy"><figcaption>Originals above; reconstructions below.</figcaption></figure>
-<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-reconstruction-1a.webp" alt="Five original trees in the top row and their compressed-model reconstructions below." loading="lazy"><figcaption>Original/reconstruction rows from the compressed run.</figcaption></figure>
+<figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-reconstruction-1a.webp" alt="Five original trees in the top row and their uncompressed-model reconstructions below." loading="lazy"><figcaption>Originals above; reconstructions below. Colours distinguish the node labels.</figcaption></figure>
+<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-reconstruction-1a.webp" alt="Five original trees in the top row and their compressed-model reconstructions below." loading="lazy"><figcaption>Originals above; reconstructions below, with the same colour code.</figcaption></figure>
 </div>
 ```
 
-The multi-example panels retain the original and reconstructed rows only. Random sampling was disabled in the compressed-model experiment because reconstruction quality was somewhat worse; the omitted sampling display supplies no evidence about generation from random latent codes.
+Colours identify the concept labels at the leaves and the operators at internal nodes; they do not encode truth probabilities. **Both models reconstruct the graph topology very well in these examples, while compression is somewhat worse at reconstructing the concept labels.** Random sampling was disabled in the compressed experiment because of this reconstruction limitation.
 
 </details>
 
 #### Moving between reasoning structures {#logic-vae-interpolation}
 
-Choose two encoded examples and move between them. At each of 20 saved steps, decode a tree and predict its internal probabilities. Then apply the independent-event formulas to that generated tree to obtain a reference profile. **Does the predicted profile remain consistent as the generated structure changes?**
+Choose two encoded examples and move between them. At each of 20 steps, decode a tree and predict its internal probabilities. Then apply the independent-event formulas to that generated tree to obtain a reference profile. **Does the predicted profile remain consistent as the generated structure changes?**
 
-Both the latent code and the conditioning leaf-probability vector vary along these paths. The saved procedure linearly blends the two endpoint vectors in each space, then rescales each blend to the respective mean norm over validation examples. These are therefore jointly varying code-and-condition paths. The numerical path is continuous; the decoded tree changes discretely. Use the slider to inspect the intermediate structures, or play the sequence.
+Both the latent code and the conditioning leaf-probability vector vary along these paths. The interpolation procedure linearly blends the two endpoint vectors in each space, then rescales each blend to the respective mean norm over validation examples. These are therefore jointly varying code-and-condition paths. The numerical path is continuous; the decoded tree changes discretely. Use the slider to inspect the intermediate structures, or play the sequence.
 
-The displayed paths were selected as good examples of the observed behaviour. They are qualitative demonstrations, not a random or statistically representative sample of all possible trees and paths. The two models' displays use different endpoint pairs.
+**The quantity tested along each interpolation is the error in predicted node probabilities.** The compressed and uncompressed animations have different starting and ending trees because representative interpolations were selected separately for inspection in the two experiments. The error curve advances with the corresponding tree animation, showing the prediction error up to the current step.
+
+These selected examples illustrate the behaviour of each model; they are not a random or statistically representative sample of all possible paths, or a comparison of the same endpoint pair.
 
 ```{=html}
 <div class="ai-logic-viewer" data-logic-viewer data-asset-root="../assets/ai/logic-vae/">
 <div class="ai-logic-controls" hidden>
 <div class="ai-logic-toolbar">
-<label for="logic-model">Model <select id="logic-model"><option value="full">With compression</option><option value="zero">Without compression</option></select></label>
+<label for="logic-model">Model <select id="logic-model" aria-label="Model"><option value="full">With compression</option><option value="zero">Without compression</option></select></label>
 <button type="button" class="ai-button" data-logic-play>Play interpolation</button>
 <button type="button" class="ai-button" data-logic-reset>Reset</button>
 </div>
@@ -414,7 +416,19 @@ The displayed paths were selected as good examples of the observed behaviour. Th
 <input id="logic-step" type="range" min="0" max="19" step="1" value="0" aria-describedby="logic-reading-guide">
 </div>
 <div class="ai-logic-tree-labels"><strong data-logic-reference>Original endpoint tree · reference profile</strong><strong>Decoded tree · predicted profile</strong></div>
-<figure class="ai-logic-tree"><img data-logic-frame src="../assets/ai/logic-vae/full-step-00.webp" width="1155" height="1045" alt="Compressed model, first interpolation endpoint: original reference tree at left and decoded tree with predicted probabilities at right." loading="lazy"><figcaption id="logic-reading-guide"><span data-logic-frame-caption>At the endpoint, the left tree is the original example.</span> At intermediate steps, both sides show the decoded tree: formula-derived probabilities on the left, neural predictions on the right. Click the figure to enlarge it.</figcaption></figure>
+<figure class="ai-logic-tree"><img data-logic-frame src="../assets/ai/logic-vae/full-step-00.webp" width="1155" height="1045" alt="Compressed model, first interpolation endpoint: original reference tree at left and decoded tree with predicted probabilities at right." loading="lazy"><figcaption id="logic-reading-guide"><span data-logic-frame-caption>The original endpoint tree and reference profile are on the left; reconstruction and predictions are on the right.</span> Click the figure to enlarge it.</figcaption></figure>
+<figure class="ai-logic-error">
+<svg class="ai-logic-error-plot" data-logic-error viewBox="0 0 1050 375" role="img" aria-labelledby="logic-error-title logic-error-description">
+<title id="logic-error-title">Node-probability error along the interpolation</title>
+<desc id="logic-error-description">The curve is revealed up to the current interpolation step, in sync with the decoded tree.</desc>
+<defs><clipPath id="logic-error-legend"><rect x="495" y="37" width="118" height="24"/></clipPath></defs>
+<image data-logic-error-image href="../assets/ai/logic-vae/full-error-curve.webp" width="1050" height="375"/>
+<rect data-logic-error-mask x="113" y="35" width="925" height="290" fill="white"/>
+<line data-logic-error-cursor x1="112" x2="112" y1="35" y2="325" stroke="#285a61" stroke-width="1.5" stroke-dasharray="5 4"/>
+<image data-logic-error-image href="../assets/ai/logic-vae/full-error-curve.webp" width="1050" height="375" clip-path="url(#logic-error-legend)"/>
+</svg>
+<figcaption>Probability error along the selected path, revealed with the tree animation. At each step, the predictor is compared with the analytical probabilities of that decoded tree, across all internal nodes including the root. The vertical marker indicates the current interpolation step, k = <span data-logic-error-step>0</span>.</figcaption>
+</figure>
 <p class="ai-caption" data-logic-run>Compressed model · selected epoch 520 · representative path 665–2649.</p>
 <details class="ai-details">
 <summary>Follow the path through the latent space</summary>
@@ -423,8 +437,7 @@ The displayed paths were selected as good examples of the observed behaviour. Th
 <figure><h4>Coarse coordinate view</h4><img data-logic-asset="path-coarse" src="../assets/ai/logic-vae/full-path-coarse.webp" alt="Coarse three-dimensional view of the compressed latent means with the interpolation path marked in black." loading="lazy"><figcaption>Coordinate averages give a second view of the same path through the high-dimensional representation.</figcaption></figure>
 </div>
 </details>
-<figure><img data-logic-asset="error-curve" src="../assets/ai/logic-vae/full-error-curve.webp" alt="Normalized probability error across the 20 steps of the representative compressed-model interpolation." loading="lazy"><figcaption>Probability error along the selected path; k runs from 0 to 19. The score compares predicted and formula-derived internal-node probabilities on the decoded tree, including at the endpoints. The two models' displayed paths use different endpoint pairs; the distributions below summarize the separately saved path evaluations.</figcaption></figure>
-<noscript><p>The first compressed-model frame is shown above. Enable JavaScript to play or scrub through all 20 steps and switch between models.</p></noscript>
+<noscript><p>The first compressed-model frame is shown above. Enable JavaScript to animate the trees and error curve together or switch between models.</p><style>.ai-logic-error { display: none; }</style><img src="../assets/ai/logic-vae/full-error-curve.webp" alt="Complete probability-error curve for the compressed interpolation."></noscript>
 </div>
 ```
 
@@ -442,44 +455,45 @@ The geometric question carries over from images and molecules: can we organize t
 </div>
 ```
 
-The coarse views make the evolution visible. The distributions of the actual latent coordinates provide the quantitative geometric diagnostics. In particular, the angular histograms below show how the coordinate distributions change under hyperspherical regularization.
+The coarse views make the evolution visible. Angular and radial distributions reveal how the high-dimensional coordinates change under hyperspherical regularization; these diagnostics and the training losses can be inspected below.
 
 ```{=html}
+<details class="ai-details">
+<summary>Angular and radial diagnostics, and training losses</summary>
 <div class="ai-pair ai-logic-diagnostics">
 <figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-angles.webp" alt="Histograms of hyperspherical cosine coordinates of latent means without compression." loading="lazy"><figcaption>Angular-coordinate distributions at the selected checkpoint.</figcaption></figure>
 <figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-angles.webp" alt="Histograms of hyperspherical cosine coordinates of latent means with compression." loading="lazy"><figcaption>The distribution shifts across the angular hierarchy.</figcaption></figure>
 </div>
-<details class="ai-details">
-<summary>Radial diagnostics and training losses</summary>
+
 <div class="ai-pair ai-logic-diagnostics">
 <figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-radii.webp" alt="Latent norm and representative-angle histograms without compression." loading="lazy"></figure>
 <figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-radii.webp" alt="Latent norm and representative-angle histograms with compression." loading="lazy"></figure>
 </div>
 <p class="ai-caption">Norms are normalized by the square root of the latent dimension. The dashed red curve shows the angle to the empirical mean direction, normalized by π/2. The coarse views above use different display normalizations between models; their apparent three-dimensional volumes are not a compression measurement.</p>
 <figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-losses.webp" alt="Validation reconstruction, internal probability and regularization losses without compression." loading="lazy"></figure>
-<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-losses.webp" alt="Validation reconstruction, internal probability and regularization losses with compression." loading="lazy"><figcaption>Loss histories are plotted on log10 scales. The original plot's percent sign does not denote accuracy; the curves are losses.</figcaption></figure>
+<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-losses.webp" alt="Validation reconstruction, internal probability and regularization losses with compression." loading="lazy"><figcaption>Validation reconstruction, probability-prediction, and regularization losses on log10 scales.</figcaption></figure>
 </details>
 ```
 
-In the saved evaluation, 100 paths per model were each evaluated at 20 steps. The largest normalized probability error along each path was retained. These saved arrays give a lower mean peak error and a narrower distribution for the compressed run:
+Each model was evaluated on 100 interpolation paths with 20 steps per path. Recording the largest normalized probability error along each path gives a lower mean peak error and a narrower distribution for the compressed run:
 
 | Selected model checkpoint | Mean peak error | Standard deviation |
 |:--|--:|--:|
 | Without compression · epoch 200 | 0.245 | 0.075 |
 | With compression · epoch 520 | 0.099 | 0.024 |
 
-![Distribution of peak normalized probability errors across 100 interpolation paths per model, replotted from the saved arrays using common bins. Dashed lines mark the means.](../assets/ai/logic-vae/error-distribution.webp){fig-alt="Histogram comparison showing lower and more concentrated interpolation peak errors with compression than without compression."}
+![Distribution of peak normalized probability errors across 100 interpolation paths per model.](../assets/ai/logic-vae/error-distribution.webp){fig-alt="Histogram comparison showing lower and more concentrated interpolation peak errors with compression than without compression."}
 
-**The compressed representation gives more coherent interpolation behaviour, while reconstruction quality deteriorates to some extent.** The saved numerical comparison supports better agreement between predicted and reference truth profiles along the decoded paths. Together with the displayed transitions, it motivates the next objective: preserve the interpolation gain while improving reconstruction.
+**The compressed representation gives more coherent interpolation behaviour, while reconstruction quality deteriorates to some extent.** The numerical comparison supports better agreement between predicted and reference truth profiles along the decoded paths. Together with the displayed transitions, it motivates the next objective: preserve the interpolation gain while improving reconstruction.
 
 This is the same kind of tension encountered in the earlier [image-based generation experiments](#generation): organizing a latent space for useful movement can compete with faithfully recovering an input. The connection is conceptual; the image and tree experiments do not establish identical quantitative effects. Better latent organization does not automatically imply better reconstruction fidelity.
 
-The path error measures predictive agreement on each decoded tree. It does not measure tree-edit smoothness, fidelity to the original endpoint tree, or random-sampling quality. The saved runs also differ in regularization strength and selected training epoch; these are exploratory validation results, not a matched multi-seed estimate of compression's effect.
+The path error measures predictive agreement on each decoded tree. It does not measure tree-edit smoothness, fidelity to the original endpoint tree, or random-sampling quality. The two runs also differ in regularization strength and selected training epoch; these are exploratory validation results, not a matched multi-seed estimate of compression's effect.
 
 <details class="ai-details">
 <summary>How the comparison and error are defined</summary>
 
-The models are compared at their selected checkpoints rather than simply at the end of training. The checkpoint criterion is the mean plus standard deviation of peak interpolation errors. The plotting routine selects a path with peak error close to the corresponding mean. That criterion selects an illustrative score, not a statistically representative structure. Because interpolation errors also inform checkpoint selection, the table is a validation comparison rather than an independent test-set estimate.
+The models are compared at their selected checkpoints rather than simply at the end of training. The checkpoint criterion is the mean plus standard deviation of peak interpolation errors. Each illustrated path has a peak error close to the corresponding model’s mean. That criterion selects an illustrative score, not a statistically representative structure. Because interpolation errors also inform checkpoint selection, the table is a validation comparison rather than an independent test-set estimate.
 
 For a decoded tree at step $k$, let $\widehat{\mathbf p}_{k}$ contain predicted probabilities at all internal nodes, including the root, and let $\mathbf p^{\rm ind}_{k}$ contain the corresponding formula-derived values. The score is
 
@@ -495,7 +509,7 @@ where the maximum in the denominator is componentwise. This is a normalized Eucl
 
 #### The next step: retain continuity, improve reconstruction {#reasoning-next}
 
-The immediate research goal is to **keep the interpolation-quality gain while improving reconstruction of the logical trees and their probability profiles**. Both capabilities matter: interpolation supports exploration between examples, while reconstruction preserves the distinctions already present in the training objects.
+The immediate research goal is to **keep the interpolation-quality gain while improving reconstruction of the labelled logical trees**, alongside accurate prediction of their truth profiles. Both capabilities matter: interpolation supports exploration between examples, while reconstruction preserves the distinctions already present in the training objects.
 
 This synthetic test exercises the general Logic VAE workflow and the witnessed-tree construction, with interpolation as the concrete capability evaluated. The longer-term aim is to generate new reasoning structures, explore alternative reasoning paths, and support planning and generative world models. Interpolation is a useful prerequisite for exploring that space, rather than validation of those broader applications.
 
@@ -505,6 +519,8 @@ The next perceptual extension replaces formula-generated training profiles with 
 
 
 ### Relating different reasoning paths {#witnessed-relations}
+
+The synthetic trees used in the experiments above are instances of this witnessed-path construction. Their repeated branches and dedicated witness concepts encode alternative reasoning paths and relations between those paths. This is the structural connection between the interpolation experiment and the homotopical research programme.
 
 A rule can say more than that $A$ implies $C$. It can record *how* the reasoning goes from one to the other. Choose two intermediate concepts, $B$ and $B'$, and form the syntactic paths
 
@@ -533,6 +549,8 @@ $$
 
 This is the sense in which the construction is higher-dimensional. First we have paths, then witnesses between paths, then witnesses between witnessed relations. Formula depth alone would count additional connectives without telling us *what kinds of objects* they relate. There is also a distinction between the structure we encode and the evidence that supports it. Under Boolean semantics the first block can be true when both paths and the witness are false. Reading a block as a positively supported explanation requires inspecting the witness and path values themselves.
 
+In the interpolation experiment, these witnessed trees provide the structured inputs, and the independent-copy formulas provide the reference node probabilities. Decoding lets us inspect how their topology and labels change; the synchronized error curve tests how accurately the predictor follows the probabilities of those decoded structures. The experiment therefore connects the homotopical construction to a concrete generative-modelling test. It does not yet measure preservation of homotopy invariants or success in planning.
+
 ### A logical world model {#world-model}
 
 Suppose a vocabulary distinguishes the current state, actions one could take, and later consequences. A goal can then be expressed as a formula. Holding the observed state fixed, we can ask which candidate action the model expects to make that goal more likely. A generative model can also estimate how plausible the proposed configuration is. Together these give us two reasons to examine a candidate: the clauses that support the goal, and whether the configuration resembles ones for which the system has evidence.
@@ -560,4 +578,4 @@ A later meta-world-model would learn from completed ontology trials to estimate 
 - [Testing the Test: Score-Direction Instability in Class-Split Anomaly Detection](https://arxiv.org/abs/2606.02601)
 - [When Rule Violations Are Rare: Chimera Training for Logical Anomaly Detection](https://arxiv.org/abs/2605.26171)
 
-<script src="../assets/ai-explorer.js?v=logic-vae-20261116" defer></script>
+<script src="../assets/ai-explorer.js?v=logic-vae-20261117" defer></script>
