@@ -605,6 +605,38 @@ This is the sense in which the construction is higher-dimensional. First we have
 
 In the interpolation experiment, these witnessed trees provide the structured inputs, and the independent-copy formulas provide the reference node probabilities. Decoding lets us inspect how their topology and labels change; the synchronized error curve tests how accurately the predictor follows the probabilities of those decoded structures. The experiment therefore connects the homotopical construction to a concrete generative-modelling test. It does not yet measure preservation of homotopy invariants or success in planning.
 
+<details class="ai-details" id="alternative-reasoning-example">
+<summary>Why alternative reasonings? A video example and the homotopy connection</summary>
+
+**From operations to alternative routes.** In classical propositional logic, negation and implication can express all the usual Boolean connectives. For example,
+
+$$
+A\wedge B\equiv\neg(A\Rightarrow\neg B),\qquad
+A\vee B\equiv(\neg A\Rightarrow B).
+$$
+
+Once these operations are available, a natural next question concerns the organization of reasoning: **which alternative chains of implications connect the same starting point and conclusion, and how can we compare them?** Keeping the intermediate concepts makes those alternatives explicit.
+
+**Two routes through a video.** Fix a tracked object. Let $A$ mean that it enters the scene and $C$ that it collides during the first half of the clip. One route uses the intermediate event $B_{\rm cube}$, “it collides with a cyan cube during that interval”; another uses $B_{\rm sphere}$, “it collides with a cyan sphere during that interval.” The endpoints remain fixed, while the object pair involved in the middle node changes.
+
+Consider a possible clip in which the object enters and collides with the cyan sphere, but not with a cyan cube. Then $A=C=1$, $B_{\rm cube}=0$, and $B_{\rm sphere}=1$. Consequently, the two chain formulas above give $\Phi_{\rm cube}=0$ and $\Phi_{\rm sphere}=1$.
+
+Choose witness atoms for the cyan-cube and cyan-sphere collision events, $W_{\rm cube}=0$ and $W_{\rm sphere}=1$. Applying the same witnessed comparison $(\Phi\Leftrightarrow W)\wedge(\Phi'\Leftrightarrow W)$ gives:
+
+| Routes compared | Witness | Witnessed agreement in this clip |
+|:--|:--|:--|
+| Cyan-cube route and cyan-sphere route | $W_{\rm cube}$ | False: only the cube route agrees with this witness. |
+| Cyan-cube route and cyan-sphere route | $W_{\rm sphere}$ | False: only the sphere route agrees with this witness. |
+| Two copies of the cyan-sphere route | $W_{\rm sphere}$ | True: both routes and the witness agree. |
+
+In the last row, the second route is another syntactic copy referring to the **same grounded collision event**. It therefore agrees with the first. This example extends the video-rule vocabulary by changing the middle node's object pair; that variation was not tested in the experiments above.
+
+**The homotopy connection.** In topology, a homotopy between paths continuously deforms one route into another while keeping their endpoints fixed. It is itself an object relating two paths; one can then compare such objects at a further level. The witnessed construction adopts this pattern: implications form routes, witnesses relate routes, and higher witnesses relate those relations. Here the relation is encoded by logical formulas; the topological picture motivates its organization.
+
+For the geometric starting point, see Allen Hatcher's [*Algebraic Topology*, §1.1, “Paths and Homotopy”](https://pi.math.cornell.edu/~hatcher/AT/ATpage.html). For paths, identifications, and higher identifications in logic, see the introduction and Chapter 2 of [*Homotopy Type Theory: Univalent Foundations of Mathematics*](https://homotopytypetheory.org/book/).
+
+</details>
+
 ### A logical world model {#world-model}
 
 Suppose a vocabulary distinguishes the current state, actions one could take, and later consequences. A goal can then be expressed as a formula. Holding the observed state fixed, we can ask which candidate action the model expects to make that goal more likely. A generative model can also estimate how plausible the proposed configuration is. Together these give us two reasons to examine a candidate: the clauses that support the goal, and whether the configuration resembles ones for which the system has evidence.
