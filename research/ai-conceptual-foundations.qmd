@@ -302,7 +302,12 @@ The following three views show the **same nominal ZINC island in red**. The grey
 
 In a representative matched comparison, compressed latent kNN reaches AUROC **0.892** for the favourable-docking subset and **0.787** for the unfavourable subset, compared with **0.780** and **0.653** for Morgan-fingerprint/Tanimoto kNN. The corresponding uncompressed-VAE scores are **0.722** and **0.635**. These are individual matched results, rather than averages over runs.
 
-![Docking-selected molecules versus random ZINC. Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
+<details class="ai-details" id="molecular-docking-comparison">
+<summary>Docking-selected molecules versus random ZINC</summary>
+
+![Each panel compares fingerprint kNN, uncompressed latent kNN, and compressed latent kNN. The left panel tests favourable docking; the right tests unfavourable docking.](../assets/ai/visuals/molecular-roc.webp){fig-alt="ROC curves comparing fingerprints and standard and compressed molecular latent representations for favourable and unfavourable docking subsets."}
+
+</details>
 
 The result concerns **docking-related population structure accessible without docking supervision**. Docking is a three-dimensional, target-dependent scoring task, yet molecular differences associated with its selected extremes become accessible through a representation trained on molecular structure alone. Compression improves that accessibility beyond the tested fingerprint baseline. The low-to-high comparisons above make the observed direction concrete: the better-docking population lies farther from the random-ZINC reference island.
 
