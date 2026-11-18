@@ -168,6 +168,8 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 **When the normal classes are known.** A separate set of experiments uses ID class labels to organize different class clusters. Here the difficult cases are nearby alternatives: tench versus goldfish, or an English versus a Welsh springer spaniel. The experiments include CIFAR-10 versus CIFAR-100 and Imagenette versus semantically close ImageNet classes.
 
 ```{=html}
+<details class="ai-details">
+<summary>Evolution of the latent representations during training</summary>
 <div class="ai-motion" data-paired-video>
 <div class="ai-pair">
 <figure><h4>Single-direction concentration · vMF</h4><video controls loop muted playsinline preload="metadata" poster="../assets/ai/visuals/latent-vmf-poster.webp" aria-label="Training evolution of nominal Imagenette representations for the von Mises–Fisher comparison"><source src="../assets/ai/visuals/latent-vmf.mp4" type="video/mp4"></video></figure>
@@ -176,6 +178,7 @@ These are the thesis's matched VAE comparisons. The improvement in overall ranki
 <div class="ai-media-controls" hidden><button type="button" class="ai-button" data-play-pair>Play both training animations</button><button type="button" class="ai-button" data-reset-pair>Restart animations</button></div>
 <p class="ai-caption">Evolution of the latent representations during training. Both show <a href="#coarse-representations">coordinate-averaged views</a> of high-dimensional Imagenette representations, with colours distinguishing the nominal ID classes. Only nominal samples are displayed here. The vMF comparison concentrates one direction; the proposed prescription controls the full angular hierarchy. Press play to follow how the representations develop during training.</p>
 </div>
+</details>
 ```
 
 ```{=html}
@@ -200,8 +203,8 @@ The thesis studies both generation and the routes between encoded examples. The 
 <figure><h4>Standard VAE</h4><img src="../assets/ai/visuals/interpolation-standard.webp" alt="Standard VAE interpolation sequences for zero to one, seven to two, and three to four." loading="lazy" data-interpolation-strip="standard"></figure>
 <figure><h4>Compressed VAE</h4><img src="../assets/ai/visuals/interpolation-compressed.webp" alt="Compressed VAE interpolation sequences for zero to one, seven to two, and three to four." loading="lazy" data-interpolation-strip="compressed"></figure>
 </div>
-<div class="ai-scrubber" hidden>
-<p class="ai-eyebrow">Explore the interpolation</p>
+<details class="ai-details ai-scrubber" hidden>
+<summary>Explore the interpolation</summary>
 <div class="ai-frame-pair">
 <figure><img data-frame="standard" data-no-zoom src="../assets/ai/visuals/interpolation-standard-00.webp" alt="Standard VAE: three digit paths at the first interpolation step." width="160" height="480"><figcaption>Standard VAE</figcaption></figure>
 <div class="ai-path-labels" aria-hidden="true"><span>0 → 1</span><span>7 → 2</span><span>3 → 4</span></div>
@@ -209,8 +212,8 @@ The thesis studies both generation and the routes between encoded examples. The 
 </div>
 <label for="interpolation-step">Saved step <output id="interpolation-position" for="interpolation-step">1 of 10</output></label>
 <input id="interpolation-step" type="range" min="0" max="9" value="0" step="1" aria-describedby="interpolation-note">
-</div>
 <p class="ai-caption" id="interpolation-note">Three paths: 0 → 1, 7 → 2, and 3 → 4. Move the slider to compare the ten interpolation steps.</p>
+</details>
 </div>
 ```
 
@@ -378,7 +381,8 @@ A small image experiment makes the effect visible. Train a conjunction on the co
 
 ![Real test sevens ordered by the evaluator's conjunction score. The high-scoring end contains sevens whose stroke shapes also resemble ones. From my thesis.](../assets/ai/handwritten-sevens.webp){fig-alt="A row of handwritten sevens ordered from low to high learned evidence for the conjunction of one and seven."}
 
-### Why train an evaluator instead of composing probabilities? {#independent-correlated}
+<details class="ai-details" id="independent-correlated">
+<summary>Why train an evaluator instead of composing probabilities?</summary>
 
 If the relevant events are independent, their individual truth probabilities contain everything needed to compose them. For example, writing $p_A=P(A)$ and $p_B=P(B)$ gives
 
@@ -399,6 +403,8 @@ $$
 The joint term $P(A\wedge B)$ cannot be recovered from the two marginals alone without an assumption about dependence. For example, $p_A=p_B=1/2$ gives an implication probability of $3/4$ under independence, but $1$ if the events always coincide. The individual probabilities are identical; their relationship changes the answer.
 
 This is why the evaluator passes **features as well as truth estimates** up the expression. Those features retain evidence about the shared scene that a single scalar per operand can discard. Local Boolean supervision and chimera training teach each node how to use that evidence, while the meaning of conjunction and implication remains unchanged. In the event-rich CLEVRER experiments, mean anomaly AUROC rose from **0.750** with independent composition to **0.833** with the learned evaluator. The contrast with CLEVR identifies the intended advantage: handling relations for which independent composition leaves out useful information.
+
+</details>
 
 ## 3. Generating reasoning structures {#generative-reasoning}
 
@@ -505,9 +511,12 @@ These selected examples illustrate the behaviour of each model; they are not a r
 
 #### Geometry, interpolation, and the reconstruction trade-off {#logic-vae-results}
 
-The geometric question carries over from images and molecules: can we organize the latent representation so that moving through it remains useful? These animations show the evolution during training. Colours indicate reference root probabilities. The high-dimensional space is shown through [coarse coordinate averages](#coarse-representations).
+The geometric question carries over from images and molecules: can we organize the latent representation so that moving through it remains useful? The training animations and loss plots can be explored below.
 
 ```{=html}
+<details class="ai-details">
+<summary>Training evolution and losses</summary>
+<p>These animations show the evolution during training. Colours indicate reference root probabilities. The high-dimensional space is shown through <a href="#coarse-representations">coarse coordinate averages</a>.</p>
 <div class="ai-motion" data-paired-video>
 <div class="ai-pair">
 <figure><h4>Without compression</h4><video controls muted playsinline preload="none" width="960" height="882" poster="../assets/ai/logic-vae/zero-training-poster.webp" aria-label="Training evolution of the Logic VAE without compression, epochs 10 to 540"><source src="../assets/ai/logic-vae/zero-training.mp4" type="video/mp4"><a href="../assets/ai/logic-vae/zero-training.mp4">Download training animation.</a></video><figcaption>Epochs 10–540. Poster: selected epoch 200.</figcaption></figure>
@@ -515,23 +524,6 @@ The geometric question carries over from images and molecules: can we organize t
 </div>
 <div class="ai-media-controls" hidden><button class="ai-button" type="button" data-play-pair>Play both training animations</button><button class="ai-button" type="button" data-reset-pair>Reset both</button></div>
 </div>
-```
-
-The coarse views make the evolution visible. Angular and radial distributions reveal how the high-dimensional coordinates change under hyperspherical regularization; these diagnostics and the training losses can be inspected below.
-
-```{=html}
-<details class="ai-details">
-<summary>Angular and radial diagnostics, and training losses</summary>
-<div class="ai-pair ai-logic-diagnostics">
-<figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-angles.webp" alt="Histograms of hyperspherical cosine coordinates of latent means without compression." loading="lazy"><figcaption>Angular-coordinate distributions at the selected checkpoint.</figcaption></figure>
-<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-angles.webp" alt="Histograms of hyperspherical cosine coordinates of latent means with compression." loading="lazy"><figcaption>The distribution shifts across the angular hierarchy.</figcaption></figure>
-</div>
-
-<div class="ai-pair ai-logic-diagnostics">
-<figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-radii.webp" alt="Latent norm and representative-angle histograms without compression." loading="lazy"></figure>
-<figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-radii.webp" alt="Latent norm and representative-angle histograms with compression." loading="lazy"></figure>
-</div>
-<p class="ai-caption">Norms are normalized by the square root of the latent dimension. The dashed red curve shows the angle to the empirical mean direction, normalized by π/2. The coarse views above use different display normalizations between models; their apparent three-dimensional volumes are not a compression measurement.</p>
 <figure><h4>Without compression</h4><img src="../assets/ai/logic-vae/zero-losses.webp" alt="Validation reconstruction, internal probability and regularization losses without compression." loading="lazy"></figure>
 <figure><h4>With compression</h4><img src="../assets/ai/logic-vae/full-losses.webp" alt="Validation reconstruction, internal probability and regularization losses with compression." loading="lazy"><figcaption>Validation reconstruction, probability-prediction, and regularization losses on log10 scales.</figcaption></figure>
 </details>
