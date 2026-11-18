@@ -589,7 +589,7 @@ $$
 P_1^k=(\Phi_B\Leftrightarrow W_k)\wedge(\Phi_{B'}\Leftrightarrow W_k).
 $$
 
-Both paths are compared with the *same* $W_k$. Choosing another witness gives a second way to relate the very same pair of paths. The drawing below shows the two paths horizontally and the two witnesses between them.
+Both paths are compared with the *same* $W_k$. This entails ordinary equivalence of the paths, but also retains **which witness they agree with**. Choosing another witness gives a second way to relate the very same pair of paths, and those witnessed blocks can themselves be compared at the next level. The drawing below shows the two paths horizontally and the two witnesses between them.
 
 ![Two witnesses between the same syntactic paths. The endpoint labels are repeated so that both paths and both witnesses can be seen. From my witnessed-animation construction.](../assets/ai/parallel-witnesses.png){width=75% fig-alt="Parallel paths from A to C, with witnesses alpha and alpha prime relating them."}
 
@@ -617,31 +617,50 @@ $$
 
 Once these operations are available, a natural next question concerns the organization of reasoning: **which alternative chains of implications connect the same starting point and conclusion, and how can we compare them?** Keeping the intermediate concepts makes those alternatives explicit.
 
-**Equivalence as a theorem.** Here, equivalence of paths means that their formulas agree under **every assignment of truth values** to the concepts:
+**Keeping the witness in the statement.** The relation we retain is the full witnessed block
 
 $$
-\vdash(\Phi\Leftrightarrow\Phi')
+P_W(\Phi,\Phi')=(\Phi\Leftrightarrow W)\wedge(\Phi'\Leftrightarrow W).
+$$
+
+It says that both routes agree with the specified witness. Ordinary equivalence is a consequence:
+
+$$
+\vdash\bigl(P_W(\Phi,\Phi')\Rightarrow(\Phi\Leftrightarrow\Phi')\bigr).
+$$
+
+The converse does not hold for a specified $W$: two routes can agree with each other while disagreeing with that witness. Keeping $W$ records the chosen intermediate proposition through which the comparison is made. In this construction, $W$ is a proposition with a truth value; a proof that the witnessed block is valid is a further step.
+
+**When is the witnessed relation a theorem?** This requires the entire $P_W$ to hold under **every assignment of truth values**, not just in one clip. Soundness and completeness of classical propositional logic connect this semantic criterion with syntactic provability:
+
+$$
+\vdash P_W(\Phi,\Phi')
 \quad\Longleftrightarrow\quad
-\models(\Phi\Leftrightarrow\Phi').
+\models P_W(\Phi,\Phi').
 $$
 
-The left side asserts a syntactic theorem; the right asserts semantic validity, or a tautology. For classical propositional logic, **soundness** gives the implication from provability to validity, and **completeness** gives the converse. Thus, one counterexample is enough to rule out equivalence, while agreement in one clip is not enough to establish it. See [*Logic and Proof*, §6.3](https://leanprover-community.github.io/logic_and_proof/semantics_of_propositional_logic.html#soundness-and-completeness).
+Soundness gives the implication from provability to validity, and completeness gives the converse. One counterexample therefore rules out a theorem; agreement in one clip does not establish one. See [*Logic and Proof*, §6.3](https://leanprover-community.github.io/logic_and_proof/semantics_of_propositional_logic.html#soundness-and-completeness).
 
 **Two routes through a video.** Fix a tracked object. Let $A$ mean that it enters the scene and $C$ that it collides during the first half of the clip. One route uses the intermediate event $B_{\rm cube}$, “it collides with a blue cube during that interval”; another uses $B_{\rm sphere}$, “it collides with a blue sphere during that interval.” The endpoints remain fixed, while the object pair involved in the middle node changes.
 
 Consider a possible clip in which the object enters and collides with the blue sphere, but not with a blue cube. Then $A=C=1$, $B_{\rm cube}=0$, and $B_{\rm sphere}=1$. Consequently, the two chain formulas above give $\Phi_{\rm cube}=0$ and $\Phi_{\rm sphere}=1$.
 
-Choose witness atoms for the blue-cube and blue-sphere collision events, $W_{\rm cube}=0$ and $W_{\rm sphere}=1$. Either witness exposes the disagreement in this assignment. The third comparison instead repeats exactly the same sphere-route formula:
+Choose witness atoms for the blue-cube and blue-sphere collision events, $W_{\rm cube}=0$ and $W_{\rm sphere}=1$. The first two rows compare the different routes through these two witnesses. The third repeats the sphere route, retaining the sphere-collision witness:
 
-| Routes compared | Witness in the illustrated clip | Conclusion about path equivalence |
+| Routes compared | Witness | Full witnessed block in the illustrated clip |
 |:--|:--|:--|
-| Blue-cube route and blue-sphere route | $W_{\rm cube}$ | Not a tautology: $\Phi_{\rm cube}=0$ and $\Phi_{\rm sphere}=1$ give a counterexample. |
-| Blue-cube route and blue-sphere route | $W_{\rm sphere}$ | Not a tautology: the same counterexample rules out equivalence with this witness too. |
-| Two copies of the blue-sphere route | $W_{\rm sphere}$ | A tautology: $\Phi_{\rm sphere}\Leftrightarrow\Phi_{\rm sphere}$ is true for every assignment. |
+| Blue-cube route and blue-sphere route | $W_{\rm cube}=0$ | $P_{W_{\rm cube}}=(0\Leftrightarrow0)\wedge(1\Leftrightarrow0)=0$: a counterexample to validity. |
+| Blue-cube route and blue-sphere route | $W_{\rm sphere}=1$ | $P_{W_{\rm sphere}}=(0\Leftrightarrow1)\wedge(1\Leftrightarrow1)=0$: a counterexample to validity. |
+| Two copies of the blue-sphere route | $W_{\rm sphere}=1$ | $P_{W_{\rm sphere}}=(1\Leftrightarrow1)\wedge(1\Leftrightarrow1)=1$: the witnessed relation holds in this clip. |
 
-The repeated sphere node denotes the **same propositional variable** in both copies. Whatever truth values the concepts receive, the two complete formulas agree. The first two rows therefore refute equivalence; the third establishes it independently of any particular clip.
+The first two rows rule out validity of the witnessed blocks, and the disagreement between the routes also rules out ordinary equivalence. In the third, the repeated sphere node denotes the **same propositional variable** in both copies, so the two routes agree for every assignment. The full witnessed statement still requires agreement with $W_{\rm sphere}$:
 
-The separate witnessed block $(\Phi\Leftrightarrow W)\wedge(\Phi'\Leftrightarrow W)$ also requires agreement with $W$. For identical routes it reduces to $\Phi\Leftrightarrow W$, so making that entire block a tautology requires $W$ to be defined as, or provably equivalent to, the full route formula; the collision atom alone does not guarantee this.
+$$
+P_{W_{\rm sphere}}(\Phi_{\rm sphere},\Phi_{\rm sphere})
+\equiv(\Phi_{\rm sphere}\Leftrightarrow W_{\rm sphere}).
+$$
+
+For a witnessed identity that is itself a tautology, we can instead define a witness representing the **complete route**, $W_\Phi:=\Phi_{\rm sphere}$. Then $P_{W_\Phi}(\Phi_{\rm sphere},\Phi_{\rm sphere})$ is true for every assignment after substituting that definition. This is a different witness from the bare collision atom: repeating a route establishes its self-equivalence, while specifying a matching witness establishes the full witnessed identity.
 
 This example extends the video-rule vocabulary by changing the middle node's object pair; that variation was not tested in the experiments above.
 
