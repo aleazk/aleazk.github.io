@@ -620,7 +620,7 @@ A\wedge B\equiv\neg(A\Rightarrow\neg B),\qquad
 A\vee B\equiv(\neg A\Rightarrow B).
 $$
 
-Once these operations are available, a natural next question concerns the organization of reasoning: **which alternative chains of implications connect the same starting point and conclusion, and how can we compare them?** Keeping the intermediate concepts makes those alternatives explicit.
+Therefore, the key operation is that of implication (which is the partial order in the underlying poset when propositional logic is modeled as a Boolean algebra/lattice). Standard implication is a single operator, thus the next level of generalization for possible types of reasoning structures is to consider a same pair concepts connected by different, and not necessarily equivalent, types of implications. Once these operations are available, a natural next question concerns the organization of reasoning: **which alternative chains of implications connect the same starting point and conclusion, and how can we compare them?** Keeping the intermediate concepts makes those alternatives explicit.
 
 **Keeping the witness in the statement.** The relation we retain is the full witnessed block
 
