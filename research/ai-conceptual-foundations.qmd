@@ -417,13 +417,13 @@ The evaluator asks whether an observation supports a supplied rule. The next ste
 
 ### Generating rules and their truth profiles {#logic-vae}
 
-The **Logic VAE** learns a generative representation of labelled reasoning trees, conditioned on the probabilities of their leaves. Its input separates two kinds of information: the tree specifies the topology, logical operators, and concept identifiers; the condition specifies how probable those concepts are in a particular observation.
+The **Logic VAE** learns a generative representation of labelled reasoning trees and their nodewise probability profiles, conditioned on leaf-concept probabilities. The tree specifies the topology, logical operators, and concept identifiers; the condition specifies how probable those concepts are in a particular observation.
 
-The encoder maps the labelled tree and its leaf-probability condition to a latent representation. A conditional decoder reconstructs or generates the labelled tree. A **separate predictor network uses the latent representation to infer probabilities for the non-leaf nodes**, including the root. These internal-node probabilities are prediction targets during training; they are not supplied to the encoder.
+The encoder receives the labelled tree, its full nodewise probability profile, and the leaf-probability condition. The conditional decoder shares its hidden states between a token head, which generates the labelled tree, and a **probability head**, which predicts internal-node probabilities, including the root. These predictions depend on the latent code, the leaf condition, and the preceding tokens.
 
 This makes the observation part of the datapoint. The same syntactic tree, with exactly the same concept identifiers, can be evaluated for two different video clips. If the clips give different leaf-probability conditions, the resulting inputs will generally map to different latent points. Conversely, fixing a clip lets us explore different reasoning structures under its concept-probability condition.
 
-![A labelled logical tree and its leaf-probability condition enter the conditional VAE. The decoder generates the labelled tree; a separate predictor uses the latent representation to infer internal-node probabilities.](../assets/ai/logic-vae/workflow.svg?v=20261117){fig-alt="A labelled tree enters a conditional encoder and latent space. The latent representation branches to a conditional decoder producing a tree and a separate predictor producing internal-node probabilities. Leaf probabilities condition the encoder and decoder; internal-node targets do not enter the encoder."}
+![The encoder receives a labelled tree and its nodewise probabilities. Leaf probabilities condition both encoder and decoder; the decoder produces tree tokens and internal-node probability predictions.](../assets/ai/logic-vae/workflow.svg?v=20261121){fig-alt="A labelled tree and its full nodewise probability profile enter the encoder. The latent code feeds a conditional decoder with token and probability outputs. Leaf probabilities condition both encoder and decoder."}
 
 Sampling, interpolation, and search choose latent codes from which the model can generate reasoning structures and predict their truth profiles. The compression method introduced earlier now organizes this space of reasoning structures. The present synthetic experiment focuses on **interpolation**: as the code and condition vary, how accurately does the predictor estimate the probabilities of the resulting tree?
 
@@ -447,7 +447,7 @@ Negation maps $a$ to $1-a$. The calculation proceeds from the leaves to the root
 
 </details>
 
-The experiment uses 64 concepts and a 512-dimensional latent space. Each input is a labelled witnessed tree together with a 64-component leaf-probability condition. The analytical internal-node values supervise the predictor. Generated leaves receive the probabilities associated with their decoded concept identifiers. Interpolation starts from validation examples held out of gradient training. A reconstruction gives the first view of what the model has learned:
+The experiment uses 64 concepts and a 512-dimensional latent space. Each input is a labelled witnessed tree and its nodewise probability profile, together with a 64-component leaf-probability condition. The analytical internal-node values both enter the encoder and supervise the probability head. Generated leaves receive the probabilities associated with their decoded concept identifiers. Interpolation starts from validation examples held out of gradient training. A reconstruction gives the first view of what the model has learned:
 
 ![Original tree and reference profile on the left; reconstruction and predicted profile on the right, using the compressed model at its selected checkpoint. Blue nodes show concept identifiers and leaf probabilities; internal nodes show logical operators and probabilities. Values in the drawing are rounded to one decimal place.](../assets/ai/logic-vae/full-reconstruction-1b.webp){fig-alt="Detailed original and reconstructed witnessed trees with probabilities at the leaves and internal nodes."}
 
@@ -469,7 +469,7 @@ Colours identify the concept labels at the leaves and the operators at internal 
 
 #### Moving between reasoning structures {#logic-vae-interpolation}
 
-Choose two encoded examples and move between them. At each of 20 steps, decode a tree and predict its internal probabilities. Then apply the independent-event formulas to that generated tree to obtain a reference profile. **Does the predicted profile remain consistent as the generated structure changes?**
+Choose two encoded examples and move between them. Their endpoint encodings include their truth profiles; intermediate trees receive no reference profiles. At each of 20 steps, decode a tree and predict its internal probabilities. Then apply the independent-event formulas to that generated tree to obtain a reference profile. **Does the predicted profile remain consistent as the generated structure changes?**
 
 Both the latent code and the conditioning leaf-probability vector vary along these paths. The interpolation procedure linearly blends the two endpoint vectors in each space, then rescales each blend to the respective mean norm over validation examples. These are therefore jointly varying code-and-condition paths. The numerical path is continuous; the decoded tree changes discretely. Use the slider to inspect the intermediate structures, or play the sequence.
 

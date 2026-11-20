@@ -33,7 +33,7 @@
     "*-training.mp4": "Saved Fig-3 at every 10 epochs: zero 10..540, full 10..520. Fixed crop (205,0,1920,1500), resized to 960x840 with epoch label. 4 fps, final frame held 2 seconds. No synthetic intermediate data.",
     "*-training-poster.webp": "Corresponding selected-epoch training frame.",
     "error-distribution.webp": "Gaussian kernel density estimates of the original 100-element peak_err arrays for each model, using Scott bandwidth and reflection at zero. Solid outlines and translucent fills. Reproduce with tools/plot_logic_error_density.py.",
-    "workflow.svg": "Conditional labelled-tree encoder/decoder with leaf-probability conditioning and a separate predictor from the latent representation. Internal-node probabilities are supervision only.",
+    "workflow.svg": "Conditional labelled-tree and node-probability encoder with leaf-probability conditioning. Shared decoder states feed token and internal-node probability heads. Checked against train_vae_probvalue_cvae.py (blob f565321f327282c41c86074b1d6b348f91e3678a) in aleazk/Logic_VAE_new_cluster_ver.",
     "interactive-error-reveal": "Original error-curve images reused without numerical extraction. SVG masks the plot to the right of each of 20 interpolation steps; original axes and legend retained. Pixel positions k=0:112, k=19:995.",
     "peak-errors.json": "Exact numerical values converted from peak_err.npz in each source archive; no resampling or synthetic observations."
   },
@@ -174,7 +174,7 @@
     },
     {
       "path": "workflow.svg",
-      "sha256": "c45df7802e2ca7e1e26f21c5c21e836db59f4b596a527aafe5957d95bf21a72a"
+      "sha256": "35579451ad7eb91118cbe78681f79f505aed117d156597feb627ea86a1823a8d"
     },
     {
       "path": "zero-angles.webp",

@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 390" role="img" aria-labelledby="title desc">
-<title id="title">Conditional Logic VAE and probability predictor</title>
-<desc id="desc">A tree with topology, operators, and concept identifiers enters the encoder. Leaf probabilities condition the encoder and decoder. The latent representation branches to the tree decoder and a separate internal-node probability predictor. Internal-node probabilities are prediction targets, not encoder inputs.</desc>
+<title id="title">Conditional Logic VAE with token and probability outputs</title>
+<desc id="desc">A labelled tree and its full nodewise probability profile enter the encoder. Leaf probabilities condition the encoder and decoder. The latent representation feeds the decoder, whose shared states produce tree tokens and internal-node probabilities through two output heads.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="none" stroke="#285a61" stroke-width="1.2"/></marker></defs>
 <rect width="1080" height="390" fill="white"/>
 <g stroke="#285a61" stroke-width="2" fill="none" marker-end="url(#arrow)">
 <path d="M200 155H235"/><path d="M370 155H431"/><path d="M549 155H610"/><path d="M750 155H805"/>
-<path d="M490 214V295H610"/><path d="M750 295H805"/>
+<path d="M680 210V254"/><path d="M750 295H805"/>
 <path d="M370 46H300V102"/><path d="M610 46H680V102"/>
 </g>
 <g stroke="#285a61" stroke-width="1.6" fill="#e8efed">
@@ -17,11 +17,11 @@
 </g>
 <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#1c2528">
 <text x="490" y="42" font-size="18">Leaf probabilities</text><text x="490" y="63" font-size="15">condition c</text>
-<text x="104" y="128" font-size="21">Labelled tree T</text><text x="104" y="154" font-size="16">Topology + operators</text><text x="104" y="177" font-size="16">+ concept identifiers</text>
+<text x="104" y="128" font-size="21">Labelled tree T</text><text x="104" y="154" font-size="16">Topology + operators</text><text x="104" y="177" font-size="16">+ concept identifiers</text><text x="104" y="200" font-size="16">+ node probabilities</text>
 <text x="296" y="162" font-size="18">Encoder</text><text x="490" y="152" font-size="21">Latent z</text><text x="490" y="176" font-size="15">512 dimensions</text>
 <text x="683" y="162" font-size="18">Decoder</text>
-<text x="934" y="148" font-size="21">Generated tree</text><text x="934" y="175" font-size="16">Topology + node labels</text>
-<text x="680" y="291" font-size="18">Probability</text><text x="680" y="314" font-size="18">predictor</text>
+<text x="934" y="148" font-size="21">Generated tree</text><text x="934" y="175" font-size="16">Token head: topology + labels</text>
+<text x="680" y="291" font-size="18">Probability</text><text x="680" y="314" font-size="18">head</text>
 <text x="934" y="288" font-size="21">Internal-node</text><text x="934" y="315" font-size="21">probabilities</text>
-<text x="540" y="372" font-size="16" fill="#285a61">Internal-node probabilities supervise the predictor; they are not encoder inputs.</text>
+<text x="540" y="372" font-size="16" fill="#285a61">Internal-node probabilities enter the encoder and supervise the decoder's probability head.</text>
 </g></svg>
