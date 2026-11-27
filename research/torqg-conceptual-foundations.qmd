@@ -130,17 +130,17 @@ $$
 [\widehat{\mathcal O}_1,\widehat{\mathcal O}_2].
 $$
 
-But in gravity the object on the left already depends on $g$.
-
-A naive procedure would therefore require the quantum commutator to depend somehow on the quantum gravitational geometry:
+What matters is **how the geometry enters the bracket**. Consider orbital angular momentum:
 
 $$
-[\widehat{\mathcal O}_1,\widehat{\mathcal O}_2]
-=
-\text{function of quantum geometry}.
+\{L_x,L_y\}=L_z,\qquad L_z=xp_y-yp_x.
 $$
 
-The difficulty is that the quantum geometry has not yet been defined. If its geometry is to be described by a noncommutative algebra, then the algebraic relations are needed in order to construct the quantum geometry in the first place.
+The right-hand side varies across phase space. We already know how to construct its quantum counterpart from position and momentum: $\widehat L_z=\widehat x\,\widehat p_y-\widehat y\,\widehat p_x$. Direct calculation gives $[\widehat L_x,\widehat L_y]=i\hbar\widehat L_z$. There is also an algebraic route. The three rotation generators close with fixed structure constants, so one can look for Hilbert-space representations of their Lie algebra. The electric flux generators at one end of a spin-network link in loop quantum gravity admit a similar angular-momentum representation.
+
+Now vary the gravitational solution $g$ in the construction of §1. Even with the test functions $f,h$ held fixed, changing $g$ changes the causal propagator $E_g$ that pairs them. For the short timelike segments studied in the Foundations paper, the leading term in the bracket is sensitive to the proper duration that the geometry assigns to the process. To carry this dependence into the quantum theory, the quantum geometry must supply the interval that is to regulate the corresponding noncommutation.
+
+Consider trying to obtain that interval from a family of quantum spatial metrics. For an observer moving normally to the slices, the proper time between coordinate labels $t_1$ and $t_2$ reduces to $\Delta\tau=\int_{t_1}^{t_2}N\,dt$, where $N$ is the lapse. Prescribing the lapse and both limits supplies the answer before the quantum spatial metric enters the calculation. This leads to the question Tor.QG addresses: **can the quantum transition itself supply the duration that its commutation relation is supposed to encode?**
 
 One therefore encounters an apparent circle:
 
@@ -391,9 +391,7 @@ The result is no longer merely two spectral triples plus an abstract statement t
 
 One has constructed an algebraic object representing the **transition sheet itself**.
 
-A diagonal Dirac calculus on this glued geometry is insufficient to detect the relevant cross phase. Tor.QG therefore introduces an off-diagonal bridge contribution to the Dirac operator, built from the cross generators. This makes commutators with the Dirac operator sensitive to the same algebraic deformation that characterizes the transition.
-
-Consequently, the corresponding Connes spectral distance between suitable states on the two sheets becomes sensitive to the cross-noncommutation parameter.
+The diagonal Dirac calculus on the glued geometry is insensitive to the relative timelike mode $V_1V_2^*$. It therefore misses the cross relation whose classical counterpart was sensitive to duration. Tor.QG introduces an off-diagonal Higgs-like bridge built from the two timelike generators. Through its commutators, the same phase that governs the exchange of $V_1$ and $V_2$ enters the spectral distance formula.
 
 One can therefore calculate an actual noncommutative metric separation in the transition direction:
 
@@ -404,6 +402,18 @@ $$
 d_{\widetilde D_\Theta}(\varphi,\psi):=\sup\{\,|\varphi(a)-\psi(a)|:\ a=a^*,\ \|[\widetilde D_\Theta,a]\|\le 1\,\}.
 }
 $$
+
+**Where did the lapse go?** Return to the normal observer of §2. Along its worldline, $d\tau=N(t)\,dt$. For $N>0$ and $t_2>t_1$, the same elapsed duration has two expressions:
+
+$$
+\int_{t_1}^{t_2}N(t)\,dt
+=
+\sup_{|f'(t)|\leq N(t)}|f(t_2)-f(t_1)|.
+$$
+
+The derivative bound limits how much any admissible function can change between the endpoints. Accumulated proper time itself, $f(t)=\int_{t_1}^{t}N(u)\,du$, attains that bound. Relabeling the segment changes the lapse, the coordinate derivative and the endpoint labels together. The largest admissible difference stays the same.
+
+This is the sense in which spectral distance has *already performed the integration*. For the positive one-dimensional metric $N(t)^2dt^2$, the classical Dirac operator gives $\lVert[D,f]\rVert=\sup_t |f'(t)|/N(t)$. Its unit commutator bound contains exactly the metric information that appears as the lapse in the integral. On the glued transition, $\lVert[\widetilde D_\Theta,a]\rVert\leq1$ plays the corresponding role. In the distinguished normal transition with trivial holonomy, the resulting metric separation is read as elapsed proper time. Its calculation requires no independent choice of lapse. The bridge supplies the further property required by the gravitational bracket: the bound itself is sensitive to the cross phase.
 
 For the first mode, the construction gives explicit bounds of the form
 
@@ -488,6 +498,23 @@ This two-way consistency is the central conceptual point.
 The duration is not physical merely because NCG can define a distance.
 
 It is physical in the Tor.QG construction because the distance occupies the same structural role that the metric duration occupied in the classical gravitational Poisson problem that motivated the quantization.
+
+### What identifies the endpoints?
+
+A clock experiment involves two questions. What tells the observer to start and stop the clock? How much proper time elapses between those events? Reference matter fields can help answer the first question. The conditions that identify the events can also come from the gravitational geometry itself.
+
+Consider a comoving observer in an expanding, spatially flat dust universe with zero cosmological constant. How much proper time elapses from the Big Bang limit until the observer first encounters a prescribed scalar curvature $R_1>0$? The observer's worldline intersects the level surface $R=R_1$ in a single event. The past limit also has a geometric specification: start at an earlier crossing $R=R_0$ and let $R_0$ tend to infinity. In this solution $R(\tau)=4/(3\tau^2)$, so
+
+$$
+\Delta\tau_{\mathrm{BB}\to R_1}
+=\lim_{R_0\to\infty}
+\left(\frac{2}{\sqrt{3R_1}}-\frac{2}{\sqrt{3R_0}}\right)
+=\frac{2}{\sqrt{3R_1}}.
+$$
+
+Gaussian coordinates let us use this proper age as the coordinate of the final event. Its physical content is the predicted relation between elapsed time and curvature. Dust supplies the cosmological source and defines the comoving flow. No additional matter field is needed to serve as a clock.
+
+In Tor.QG the spectral geometry assigns a duration to a specified transition between specified states. To ask for the time between two physically identifiable events on a history, one must also specify the observer's causal path and what distinguishes its endpoints. Integer sheet labels alone leave that question open. A condition on the geometric history, or a coincidence with matter when matter is present, can identify the interval. One can equally well reverse the question and ask what geometry the observer encounters after a given accumulated duration.
 
 ## 10. This is not ordinary background dependence
 
