@@ -391,7 +391,7 @@ The result is no longer merely two spectral triples plus an abstract statement t
 
 One has constructed an algebraic object representing the **transition sheet itself**.
 
-The diagonal Dirac calculus on the glued geometry is insensitive to the relative timelike mode $V_1V_2^*$. It therefore misses the cross relation whose classical counterpart was sensitive to duration. Tor.QG introduces an off-diagonal Higgs-like bridge built from the two timelike generators. Through its commutators, the same phase that governs the exchange of $V_1$ and $V_2$ enters the spectral distance formula.
+The diagonal Dirac calculus on the glued geometry is insensitive to the relative timelike mode $V_1V_2^*$. It therefore misses the cross relation whose classical counterpart was sensitive to duration. Tor.QG introduces an off-diagonal Higgs-like bridge (in the NCG interpretation of the Higgs field) built from the two timelike generators. Through its commutators, the same phase that governs the exchange of $V_1$ and $V_2$ enters the spectral distance formula. A key aspect of this off-diagonal Higgs-like field is that its appearance only involves the additional ingredient of tensoring with the algebra of a two-points space, i.e., a finite geometry, which means that this construction does not add extra spectral dimensions, case in which the transition geometry would become a three dimensional object, and instead the full Dirac calculus we obtain is still two dimensional.
 
 One can therefore calculate an actual noncommutative metric separation in the transition direction:
 
