@@ -140,7 +140,36 @@ The right-hand side varies across phase space. We already know how to construct 
 
 Now vary the gravitational solution $g$ in the construction of §1. Even with the test functions $f,h$ held fixed, changing $g$ changes the causal propagator $E_g$ that pairs them. For the short timelike segments studied in the Foundations paper, the leading term in the bracket is sensitive to the proper duration that the geometry assigns to the process. To carry this dependence into the quantum theory, the quantum geometry must supply the interval that is to regulate the corresponding noncommutation.
 
-Consider trying to obtain that interval from a family of quantum spatial metrics. For an observer moving normally to the slices, the proper time between coordinate labels $t_1$ and $t_2$ reduces to $\Delta\tau=\int_{t_1}^{t_2}N\,dt$, where $N$ is the lapse. Prescribing the lapse and both limits supplies the answer before the quantum spatial metric enters the calculation. This leads to the question Tor.QG addresses: **can the quantum transition itself supply the duration that its commutation relation is supposed to encode?**
+The area operator in loop quantum gravity suggests a natural strategy. Consider a spatial surface $S$ embedded in a slice by $x^a=X^a(\sigma^1,\sigma^2)$. Its classical area can be written in two equivalent ways,
+
+$$
+A[S]
+=\int_S d^2\sigma\,\sqrt{\det q_{AB}}
+=\int_S d^2\sigma\,
+  \sqrt{\delta^{ij}\bigl(n_a E^a{}_i\bigr)
+                       \bigl(n_b E^b{}_j\bigr)} ,
+$$
+
+where $q_{AB}=q_{ab}\,\partial_A X^a\,\partial_B X^b$ is the induced metric, $E^a{}_i$ is the densitized triad, and $n_a=\epsilon_{abc}\,\partial_1X^b\,\partial_2X^c$ is the surface normal covector density. The second expression makes the route to quantization visible: $n_aE^a{}_i\,d^2\sigma$ is precisely the electric flux through a surface element. LQG partitions $S$ into small patches and uses the quantum flux through each patch to construct the area operator. As with orbital angular momentum, a classical geometric quantity has been expressed in variables for which a quantum representation is already available. It is reasonable to ask whether one could do the same for proper time. [Ashtekar and Lewandowski, *Quantum Theory of Geometry I: Area Operators*](https://arxiv.org/abs/gr-qc/9602046)
+
+For a timelike curve $\gamma(t)=(t,x^a(t))$, the classical proper-time functional reads
+
+$$
+\Delta\tau[\gamma]
+=\int_{t_1}^{t_2}
+\sqrt{N^2-q_{ab}\bigl(\dot x^a+N^a\bigr)
+                    \bigl(\dot x^b+N^b\bigr)}\,dt ,
+$$
+
+where $N$ is the lapse and $N^a$ the shift. Suppose we could already construct a quantum spatial metric $q_{ab}$ on every slice. The difficulty is visible even for an observer moving normally to the slices: then $\dot x^a=-N^a$, the entire spatial term drops out, and
+
+$$
+\Delta\tau_\perp=\int_{t_1}^{t_2}N\,dt.
+$$
+
+Prescribing a classical lapse between fixed coordinate endpoints now supplies the whole answer. None of the quantum spatial geometry enters it.
+
+It is tempting to dismiss the lapse here as “pure gauge.” Its value does depend on the coordinates, but specifying it is essential to building the full **spacetime** metric from the spatial metrics and shift. It gives the proper separation of neighboring slices along their normal. Even in Gaussian normal coordinates, putting $N=1$ is still a **classical prescription for the metric in the timelike direction**. The Poisson-bracket analysis points to precisely the issue that survives this simplification: observables associated with successive timelike segments already have a nonzero classical bracket whose leading term depends on their duration. In Tor.QG the corresponding timelike generators therefore have a noncommutative algebra. Equipping that algebra with a metric and extracting the duration of the transition is the quantum problem. The classical choice $N=1$ supplies no construction of that metric.
 
 One therefore encounters an apparent circle:
 
@@ -793,7 +822,11 @@ No. They show that the algebraic structure depends on the gravitational configur
 
 ### Misreading 3: “Tor.QG simply calls a Connes distance ‘time’.”
 
-No. The temporal interpretation also uses causal orientation, the classical covariant Poisson structure, the cross-noncommutation of timelike sectors, and the explicit spectral geometry of the transition. The Connes distance supplies the intrinsic metric realization of a temporal quantity whose structural role was already independently motivated.
+Connes’ formula gives an intrinsic metric separation between states. To interpret that separation as elapsed time, Tor.QG singles out a causal transition and asks whether its metric duration plays the role motivated by the gravitational Poisson bracket: the duration must also be tied to the mutual noncommutation of the timelike generators.
+
+The Higgs-like bridge might suggest that this is already what happens in the almost-commutative Standard Model. There, the strength of the Higgs-dependent coupling in the finite Dirac operator determines the distance in a discrete **internal** direction. Varying the Higgs field changes that distance while the multiplication law of the algebra stays fixed. In particular, the distance does not measure a variable degree of noncommutation between generators on the two sheets. [Martinetti and Wulkenhaar, *Discrete Kaluza–Klein from scalar fluctuations in noncommutative geometry*](https://arxiv.org/abs/hep-th/0104108)
+
+In Tor.QG, the two sheets represent successive micro-spacetimes, and their timelike generators $V_1,V_2$ obey a mutual exchange relation with phase $e^{2\pi i\Theta}$. The bridge is built from those very generators. Consequently, the same phase enters the commutator bound in Connes’ distance formula. For the distinguished normal transition, this yields a proper duration whose metric value is sensitive to the noncommutation across the transition. **It is this link between elapsed time and the algebra of successive timelike processes that the classical GR bracket led us to seek.**
 
 ### Misreading 4: “The global NC torus is supposed to be one gigantic physical spacetime.”
 
